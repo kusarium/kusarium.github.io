@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kusarium.github.io/sitemap.xml
+
+# This file states a preference; it cannot technically prevent copying or AI training.

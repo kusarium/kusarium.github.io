@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+---
+<article class="article shell shell--article">
+  <header class="article__header">
+    <p class="eyebrow">FIELD NOTE · {{ page.date | dateReadable }}</p>
+    <h1>{{ title }}</h1>
+    {% if excerpt %}<p class="article__lead">{{ excerpt }}</p>{% endif %}
+    {% if topics %}
+      <ul class="topic-list topic-list--large" aria-label="文章标签">
+        {% for topic in topics %}
+          <li><a href="/tags/#{{ topic | topicSlug }}">#{{ topic }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  {% if cover %}
+    <figure class="article__cover">
+      <button type="button" data-lightbox-trigger data-src="{{ cover }}" data-alt="{{ coverAlt | default(title) }}" aria-label="放大查看图片">
+        <img src="{{ cover }}" alt="{{ coverAlt | default(title) }}" decoding="async">
+      </button>
+      {% if coverCaption %}<figcaption>{{ coverCaption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  <div class="article__content prose">
+    {{ content | safe }}
+  </div>
+
+  <footer class="article__footer">
+    <div class="article__seal" aria-hidden="true">草</div>
+    <div>
+      <p>记录于 {{ page.date | dateReadable }}</p>
+      <a href="/journal/">← 返回生长日志</a>
+    </div>
+  </footer>
+</article>
+
+<dialog class="lightbox" data-lightbox>
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="关闭大图">×</button>
+  <img src="" alt="" data-lightbox-image>
+</dialog>
