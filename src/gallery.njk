@@ -15,7 +15,7 @@ permalink: /gallery/index.html
     <div class="gallery-grid">
       {% for post in collections.gallery %}
         <article class="gallery-item">
-          <button class="gallery-item__image" type="button" data-lightbox-trigger data-src="{{ post.data.cover }}" data-alt="{{ post.data.coverAlt | default(post.data.title) }}" aria-label="放大查看：{{ post.data.title }}">
+          <button class="gallery-item__image" type="button" data-lightbox-trigger data-src="{{ post.data.cover }}" data-alt="{{ post.data.coverAlt | default(post.data.title) }}" data-caption="{{ post.data.title }}" aria-label="放大查看：{{ post.data.title }}">
             <img src="{{ post.data.cover }}" alt="{{ post.data.coverAlt | default(post.data.title) }}" loading="lazy" decoding="async">
             <span class="gallery-item__view">VIEW</span>
           </button>
@@ -40,5 +40,12 @@ permalink: /gallery/index.html
 
 <dialog class="lightbox" data-lightbox>
   <button class="lightbox__close" type="button" data-lightbox-close aria-label="关闭大图">×</button>
-  <img src="" alt="" data-lightbox-image>
+  <div class="lightbox__stage">
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="查看上一枚标本">←</button>
+    <figure>
+      <img src="" alt="" data-lightbox-image>
+      <figcaption data-lightbox-status aria-live="polite"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="查看下一枚标本">→</button>
+  </div>
 </dialog>
