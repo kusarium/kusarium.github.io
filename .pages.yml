@@ -1,0 +1,119 @@
+media:
+  - name: post_images
+    label: 文章插画
+    input: src/assets/images/posts
+    output: /assets/images/posts
+    extensions: [jpg, jpeg, png, webp, gif, svg]
+    rename: safe
+
+content:
+  - name: posts
+    label: 文章与插画
+    type: collection
+    path: src/posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      primary: title
+      fields: [title, date, draft]
+      sort: date
+      order: desc
+      search: [title, excerpt, topics]
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: date
+        label: 发布时间
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ssxxx"
+      - name: excerpt
+        label: 列表摘要
+        type: text
+        required: true
+      - name: cover
+        label: 封面插画
+        type: image
+        required: false
+        options:
+          media: post_images
+          extensions: [jpg, jpeg, png, webp, gif, svg]
+          rename: safe
+      - name: coverAlt
+        label: 封面内容说明
+        description: 为无法看到图片的访客简短描述画面。
+        type: string
+        required: false
+      - name: coverCaption
+        label: 封面下方说明
+        type: string
+        required: false
+      - name: topics
+        label: 标签
+        type: string
+        list: true
+        required: false
+      - name: draft
+        label: 暂存为草稿
+        description: 开启后文章不会出现在公开网站。
+        type: boolean
+        default: false
+      - name: body
+        label: 正文
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          media: post_images
+          extensions: [jpg, jpeg, png, webp, gif, svg]
+
+  - name: site
+    label: 站点资料
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - name: name
+        label: 英文站名
+        type: string
+        required: true
+      - name: jpName
+        label: 日文站名
+        type: string
+        required: true
+      - name: author
+        label: 作者名
+        type: string
+        required: true
+      - name: tagline
+        label: 首页短句
+        type: string
+        required: true
+      - name: description
+        label: 网站介绍
+        type: text
+        required: true
+      - name: established
+        label: 建园年份
+        type: string
+        required: true
+      - name: copyrightNotice
+        label: 版权说明
+        type: text
+        required: true
+      - name: url
+        label: 网站地址
+        type: string
+        readonly: true
+      - name: language
+        label: 页面语言
+        type: string
+        readonly: true
+      - name: locale
+        label: 地区代码
+        type: string
+        readonly: true
