@@ -23,10 +23,15 @@
   </head>
   <body id="top" class="page page--{{ page.fileSlug | default('home') }}">
     <a class="skip-link" href="#main-content">跳至正文</a>
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
     {% include "partials/header.njk" %}
     <main id="main-content">
       {{ content | safe }}
     </main>
     {% include "partials/footer.njk" %}
+    <button class="garden-top" type="button" data-back-to-top aria-label="回到页面顶部">
+      <span aria-hidden="true">↑</span>
+      <small>TOP</small>
+    </button>
   </body>
 </html>
