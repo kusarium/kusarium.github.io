@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+title: 标本索引
+description: 按标签浏览 KUSARIUM 的图文记录。
+permalink: /tags/index.html
+---
+<header class="page-intro shell page-intro--split">
+  <div>
+    <p class="eyebrow">SPECIMEN INDEX</p>
+    <h1>标本索引</h1>
+  </div>
+  <p>纸签上的名字不是界限，只是帮助我们再次找到它们。</p>
+</header>
+
+<nav class="tag-cloud shell" aria-label="标签快速导航">
+  {% for topic in collections.topicList %}
+    {% set topicPosts = collections.posts | filterByTopic(topic) %}
+    <a href="#{{ topic | topicSlug }}"><span>#{{ topic }}</span><small>{{ topicPosts.length }}</small></a>
+  {% endfor %}
+</nav>
+
+<section class="tag-index shell section">
+  {% for topic in collections.topicList %}
+    {% set topicPosts = collections.posts | filterByTopic(topic) %}
+    <section class="tag-group" id="{{ topic | topicSlug }}">
+      <header>
+        <h2>#{{ topic }}</h2>
+        <p>{{ topicPosts.length }} 枚记录</p>
+      </header>
+      <ol>
+        {% for post in topicPosts %}
+          <li>
+            <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endfor %}
+</section>

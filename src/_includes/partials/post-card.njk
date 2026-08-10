@@ -1,0 +1,25 @@
+<article class="post-card{% if post.data.cover %} post-card--with-cover{% endif %}">
+  {% if post.data.cover %}
+    <a class="post-card__media" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ post.data.cover }}" alt="" loading="lazy" decoding="async">
+      <span class="post-card__number">NO. {{ loop.index | default("•") }}</span>
+    </a>
+  {% else %}
+    <a class="post-card__media post-card__media--specimen" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+      <span class="specimen-sprig"><i></i><i></i><i></i><i></i><b></b></span>
+      <span class="post-card__number">FIELD NOTE</span>
+    </a>
+  {% endif %}
+  <div class="post-card__body">
+    <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+    <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
+    {% if post.data.topics %}
+      <ul class="topic-list" aria-label="文章标签">
+        {% for topic in post.data.topics %}
+          <li><a href="/tags/#{{ topic | topicSlug }}">#{{ topic }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</article>

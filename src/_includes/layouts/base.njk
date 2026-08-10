@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ site.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4c4948">
+    <meta name="color-scheme" content="light">
+    <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ description | default(site.description) }}">
+    <meta name="author" content="{{ site.author }}">
+    <meta property="og:type" content="{% if layout == 'layouts/post.njk' %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
+    <meta property="og:description" content="{{ description | default(site.description) }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:locale" content="{{ site.locale }}">
+    {% if cover %}<meta property="og:image" content="{{ site.url }}{{ cover }}">{% endif %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS" href="{{ site.url }}/feed.xml">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script defer src="/assets/js/site.js"></script>
+  </head>
+  <body id="top" class="page page--{{ page.fileSlug | default('home') }}">
+    <a class="skip-link" href="#main-content">跳至正文</a>
+    {% include "partials/header.njk" %}
+    <main id="main-content">
+      {{ content | safe }}
+    </main>
+    {% include "partials/footer.njk" %}
+  </body>
+</html>

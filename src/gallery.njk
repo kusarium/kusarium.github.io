@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+title: 图鉴
+description: KUSARIUM 的插画与视觉标本。
+permalink: /gallery/index.html
+---
+<header class="page-intro shell">
+  <p class="eyebrow">ILLUSTRATED SPECIMENS</p>
+  <h1>图鉴</h1>
+  <p>将画面按照采集日期轻轻放好。点击任意标本，可以阅读它旁边留下的文字。</p>
+</header>
+
+<section class="gallery shell section" aria-label="插画图鉴">
+  {% if collections.gallery.length %}
+    <div class="gallery-grid">
+      {% for post in collections.gallery %}
+        <article class="gallery-item">
+          <button class="gallery-item__image" type="button" data-lightbox-trigger data-src="{{ post.data.cover }}" data-alt="{{ post.data.coverAlt | default(post.data.title) }}" aria-label="放大查看：{{ post.data.title }}">
+            <img src="{{ post.data.cover }}" alt="{{ post.data.coverAlt | default(post.data.title) }}" loading="lazy" decoding="async">
+            <span class="gallery-item__view">VIEW</span>
+          </button>
+          <div class="gallery-item__caption">
+            <div>
+              <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+              <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+            </div>
+            <span>{{ loop.index | pad2 }}</span>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <span class="specimen-sprig"><i></i><i></i><i></i><i></i><b></b></span>
+      <h2>图鉴还在等待第一枚标本</h2>
+      <p>为文章添加 <code>cover</code> 图片后，它会自动出现在这里。</p>
+    </div>
+  {% endif %}
+</section>
+
+<dialog class="lightbox" data-lightbox>
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="关闭大图">×</button>
+  <img src="" alt="" data-lightbox-image>
+</dialog>
