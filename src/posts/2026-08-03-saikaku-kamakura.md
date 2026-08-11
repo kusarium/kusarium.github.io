@@ -3,7 +3,7 @@ title: 井原西鹤眼里的镰仓幕府
 date: 2026-08-03T08:11:00+00:00
 section: journal
 language: zh-Hans
-excerpt: 从井原西鹤《新可笑记》的“天下德政”故事出发。
+excerpt: ”父亲也好，母亲也好，我谁也不要！“
 showToc: true
 passwordProtected: false
 coverCard:
