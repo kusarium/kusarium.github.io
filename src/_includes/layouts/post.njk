@@ -28,7 +28,7 @@ layout: layouts/base.njk
     {% if topics %}
       <ul class="topic-list topic-list--large" aria-label="文章標籤">
         {% for topic in topics %}
-          <li><a href="/tags/#{{ topic | topicSlug }}">#{{ topic }}</a></li>
+          {% if isBasement %}<li><span>#{{ topic }}</span></li>{% else %}<li><a href="/tags/#{{ topic | topicSlug }}">#{{ topic }}</a></li>{% endif %}
         {% endfor %}
       </ul>
     {% endif %}
