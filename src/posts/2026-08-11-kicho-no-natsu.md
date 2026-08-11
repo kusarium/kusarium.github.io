@@ -1,17 +1,18 @@
 ---
-title: "黄蝶の夏"
-date: 2026-08-11T19:45:00+09:00
-language: zh-Hans
+title: 黄蝶の夏
+date: 2026-08-11T10:45:00+00:00
 section: basement
-excerpt: "以宝治合战前后的北条与三浦两阵营为中心，描绘时赖、光村、觉地等人在和平、忠义与灭亡之间的选择。"
+language: zh-Hans
+excerpt: 以宝治合战前后的北条与三浦两阵营为中心，描绘时赖、光村、觉地等人在和平、忠义与灭亡之间的选择。
 showToc: true
-tocTitle: "章节目录"
+tocTitle: 章节目录
 passwordProtected: true
+passwordHint: 叶子数量？（1数字）
+password: "5"
 topics:
   - 黄蝶の夏
 draft: false
 ---
-
 ## 人物介绍
 
 > 年龄为宝治元年（1247年）时点的虚岁。
