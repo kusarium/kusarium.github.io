@@ -1,37 +1,40 @@
 ---
 layout: layouts/base.njk
 title:
-description: クサ的个人图文植物标本园，收藏插画、文字与四季的生长记录。
+description: クサ的私人紙上植物園，收存插畫、文字與緩慢生長的片段。
 ---
 <section class="hero shell" aria-labelledby="hero-title">
   <div class="hero__copy">
-    <p class="eyebrow">PRIVATE BOTANICAL ARCHIVE · EST. {{ site.established }}</p>
+    <p class="eyebrow">PRIVATE PAPER GARDEN · EST. {{ site.established }}</p>
     <h1 id="hero-title">
       <span>{{ site.name }}</span>
-      <small>{{ site.jpName }}</small>
+      <small>{{ site.subtitle }}</small>
     </h1>
     <p class="hero__tagline">{{ site.tagline }}</p>
-    <p class="hero__intro">这里收藏 {{ site.author }} 的插画、片段与沿途拾取的季节。它们不必急着成为作品，也可以像叶片一样，保留正在生长的形态。</p>
+    <p class="hero__intro">由 {{ site.author }} 收存插畫、文字，以及一些緩慢生長的片段。它們不必急著成為作品，也可以保留尚未完成的樣子。</p>
     <div class="hero__actions">
-      <a class="button button--primary" href="/gallery/">进入图鉴</a>
-      <a class="button button--quiet" href="/journal/">阅读日志 <span aria-hidden="true">↗</span></a>
+      <a class="button button--primary" href="/gallery/">翻閱葉影帖</a>
+      <a class="button button--quiet" href="/journal/">閱讀生長記 <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 
   <div class="hero__specimen" aria-hidden="true" data-hero-parallax>
     <div class="specimen-frame">
-      <span class="specimen-frame__label">SPECIMEN 001</span>
-      <div class="botanical botanical--one"><i></i><i></i><i></i><i></i><i></i><b></b></div>
-      <div class="botanical botanical--two"><i></i><i></i><i></i><b></b></div>
-      <div class="botanical botanical--three"><i></i><i></i><i></i><b></b></div>
-      <span class="specimen-frame__moon"></span>
-      <p>Collected in<br>the quiet hours</p>
+      <div class="specimen-frame__meta">
+        <span>ARCHIVE CARD</span>
+        <span>001 / {{ site.established }}</span>
+      </div>
+      <div class="specimen-frame__words">
+        <span>葉</span><span>光</span><span>夢</span><span>日常</span>
+      </div>
+      <div class="specimen-frame__palette"><i></i><i></i><i></i></div>
+      <p>COLLECTED<br>SLOWLY</p>
     </div>
   </div>
 
   <a class="hero__scroll" href="#garden-map">
     <span aria-hidden="true"></span>
-    SCROLL INTO THE GARDEN
+    ENTER THE ARCHIVE
   </a>
 </section>
 
@@ -39,75 +42,52 @@ description: クサ的个人图文植物标本园，收藏插画、文字与四�
   <div class="garden-note__inner shell">
     <p class="garden-note__number">01</p>
     <div>
-      <p class="eyebrow">THE GARDEN MAP</p>
-      <h2>一座用来慢慢存放的园子</h2>
+      <p class="eyebrow">A NOTE FROM THE GARDEN</p>
+      <h2>一座用來慢慢存放的園子</h2>
     </div>
-    <p>图画进入图鉴，日常落进日志，年份与标签则成为标本柜上的小纸签。</p>
+    <p>插畫收入葉影帖，日常落進生長記，年份與標籤則留在採集簿裡。</p>
   </div>
 </section>
 
 <section class="collection shell section" aria-labelledby="collection-title">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">COLLECTIONS</p>
-      <h2 id="collection-title">园内收藏</h2>
+      <p class="eyebrow">GARDEN DIRECTORY</p>
+      <h2 id="collection-title">園內目錄</h2>
     </div>
-    <p>从一枚叶片、一张画或一段话开始浏览。</p>
+    <p>從一張畫、一段話，或某個日期開始翻閱。</p>
   </div>
 
   <div class="collection-grid">
     <a class="collection-card collection-card--mint" href="/gallery/">
       <span class="collection-card__index">A—01</span>
       <div class="collection-card__copy">
-        <h3>图鉴</h3>
-        <p>插画与视觉标本</p>
+        <span class="collection-card__en">GALLERY</span>
+        <h3>葉影帖</h3>
+        <p>插畫與視覺標本</p>
       </div>
-      <strong>{{ collections.gallery.length }}</strong>
-      <svg class="collection-card__flora collection-card__flora--fern" viewBox="0 0 240 210" aria-hidden="true">
-        <path class="collection-card__stem" d="M25 207C48 169 58 139 54 105C50 70 69 38 118 14" />
-        <path class="collection-card__leaf" d="M54 145C28 141 14 124 35 115C55 107 67 123 54 145Z" />
-        <path class="collection-card__leaf" d="M55 118C78 91 100 89 105 104C109 118 79 127 55 118Z" />
-        <path class="collection-card__leaf" d="M54 88C31 82 24 65 43 60C61 56 70 70 54 88Z" />
-        <path class="collection-card__leaf" d="M64 62C82 39 101 34 106 47C111 59 88 69 64 62Z" />
-        <path class="collection-card__vein" d="M53 144C43 131 38 122 35 115M56 117C72 108 89 105 105 104M54 87C47 76 44 67 43 60M65 61C79 52 92 48 106 47" />
-        <circle class="collection-card__seed" cx="119" cy="14" r="5" />
-      </svg>
+      <strong><span>{{ collections.gallery.length | pad2 }}</span><small>PIECES</small></strong>
+      <span class="collection-card__arrow" aria-hidden="true">↗</span>
     </a>
     <a class="collection-card collection-card--yellow" href="/journal/">
       <span class="collection-card__index">B—02</span>
       <div class="collection-card__copy">
-        <h3>生长日志</h3>
-        <p>图文、随笔与小记</p>
+        <span class="collection-card__en">JOURNAL</span>
+        <h3>生長記</h3>
+        <p>圖文、隨筆與日常記錄</p>
       </div>
-      <strong>{{ collections.posts.length }}</strong>
-      <svg class="collection-card__flora collection-card__flora--vine" viewBox="0 0 240 210" aria-hidden="true">
-        <path class="collection-card__stem" d="M18 202C55 184 72 153 66 125C59 96 78 75 109 72C147 68 174 47 188 15" />
-        <path class="collection-card__stem collection-card__stem--fine" d="M67 125C89 116 105 101 111 79M108 72C132 86 153 89 174 79" />
-        <path class="collection-card__leaf" d="M64 146C38 152 27 139 42 127C55 118 70 127 64 146Z" />
-        <path class="collection-card__leaf" d="M68 121C86 99 105 97 111 110C117 122 92 131 68 121Z" />
-        <path class="collection-card__leaf" d="M111 79C92 67 91 51 107 49C124 48 128 65 111 79Z" />
-        <path class="collection-card__leaf" d="M139 69C154 47 174 44 180 57C185 70 163 80 139 69Z" />
-        <circle class="collection-card__seed" cx="188" cy="15" r="5" />
-        <circle class="collection-card__seed collection-card__seed--small" cx="175" cy="79" r="3" />
-      </svg>
+      <strong><span>{{ collections.posts.length | pad2 }}</span><small>ENTRIES</small></strong>
+      <span class="collection-card__arrow" aria-hidden="true">↗</span>
     </a>
     <a class="collection-card collection-card--ink" href="/tags/">
       <span class="collection-card__index">C—03</span>
       <div class="collection-card__copy">
-        <h3>标本索引</h3>
-        <p>循标签与年份寻找</p>
+        <span class="collection-card__en">INDEX</span>
+        <h3>採集簿</h3>
+        <p>依年份與標籤翻找</p>
       </div>
-      <strong>{{ collections.topicList.length }}</strong>
-      <svg class="collection-card__flora collection-card__flora--tendril" viewBox="0 0 240 210" aria-hidden="true">
-        <path class="collection-card__stem" d="M20 197C66 165 65 116 108 84C139 61 163 69 185 44C203 24 197 8 185 18C175 27 185 39 199 31" />
-        <path class="collection-card__stem collection-card__stem--fine" d="M67 149C50 128 47 108 53 91M108 84C120 106 138 118 161 119" />
-        <path class="collection-card__leaf" d="M67 151C40 151 29 137 45 125C59 115 72 130 67 151Z" />
-        <path class="collection-card__leaf" d="M78 124C97 105 116 106 120 119C124 132 99 139 78 124Z" />
-        <path class="collection-card__leaf" d="M53 92C31 82 31 65 48 64C65 63 71 78 53 92Z" />
-        <path class="collection-card__leaf" d="M142 72C151 49 171 43 180 55C188 67 166 82 142 72Z" />
-        <circle class="collection-card__seed" cx="199" cy="31" r="4" />
-        <circle class="collection-card__seed collection-card__seed--small" cx="161" cy="119" r="3" />
-      </svg>
+      <strong><span>{{ collections.topicList.length | pad2 }}</span><small>LABELS</small></strong>
+      <span class="collection-card__arrow" aria-hidden="true">↗</span>
     </a>
   </div>
 </section>
@@ -116,9 +96,9 @@ description: クサ的个人图文植物标本园，收藏插画、文字与四�
   <div class="section-heading">
     <div>
       <p class="eyebrow">RECENT FIELD NOTES</p>
-      <h2 id="latest-title">最近入园</h2>
+      <h2 id="latest-title">最近入園</h2>
     </div>
-    <a class="text-link" href="/journal/">查看全部记录 →</a>
+    <a class="text-link" href="/journal/">查看全部記錄 →</a>
   </div>
 
   <div class="post-grid">
@@ -130,12 +110,12 @@ description: クサ的个人图文植物标本园，收藏插画、文字与四�
 
 <section class="keeper shell section">
   <div class="keeper__card">
-    <div class="keeper__seal" aria-hidden="true">ク<br>サ</div>
+    <div class="keeper__seal" aria-hidden="true">K<br>26</div>
     <div>
       <p class="eyebrow">ABOUT THE KEEPER</p>
-      <h2>园丁：{{ site.author }}</h2>
-      <p>画画、记录，也观察那些没有被命名的细小变化。</p>
+      <h2>園丁：{{ site.author }}</h2>
+      <p>畫畫、記錄，也觀察那些尚未被命名的細小變化。</p>
     </div>
-    <a class="button button--quiet" href="/about/">前往园丁室</a>
+    <a class="button button--quiet" href="/about/">前往園丁室</a>
   </div>
 </section>
