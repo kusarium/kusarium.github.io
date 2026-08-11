@@ -1,0 +1,34 @@
+{% macro archiveCover(title, topics, card, publishedDate, size="full") %}
+  {% set template = card.template | default("night") %}
+  {% set coverTitle = card.title | default(title) %}
+  <div
+    class="archive-cover archive-cover--{{ template }} archive-cover--{{ size }}{% if coverTitle | length > 10 %} archive-cover--title-long{% elif coverTitle | length > 5 %} archive-cover--title-medium{% endif %}"
+    role="img"
+    aria-label="文字封面：{{ coverTitle }}"
+  >
+    <div class="archive-cover__topline">
+      <span>{{ card.eyebrow | default("KUSARIUM · ARCHIVE CARD") }}</span>
+      <span>{% if card.number %}{{ card.number }}{% else %}{{ publishedDate | dateReadable }}{% endif %}</span>
+    </div>
+
+    <div class="archive-cover__body">
+      <strong class="archive-cover__title">{{ coverTitle }}</strong>
+      <span class="archive-cover__subtitle">
+        {% if card.subtitle %}
+          {{ card.subtitle }}
+        {% elif topics and topics[0] %}
+          {{ topics[0] }}
+        {% else %}
+          FIELD NOTE
+        {% endif %}
+      </span>
+    </div>
+
+    <span class="archive-cover__note">{{ card.note | default("COLLECTED NOTE") }}</span>
+    <span class="archive-cover__axis" aria-hidden="true"></span>
+    <span class="archive-cover__dot" aria-hidden="true"></span>
+    <span class="archive-cover__stamp" aria-hidden="true">K / 26</span>
+    <span class="archive-cover__rule" aria-hidden="true"></span>
+    <span class="archive-cover__register" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+{% endmacro %}
