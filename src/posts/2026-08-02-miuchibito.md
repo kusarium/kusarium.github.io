@@ -1,22 +1,27 @@
 ---
-title: "到底什么是御内人啊！"
-date: 2026-08-02T13:46:03+09:00
+title: 到底什么是御内人啊！
+date: 2026-08-02T04:46:00+00:00
+section: journal
 language: zh-Hans
-excerpt: "从“御内人＝成为得宗家臣的御家人”讲起，梳理这一身份的称谓、组织与政治活动，以及后世叙述中那条并不存在的晋升道路。"
+excerpt: 御内人的相关说明。以及源实朝很可爱。
+showToc: true
+passwordProtected: false
 coverCard:
-  template: cabinet
-  eyebrow: "KUSARIUM · HISTORY NOTE"
-  title: "到底什么是"
-  subtitle: "御内人啊！"
-  note: "MIUCHIBITO / NOTE"
-  number: "003 / 2026"
+  template: afterglow
+  eyebrow: KUSARIUM · HISTORY NOTE
+  title: 到底什么是
+  subtitle: 御内人啊！
+  note: MIUCHIBITO / NOTE
+  number: 003 / 2026
+coverFocusX: 50
+coverFocusY: 50
+coverZoom: 100
 topics:
   - 随筆
-  - 北条貞時
-  - 平頼綱
+  - 北条義時
+  - 源実朝
 draft: false
 ---
-
 **不是北条家的家仆转正**
 
 御内人=成为得宗家臣的御家人。
