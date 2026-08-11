@@ -1,29 +1,36 @@
 ---
 layout: layouts/base.njk
 title: 園丁室
-description: 關於クサ、KUSARIUM，以及本站的閱讀說明。
+description: 關於小草（クサ）、KUSARIUM，以及本站的閱讀說明。
 permalink: /about/index.html
 ---
+{% set showPortraitText = site.about.showPortraitText | default(true) %}
 <header class="page-intro shell">
-  <p class="eyebrow">THE GARDEN KEEPER</p>
-  <h1>園丁室</h1>
-  <p>關於這座電子植物園（檔案館），以及整理它的人。</p>
+  <p class="eyebrow">{{ site.about.pageEyebrow }}</p>
+  <h1>{{ site.about.pageTitle }}</h1>
+  <p>{{ site.about.pageIntro }}</p>
 </header>
 
 <section class="about shell section">
-  <div class="about__portrait" aria-hidden="true">
-    <div class="about__monogram">クサ</div>
-    <p class="about__portrait-note">GARDEN KEEPER · EST. 2026</p>
+  <div class="about__portrait about__portrait--focus-{{ site.about.portraitPosition | default('center') }}{% if site.about.portraitImage %} about__portrait--has-image{% endif %}">
+    {% if site.about.portraitImage %}
+      <img class="about__portrait-image" src="{{ site.about.portraitImage }}" alt="{{ site.about.portraitAlt | default('') }}">
+      {% if site.about.portraitTint | default(true) %}<div class="about__portrait-tint" aria-hidden="true"></div>{% endif %}
+    {% endif %}
+    {% if showPortraitText %}
+      <div class="about__monogram">{{ site.about.portraitTitle }}</div>
+      <p class="about__portrait-note">{{ site.about.portraitNote }}</p>
+    {% endif %}
   </div>
   <div class="about__content prose">
-    <p class="eyebrow">PROFILE</p>
-    <h2>{{ site.author }}</h2>
-    <p>以北條氏與鎌倉時代為中心，畫歷史圖、寫同人小說，也整理看書時留下的想法。</p>
-    <p lang="ja">北条氏と鎌倉時代を中心に、歴史イラストや創作小説を制作し、本を読んで考えたことを随筆としてまとめています。</p>
+    <p class="eyebrow">{{ site.about.profileEyebrow }}</p>
+    <h2>{{ site.about.profileTitle | default(site.author) }}</h2>
+    <p>{{ site.about.profileChinese }}</p>
+    <p lang="ja">{{ site.about.profileJapanese }}</p>
 
-    <h3>關於 KUSARIUM</h3>
-    <p><strong>KUSARIUM</strong> 是由 <em>kusa</em> 與 <em>herbarium / terrarium</em> 拼成的名字。這裡是一座個人電子植物園（檔案館），按照插畫、小說、隨筆、人物與年份，整理以北條氏為中心的鎌倉時代創作。</p>
-    <p lang="ja"><strong>KUSARIUM</strong> は、<em>kusa</em> と <em>herbarium / terrarium</em> を組み合わせた名前です。北条氏を中心とする鎌倉時代の創作を、イラスト・小説・随筆・人物・年代ごとに整理する個人の電子植物園（アーカイブ）です。</p>
+    <h3>{{ site.about.siteHeading }}</h3>
+    <p>{{ site.about.siteChinese }}</p>
+    <p lang="ja">{{ site.about.siteJapanese }}</p>
 
     <h3>閱讀前說明 / ご案内</h3>
     <div class="notice-group">

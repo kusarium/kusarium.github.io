@@ -1,12 +1,64 @@
 {
   "name": "KUSARIUM",
-  "subtitle": "電子植物園（檔案館）",
-  "author": "草（クサ）",
+  "subtitle": "歷史創作與隨筆",
+  "author": "小草（クサ）",
   "tagline": "存放鎌倉時代的歷史創作與隨筆。",
-  "description": "小草的個人檔案館，收存以北條氏為中心，鎌倉時代歷史創作、插畫與隨筆。",
-  "established": "2026",
-  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。",
+  "description": "小草（クサ）的個人歷史創作網站，收存以北條氏為中心的鎌倉時代插畫、同人小說與隨筆。",
   "url": "https://kusarium.github.io",
   "language": "zh-Hant",
-  "locale": "zh_TW"
+  "locale": "zh_TW",
+  "established": "2026",
+  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。",
+  "home": {
+    "heroEyebrow": "DIGITAL GARDEN ARCHIVE",
+    "heroSubtitle": "電子植物園（檔案館）",
+    "heroJapanese": "北条氏を中心に、鎌倉時代の歴史創作と随筆を収めています。",
+    "archiveCard": {
+      "backgroundStyle": "soft",
+      "backgroundImage": "",
+      "backgroundAlt": "",
+      "imagePosition": "center",
+      "imageTint": true,
+      "showText": true,
+      "eyebrow": "ARCHIVE CARD",
+      "number": "001 / 2026",
+      "wordOne": "葉",
+      "wordTwo": "光",
+      "wordThree": "夢",
+      "wordFour": "日常",
+      "note": "COLLECTED\nSLOWLY"
+    },
+    "introduction": {
+      "eyebrow": "ABOUT THIS SITE",
+      "title": "關於 KUSARIUM",
+      "titleJapanese": "KUSARIUMについて",
+      "textChinese": "KUSARIUM 收存以北條氏為中心的鎌倉時代歷史創作與隨筆。插畫、同人小說，以及看書時留下的個人記錄，都整理在這裡。",
+      "textJapanese": "KUSARIUMでは、北条氏を中心に、鎌倉時代を題材とした歴史創作と随筆をまとめています。イラスト、歴史創作小説、本を読んで書いた個人的な記録を掲載しています。"
+    },
+    "keeper": {
+      "eyebrow": "ABOUT THE KEEPER",
+      "title": "園丁：小草（クサ）",
+      "summary": "畫歷史圖、寫故事，也把看書時留下的想法整理在這裡。",
+      "buttonLabel": "前往園丁室"
+    }
+  },
+  "about": {
+    "pageEyebrow": "THE GARDEN KEEPER",
+    "pageTitle": "園丁室",
+    "pageIntro": "關於小草（クサ）與本站。",
+    "portraitImage": "",
+    "portraitAlt": "小草（クサ）的個人形象圖",
+    "portraitPosition": "center",
+    "portraitTint": true,
+    "showPortraitText": true,
+    "portraitTitle": "クサ",
+    "portraitNote": "GARDEN KEEPER · EST. 2026",
+    "profileEyebrow": "PROFILE",
+    "profileTitle": "小草（クサ）",
+    "profileChinese": "以北條氏與鎌倉時代為中心，畫歷史圖、寫同人小說，也整理看書時留下的想法。",
+    "profileJapanese": "北条氏と鎌倉時代を中心に、歴史イラストや創作小説を制作し、本を読んで考えたことを随筆としてまとめています。",
+    "siteHeading": "關於 KUSARIUM",
+    "siteChinese": "KUSARIUM 是由 kusa 與 herbarium / terrarium 拼成的名字。本站按照插畫、小說、隨筆、人物與年份，整理以北條氏為中心的鎌倉時代創作。",
+    "siteJapanese": "KUSARIUM は、kusa と herbarium / terrarium を組み合わせた名前です。北条氏を中心とする鎌倉時代の創作を、イラスト・小説・随筆・人物・年代ごとに整理しています。"
+  }
 }

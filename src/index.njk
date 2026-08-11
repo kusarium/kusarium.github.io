@@ -1,34 +1,45 @@
 ---
 layout: layouts/base.njk
 title:
-description: クサ的個人電子植物園（檔案館），收存以北條氏為中心的鎌倉時代歷史創作、插畫與隨筆。
+description: 小草（クサ）的個人歷史創作網站，收存以北條氏為中心的鎌倉時代插畫、同人小說與隨筆。
 ---
+{% set heroCard = site.home.archiveCard %}
+{% set showHeroCardText = heroCard.showText | default(true) %}
 <section class="hero shell" aria-labelledby="hero-title">
   <div class="hero__copy">
-    <p class="eyebrow">DIGITAL GARDEN ARCHIVE · EST. {{ site.established }}</p>
+    <p class="eyebrow">{{ site.home.heroEyebrow }} · EST. {{ site.established }}</p>
     <h1 id="hero-title">
       <span>{{ site.name }}</span>
-      <small>{{ site.subtitle }}</small>
+      <small>{{ site.home.heroSubtitle }}</small>
     </h1>
     <p class="hero__tagline">{{ site.tagline }}</p>
-    <p class="hero__intro" lang="ja">北条氏を中心に、鎌倉時代の歴史創作と随筆を収めています。</p>
+    <p class="hero__intro" lang="ja">{{ site.home.heroJapanese }}</p>
     <div class="hero__actions">
       <a class="button button--primary" href="/gallery/">翻閱葉影帖</a>
       <a class="button button--quiet" href="/journal/">閱讀生長記 <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 
-  <div class="hero__specimen" aria-hidden="true" data-hero-parallax>
-    <div class="specimen-frame">
-      <div class="specimen-frame__meta">
-        <span>ARCHIVE CARD</span>
-        <span>001 / {{ site.established }}</span>
-      </div>
-      <div class="specimen-frame__words">
-        <span>葉</span><span>光</span><span>夢</span><span>日常</span>
-      </div>
-      <div class="specimen-frame__palette"><i></i><i></i><i></i></div>
-      <p>COLLECTED<br>SLOWLY</p>
+  <div class="hero__specimen" data-hero-parallax>
+    <div class="specimen-frame specimen-frame--{{ heroCard.backgroundStyle | default('soft') }} specimen-frame--focus-{{ heroCard.imagePosition | default('center') }}{% if heroCard.backgroundImage %} specimen-frame--has-image{% endif %}">
+      {% if heroCard.backgroundImage %}
+        <img class="specimen-frame__image" src="{{ heroCard.backgroundImage }}" alt="{{ heroCard.backgroundAlt | default('') }}" fetchpriority="high">
+        {% if heroCard.imageTint | default(true) %}<div class="specimen-frame__image-tint" aria-hidden="true"></div>{% endif %}
+      {% endif %}
+      {% if showHeroCardText %}
+        <div class="specimen-frame__meta">
+          <span>{{ heroCard.eyebrow | default('ARCHIVE CARD') }}</span>
+          <span>{{ heroCard.number | default('001 / ' + site.established) }}</span>
+        </div>
+        <div class="specimen-frame__words">
+          <span>{{ heroCard.wordOne | default('葉') }}</span>
+          <span>{{ heroCard.wordTwo | default('光') }}</span>
+          <span>{{ heroCard.wordThree | default('夢') }}</span>
+          <span>{{ heroCard.wordFour | default('日常') }}</span>
+        </div>
+        <div class="specimen-frame__palette" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p>{{ heroCard.note | default('COLLECTED SLOWLY') }}</p>
+      {% endif %}
     </div>
   </div>
 
@@ -42,13 +53,13 @@ description: クサ的個人電子植物園（檔案館），收存以北條氏�
   <div class="garden-note__inner shell">
     <p class="garden-note__number">01</p>
     <div>
-      <p class="eyebrow">ABOUT THIS ARCHIVE</p>
-      <h2>關於這座電子植物園</h2>
-      <p class="garden-note__jp-title" lang="ja">この電子植物園について</p>
+      <p class="eyebrow">{{ site.home.introduction.eyebrow }}</p>
+      <h2>{{ site.home.introduction.title }}</h2>
+      <p class="garden-note__jp-title" lang="ja">{{ site.home.introduction.titleJapanese }}</p>
     </div>
     <div class="garden-note__copy">
-      <p>這裡是一座以北條氏為中心，收存鎌倉時代歷史創作與隨筆的個人電子植物園（檔案館）。插畫、同人小說，以及看書時留下的個人記錄，都整理在這裡。</p>
-      <p lang="ja">北条氏を中心に、鎌倉時代を題材とした歴史創作と随筆を収める、個人の電子植物園（アーカイブ）です。イラスト、歴史創作小説、そして本を読んで書いた個人的な記録を集めています。</p>
+      <p>{{ site.home.introduction.textChinese }}</p>
+      <p lang="ja">{{ site.home.introduction.textJapanese }}</p>
       <a class="garden-note__link" href="/about/">閱讀完整說明 / ご案内 →</a>
     </div>
   </div>
@@ -115,12 +126,16 @@ description: クサ的個人電子植物園（檔案館），收存以北條氏�
 
 <section class="keeper shell section">
   <div class="keeper__card">
-    <div class="keeper__seal" aria-hidden="true">K<br>26</div>
+    {% if site.about.portraitImage %}
+      <img class="keeper__image keeper__image--focus-{{ site.about.portraitPosition | default('center') }}" src="{{ site.about.portraitImage }}" alt="{{ site.about.portraitAlt | default('') }}" loading="lazy">
+    {% else %}
+      <div class="keeper__seal" aria-hidden="true">K<br>26</div>
+    {% endif %}
     <div>
-      <p class="eyebrow">ABOUT THE KEEPER</p>
-      <h2>園丁：{{ site.author }}</h2>
-      <p>畫歷史圖、寫故事，也把看書時留下的想法整理在這裡。</p>
+      <p class="eyebrow">{{ site.home.keeper.eyebrow }}</p>
+      <h2>{{ site.home.keeper.title }}</h2>
+      <p>{{ site.home.keeper.summary }}</p>
     </div>
-    <a class="button button--quiet" href="/about/">前往園丁室</a>
+    <a class="button button--quiet" href="/about/">{{ site.home.keeper.buttonLabel }}</a>
   </div>
 </section>
