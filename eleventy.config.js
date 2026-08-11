@@ -1,11 +1,11 @@
-const dateFormatter = new Intl.DateTimeFormat("zh-CN", {
+const dateFormatter = new Intl.DateTimeFormat("zh-TW", {
   timeZone: "Asia/Tokyo",
   year: "numeric",
   month: "2-digit",
   day: "2-digit",
 });
 
-const monthFormatter = new Intl.DateTimeFormat("zh-CN", {
+const monthFormatter = new Intl.DateTimeFormat("zh-TW", {
   timeZone: "Asia/Tokyo",
   year: "numeric",
   month: "long",
@@ -34,6 +34,10 @@ function xmlEscape(value = "") {
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fontsource-variable/noto-serif-tc": "assets/fonts/noto-serif-tc",
+    "node_modules/@fontsource-variable/noto-sans-tc": "assets/fonts/noto-sans-tc",
+  });
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
 
@@ -57,7 +61,7 @@ export default function (eleventyConfig) {
       if (item.data.draft) return;
       (item.data.topics || []).forEach((topic) => topics.add(topic));
     });
-    return [...topics].sort((a, b) => a.localeCompare(b, "zh-CN"));
+    return [...topics].sort((a, b) => a.localeCompare(b, "zh-TW"));
   });
 
   eleventyConfig.addFilter("dateReadable", (date) => dateFormatter.format(date));
