@@ -559,6 +559,11 @@ content:
             label: 生長記按鈕
             type: string
             required: true
+          - name: charactersLabel
+            label: 人物誌按鈕
+            description: 首頁快捷入口，連往人物誌。
+            type: string
+            required: true
           - name: archiveEntryLabel
             label: 向下導覽文字
             type: string
