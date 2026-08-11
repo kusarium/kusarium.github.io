@@ -15,7 +15,7 @@ content:
     filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
     view:
       primary: title
-      fields: [title, date, draft]
+      fields: [title, date, language, draft]
       sort: date
       order: desc
       search: [title, excerpt, topics]
@@ -31,10 +31,68 @@ content:
         options:
           time: true
           format: "yyyy-MM-dd'T'HH:mm:ssxxx"
+      - name: language
+        label: 正文字形
+        description: 簡體文章選「簡體中文」，可避免個別字回退成另一套字形。
+        type: select
+        required: true
+        default: zh-Hans
+        options:
+          values:
+            - name: zh-Hans
+              label: 簡體中文
+            - name: zh-Hant
+              label: 繁體中文
       - name: excerpt
         label: 列表摘要
         type: text
         required: true
+      - name: coverCard
+        label: 文字封面（可選）
+        description: 選擇一款可編輯的檔案卡；如同時上傳封面插畫，插畫優先。樣式預覽：https://kusarium.github.io/cover-studio/
+        type: object
+        required: false
+        fields:
+          - name: template
+            label: 封面樣式
+            type: select
+            required: false
+            options:
+              placeholder: 選擇文字封面
+              values:
+                - name: night
+                  label: 01 夜幕（深灰 × 薄荷）
+                - name: mist
+                  label: 02 晨霧（霧白 × 薄荷）
+                - name: afterglow
+                  label: 03 餘暉（柔黃 × 灰）
+                - name: cabinet
+                  label: 04 索引櫃（紙白 × 墨灰）
+          - name: eyebrow
+            label: 眉標
+            description: 封面最上方的小字；留空時顯示 KUSARIUM · ARCHIVE CARD。
+            type: string
+            required: false
+          - name: title
+            label: 封面主標
+            description: 最大的一行文字；留空時使用文章標題。
+            type: string
+            required: false
+          - name: subtitle
+            label: 封面副標
+            description: 主標下方文字；留空時使用第一個標籤。
+            type: string
+            required: false
+          - name: note
+            label: 角落註記
+            description: 適合放英文短句或作品類型。
+            type: string
+            required: false
+          - name: number
+            label: 封面編號
+            description: 右上角文字；留空時使用發布日期。
+            type: string
+            required: false
       - name: cover
         label: 封面插畫
         type: image
