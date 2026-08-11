@@ -11,6 +11,12 @@ media:
     output: /assets/images/site
     extensions: [jpg, jpeg, png, webp, gif, svg]
     rename: safe
+  - name: character_images
+    label: 人物頭像
+    input: src/assets/images/characters
+    output: /assets/images/characters
+    extensions: [jpg, jpeg, png, webp, gif, svg]
+    rename: safe
 
 content:
   - name: posts
@@ -841,6 +847,11 @@ content:
         label: 頁面說明
         type: text
         required: true
+      - name: entryLabel
+        label: 頁尾入口文字
+        description: 入口會以很低調的小字放在全站頁尾。
+        type: string
+        required: true
       - name: gateTitle
         label: 密碼框標題
         type: string
@@ -866,3 +877,120 @@ content:
         label: 密碼錯誤提示
         type: string
         required: true
+  - name: characters
+    label: 人物誌
+    type: file
+    path: src/_data/characters.json
+    format: json
+    fields:
+      - name: eyebrow
+        label: 頁面眉標
+        type: string
+        required: true
+      - name: title
+        label: 頁面標題
+        type: string
+        required: true
+      - name: description
+        label: 頁面說明
+        type: text
+        required: true
+      - name: emptyMessage
+        label: 空分組提示
+        type: string
+        required: true
+      - name: groups
+        label: 陣營與分組
+        description: 拖曳即可調整顯示順序；每個分組在網站上都可以展開或收起。
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        required: true
+        fields:
+          - name: name
+            label: 陣營名稱
+            type: string
+            required: true
+          - name: en
+            label: 英文小標
+            type: string
+            required: false
+          - name: description
+            label: 陣營說明
+            type: text
+            required: false
+          - name: open
+            label: 預設展開
+            description: 開啟後，訪客第一次進入頁面時會直接看到這組人物。
+            type: boolean
+            default: false
+          - name: characters
+            label: 人物卡
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
+            required: false
+            fields:
+              - name: name
+                label: 姓名
+                type: string
+                required: true
+              - name: reading
+                label: 日文讀音
+                description: 例如「ほうじょう さだとき」；不需要時可留空。
+                type: string
+                required: false
+              - name: role
+                label: 身分／職位
+                type: string
+                required: false
+              - name: portrait
+                label: 小頭像
+                description: 建議使用正方形圖片。需要裁剪時可先使用：https://kusarium.github.io/image-crop/
+                type: image
+                required: false
+                options:
+                  media: character_images
+                  extensions: [jpg, jpeg, png, webp, gif, svg]
+                  rename: safe
+              - name: portraitAlt
+                label: 頭像內容說明
+                type: string
+                required: false
+              - name: portraitFocusX
+                label: 頭像水平焦點（%）
+                description: 0 靠左、50 居中、100 靠右。
+                type: number
+                required: false
+                default: 50
+                options:
+                  min: 0
+                  max: 100
+              - name: portraitFocusY
+                label: 頭像垂直焦點（%）
+                description: 0 靠上、50 居中、100 靠下。
+                type: number
+                required: false
+                default: 50
+                options:
+                  min: 0
+                  max: 100
+              - name: portraitZoom
+                label: 頭像放大（%）
+                description: 100 為原始取景；數字越大，裁掉的周圍越多。
+                type: number
+                required: false
+                default: 100
+                options:
+                  min: 100
+                  max: 300
+              - name: description
+                label: 人物介紹
+                type: text
+                required: true
+
