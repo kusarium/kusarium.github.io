@@ -1,3 +1,5 @@
+import { createCipheriv, pbkdf2Sync, randomBytes } from "node:crypto";
+
 const dateFormatter = new Intl.DateTimeFormat("zh-TW", {
   timeZone: "Asia/Tokyo",
   year: "numeric",
@@ -32,6 +34,63 @@ function xmlEscape(value = "") {
     .replaceAll("'", "&apos;");
 }
 
+function isBasementPost(item) {
+  return item?.data?.section === "basement";
+}
+
+function addHeadingIds(value = "") {
+  let index = 0;
+
+  return String(value).replace(/<h([23])([^>]*)>([\s\S]*?)<\/h\1>/gi, (_match, level, attributes, inner) => {
+    index += 1;
+    const cleanAttributes = String(attributes).replace(/\s+id=(?:"[^"]*"|'[^']*')/gi, "");
+    const id = `section-${String(index).padStart(2, "0")}`;
+    return `<h${level}${cleanAttributes} id="${id}">${inner}</h${level}>`;
+  });
+}
+
+function headingText(value = "") {
+  return String(value)
+    .replace(/<[^>]*>/g, "")
+    .replaceAll("&amp;", "&")
+    .replaceAll("&nbsp;", " ")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'")
+    .trim();
+}
+
+function extractHeadings(value = "") {
+  return [...String(value).matchAll(/<h([23])[^>]*\sid="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    id: match[2],
+    label: headingText(match[3]),
+  }));
+}
+
+function encryptContent(value = "", password = "") {
+  if (!password) return null;
+
+  const iterations = 180000;
+  const salt = randomBytes(16);
+  const iv = randomBytes(12);
+  const key = pbkdf2Sync(String(password), salt, iterations, 32, "sha256");
+  const cipher = createCipheriv("aes-256-gcm", key, iv);
+  const encrypted = Buffer.concat([
+    cipher.update(String(value), "utf8"),
+    cipher.final(),
+    cipher.getAuthTag(),
+  ]);
+
+  return {
+    version: 1,
+    algorithm: "AES-GCM",
+    iterations,
+    salt: salt.toString("base64"),
+    iv: iv.toString("base64"),
+    data: encrypted.toString("base64"),
+  };
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({
@@ -48,21 +107,28 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("src/posts/*.md")
-      .filter((item) => !item.data.draft)
+      .filter((item) => !item.data.draft && !isBasementPost(item))
+      .sort((a, b) => b.date - a.date),
+  );
+
+  eleventyConfig.addCollection("basement", (collectionApi) =>
+    collectionApi
+      .getFilteredByGlob("src/posts/*.md")
+      .filter((item) => !item.data.draft && isBasementPost(item))
       .sort((a, b) => b.date - a.date),
   );
 
   eleventyConfig.addCollection("gallery", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("src/posts/*.md")
-      .filter((item) => !item.data.draft && item.data.cover)
+      .filter((item) => !item.data.draft && !isBasementPost(item) && item.data.cover)
       .sort((a, b) => b.date - a.date),
   );
 
   eleventyConfig.addCollection("topicList", (collectionApi) => {
     const topics = new Set();
     collectionApi.getFilteredByGlob("src/posts/*.md").forEach((item) => {
-      if (item.data.draft) return;
+      if (item.data.draft || isBasementPost(item)) return;
       (item.data.topics || []).forEach((topic) => topics.add(topic));
     });
     return [...topics].sort((a, b) => a.localeCompare(b, "zh-TW"));
@@ -73,6 +139,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("monthReadable", (date) => monthFormatter.format(date));
   eleventyConfig.addFilter("topicSlug", topicSlug);
   eleventyConfig.addFilter("xmlEscape", xmlEscape);
+  eleventyConfig.addFilter("addHeadingIds", addHeadingIds);
+  eleventyConfig.addFilter("extractHeadings", extractHeadings);
+  eleventyConfig.addFilter("encryptContent", encryptContent);
+  eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("take", (items, count) => (items || []).slice(0, count));
   eleventyConfig.addFilter("pad2", (value) => String(value).padStart(2, "0"));
   eleventyConfig.addFilter("filterByTopic", (items, topic) =>
