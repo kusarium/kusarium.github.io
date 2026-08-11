@@ -1,0 +1,42 @@
+{
+  "home": {
+    "eyebrow": "ABOUT THE KEEPER",
+    "title": "園丁：小草（クサ）",
+    "summary": "收集鱗片的植物",
+    "buttonLabel": "前往園丁室"
+  },
+  "about": {
+    "pageEyebrow": "THE GARDEN KEEPER",
+    "pageTitle": "園丁室",
+    "pageIntro": "關於小草（クサ）與本站。",
+    "portraitImage": "/assets/images/site/img1924.jpeg",
+    "portraitAlt": "小草（クサ）的個人形象圖",
+    "portraitFocusX": 50,
+    "portraitFocusY": 50,
+    "portraitZoom": 100,
+    "portraitTint": true,
+    "showPortraitText": false,
+    "portraitTitle": "クサ",
+    "portraitNote": "GARDEN KEEPER · EST. 2026",
+    "profileEyebrow": "PROFILE",
+    "profileTitle": "小草（クサ）",
+    "profileChinese": "以北條氏與鎌倉時代為中心，畫歷史圖、寫同人小說，也整理看書時留下的想法。",
+    "profileJapanese": "北条氏と鎌倉時代を中心に、歴史イラストや創作小説を制作し、本を読んで考えたことを随筆としてまとめています。",
+    "siteHeading": "關於 KUSARIUM",
+    "siteChinese": "KUSARIUM 是由 kusa 與 herbarium / terrarium 拼成的名字。本站按照插畫、小說、隨筆、人物與年份，整理以北條氏為中心的鎌倉時代創作。",
+    "siteJapanese": "KUSARIUM は、kusa と herbarium / terrarium を組み合わせた名前です。北条氏を中心とする鎌倉時代の創作を、イラスト・小説・随筆・人物・年代ごとに整理しています。",
+    "noticeHeading": "閱讀前說明 / ご案内",
+    "noticeChineseTitle": "中文",
+    "noticeChinese": [
+      "本站為個人營運的非營利歷史創作網站，與任何現存團體、寺社、史蹟管理方、歷史人物後裔及其他相關人士無關。",
+      "站內內容混合史實、個人解讀與同人想像，並不代表學術結論。部分作品可能包含戰爭、死亡、政治暴力，以及對歷史人物關係的虛構性描寫。如需查證，請參考文章列出的書籍與文獻。",
+      "本站圖文版權歸作者所有。未經許可，請勿轉載、加工、再發布，或用於 AI 訓練。"
+    ],
+    "noticeJapaneseTitle": "日本語",
+    "noticeJapanese": [
+      "当サイトは個人が運営する非営利の歴史創作サイトです。現存する団体・寺社・史跡の管理者、歴史上の人物の子孫、およびその他の関係者とは一切関係ありません。",
+      "掲載内容には、史実に関する記述、個人的な解釈、歴史創作・ファンワークとしての想像が混在しており、学術的見解を示すものではありません。作品によっては、戦争・死・政治的暴力、および歴史上の人物関係に関するフィクショナルな描写を含みます。事実関係を確認する際は、各記事に挙げた書籍・文献をご参照ください。",
+      "掲載されている文章・画像の著作権は作者に帰属します。無断転載・加工・再配布、および AI 学習への利用を禁じます。"
+    ]
+  }
+}
