@@ -1,12 +1,12 @@
 {
   "name": "KUSARIUM",
   "subtitle": "電子植物園（檔案館）",
-  "author": "クサ",
+  "author": "草（クサ）",
   "tagline": "以北條氏為中心，收存鎌倉時代的歷史創作與隨筆。",
-  "description": "クサ的個人電子植物園（檔案館），收存以北條氏為中心的鎌倉時代歷史創作、插畫與隨筆。",
+  "description": "小草的個人檔案館，收存以北條氏為中心的鎌倉時代歷史創作、插畫與隨筆。",
+  "established": "2026",
+  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。",
   "url": "https://kusarium.github.io",
   "language": "zh-Hant",
-  "locale": "zh_TW",
-  "established": "2026",
-  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。"
+  "locale": "zh_TW"
 }
