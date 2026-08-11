@@ -1,23 +1,21 @@
 <header class="site-header" data-site-header>
   <div class="site-header__inner shell">
-    <a class="brand" href="/" aria-label="{{ site.name }} 首页">
+    <a class="brand" href="/" aria-label="{{ site.name }} 首頁">
       <span class="brand__mark" aria-hidden="true">
-        <span class="brand__leaf brand__leaf--one"></span>
-        <span class="brand__leaf brand__leaf--two"></span>
-        <span class="brand__seed"></span>
+        <span>K</span><i>26</i>
       </span>
       <span class="brand__text">
         <span class="brand__name">{{ site.name }}</span>
-        <span class="brand__jp">{{ site.jpName }}</span>
+        <span class="brand__jp">{{ site.subtitle }}</span>
       </span>
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>
-      <span class="nav-toggle__label">园内导览</span>
+      <span class="nav-toggle__label">園內導覽</span>
       <span class="nav-toggle__icon" aria-hidden="true"><i></i><i></i></span>
     </button>
 
-    <nav class="site-nav" id="site-navigation" aria-label="主要导航" data-menu>
+    <nav class="site-nav" id="site-navigation" aria-label="主要導覽" data-menu>
       <ul class="site-nav__list">
         {% for item in navigation %}
           {% set active = page.url | isActive(item.url) %}
