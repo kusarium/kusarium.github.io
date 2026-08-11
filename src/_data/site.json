@@ -1,12 +1,12 @@
 {
   "name": "KUSARIUM",
-  "subtitle": "歷史創作與隨筆",
+  "subtitle": "歷史創作檔案館",
   "author": "小草（クサ）",
   "tagline": "歷史創作·小說·隨筆",
   "description": "小草（クサ）的個人歷史創作網站，收存以北條氏為中心的鎌倉時代插畫、同人小說與隨筆。",
+  "established": "2026",
+  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。",
   "url": "https://kusarium.github.io",
   "language": "zh-Hant",
-  "locale": "zh_TW",
-  "established": "2026",
-  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。"
+  "locale": "zh_TW"
 }
