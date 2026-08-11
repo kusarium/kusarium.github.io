@@ -1,17 +1,17 @@
 ---
 layout: layouts/base.njk
 title:
-description: クサ的私人紙上植物園，收存插畫、文字與緩慢生長的片段。
+description: クサ的個人電子植物園（檔案館），收存以北條氏為中心的鎌倉時代歷史創作、插畫與隨筆。
 ---
 <section class="hero shell" aria-labelledby="hero-title">
   <div class="hero__copy">
-    <p class="eyebrow">PRIVATE PAPER GARDEN · EST. {{ site.established }}</p>
+    <p class="eyebrow">DIGITAL GARDEN ARCHIVE · EST. {{ site.established }}</p>
     <h1 id="hero-title">
       <span>{{ site.name }}</span>
       <small>{{ site.subtitle }}</small>
     </h1>
     <p class="hero__tagline">{{ site.tagline }}</p>
-    <p class="hero__intro">由 {{ site.author }} 收存插畫、文字，以及一些緩慢生長的片段。它們不必急著成為作品，也可以保留尚未完成的樣子。</p>
+    <p class="hero__intro" lang="ja">北条氏を中心に、鎌倉時代の歴史創作と随筆を収めています。</p>
     <div class="hero__actions">
       <a class="button button--primary" href="/gallery/">翻閱葉影帖</a>
       <a class="button button--quiet" href="/journal/">閱讀生長記 <span aria-hidden="true">↗</span></a>
@@ -42,10 +42,15 @@ description: クサ的私人紙上植物園，收存插畫、文字與緩慢生�
   <div class="garden-note__inner shell">
     <p class="garden-note__number">01</p>
     <div>
-      <p class="eyebrow">A NOTE FROM THE GARDEN</p>
-      <h2>一座用來慢慢存放的園子</h2>
+      <p class="eyebrow">ABOUT THIS ARCHIVE</p>
+      <h2>關於這座電子植物園</h2>
+      <p class="garden-note__jp-title" lang="ja">この電子植物園について</p>
     </div>
-    <p>插畫收入葉影帖，日常落進生長記，年份與標籤則留在採集簿裡。</p>
+    <div class="garden-note__copy">
+      <p>這裡是一座以北條氏為中心，收存鎌倉時代歷史創作與隨筆的個人電子植物園（檔案館）。插畫、同人小說，以及看書時留下的個人記錄，都整理在這裡。</p>
+      <p lang="ja">北条氏を中心に、鎌倉時代を題材とした歴史創作と随筆を収める、個人の電子植物園（アーカイブ）です。イラスト、歴史創作小説、そして本を読んで書いた個人的な記録を集めています。</p>
+      <a class="garden-note__link" href="/about/">閱讀完整說明 / ご案内 →</a>
+    </div>
   </div>
 </section>
 
@@ -74,7 +79,7 @@ description: クサ的私人紙上植物園，收存插畫、文字與緩慢生�
       <div class="collection-card__copy">
         <span class="collection-card__en">JOURNAL</span>
         <h3>生長記</h3>
-        <p>圖文、隨筆與日常記錄</p>
+        <p>同人小說、隨筆與看書記錄</p>
       </div>
       <strong><span>{{ collections.posts.length | pad2 }}</span><small>ENTRIES</small></strong>
       <span class="collection-card__arrow" aria-hidden="true">↗</span>
@@ -114,7 +119,7 @@ description: クサ的私人紙上植物園，收存插畫、文字與緩慢生�
     <div>
       <p class="eyebrow">ABOUT THE KEEPER</p>
       <h2>園丁：{{ site.author }}</h2>
-      <p>畫畫、記錄，也觀察那些尚未被命名的細小變化。</p>
+      <p>畫歷史圖、寫故事，也把看書時留下的想法整理在這裡。</p>
     </div>
     <a class="button button--quiet" href="/about/">前往園丁室</a>
   </div>
