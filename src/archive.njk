@@ -3,11 +3,14 @@ layout: layouts/base.njk
 title: 年月歸檔
 description: 依年份瀏覽 KUSARIUM 的全部記錄。
 permalink: /archive/index.html
+eleventyComputed:
+  title: "{{ pageHeaders.archive.title }}"
+  description: "{{ pageHeaders.archive.description }}"
 ---
 <header class="page-intro shell">
-  <p class="eyebrow">CHRONOLOGICAL CABINET</p>
-  <h1>年月歸檔</h1>
-  <p>每一次記錄，都是生長輪上的一條細線。</p>
+  <p class="eyebrow">{{ pageHeaders.archive.eyebrow }}</p>
+  <h1>{{ pageHeaders.archive.title }}</h1>
+  <p>{{ pageHeaders.archive.description }}</p>
 </header>
 
 <section class="archive shell section">
