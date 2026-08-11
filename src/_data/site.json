@@ -2,11 +2,8 @@
   "name": "KUSARIUM",
   "subtitle": "歷史創作與隨筆",
   "author": "小草（クサ）",
-  "tagline": "存放鎌倉時代的歷史創作與隨筆。",
+  "tagline": "歷史創作·小說·隨筆",
   "description": "小草（クサ）的個人歷史創作網站，收存以北條氏為中心的鎌倉時代插畫、同人小說與隨筆。",
-  "url": "https://kusarium.github.io",
-  "language": "zh-Hant",
-  "locale": "zh_TW",
   "established": "2026",
   "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。",
   "home": {
@@ -15,17 +12,16 @@
     "heroJapanese": "北条氏を中心に、鎌倉時代の歴史創作と随筆を収めています。",
     "archiveCard": {
       "backgroundStyle": "soft",
-      "backgroundImage": "",
-      "backgroundAlt": "",
+      "backgroundImage": "/assets/images/site/img1722.jpeg",
       "imagePosition": "center",
       "imageTint": true,
       "showText": true,
       "eyebrow": "ARCHIVE CARD",
       "number": "001 / 2026",
-      "wordOne": "葉",
-      "wordTwo": "光",
-      "wordThree": "夢",
-      "wordFour": "日常",
+      "wordOne": "叶子",
+      "wordTwo": "鳞片",
+      "wordThree": "种子",
+      "wordFour": "花",
       "note": "COLLECTED\nSLOWLY"
     },
     "introduction": {
@@ -38,7 +34,7 @@
     "keeper": {
       "eyebrow": "ABOUT THE KEEPER",
       "title": "園丁：小草（クサ）",
-      "summary": "畫歷史圖、寫故事，也把看書時留下的想法整理在這裡。",
+      "summary": "收集鱗片的植物",
       "buttonLabel": "前往園丁室"
     }
   },
@@ -46,11 +42,11 @@
     "pageEyebrow": "THE GARDEN KEEPER",
     "pageTitle": "園丁室",
     "pageIntro": "關於小草（クサ）與本站。",
-    "portraitImage": "",
+    "portraitImage": "/assets/images/site/img1924.jpeg",
     "portraitAlt": "小草（クサ）的個人形象圖",
     "portraitPosition": "center",
     "portraitTint": true,
-    "showPortraitText": true,
+    "showPortraitText": false,
     "portraitTitle": "クサ",
     "portraitNote": "GARDEN KEEPER · EST. 2026",
     "profileEyebrow": "PROFILE",
@@ -71,5 +67,8 @@
     "password": "5",
     "buttonLabel": "進入地下室",
     "wrongMessage": "密碼不對，再想想。"
-  }
+  },
+  "url": "https://kusarium.github.io",
+  "language": "zh-Hant",
+  "locale": "zh_TW"
 }
