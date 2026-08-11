@@ -2,7 +2,13 @@
 title: "文章標題"
 date: 2026-08-10T12:00:00+09:00
 language: zh-Hans
+section: journal
 excerpt: "顯示在首頁和生長記列表中的簡短介紹。"
+showToc: true
+tocTitle: "本文目錄"
+passwordProtected: false
+passwordHint: ""
+password: ""
 coverCard:
   template: night
   eyebrow: "KUSARIUM · ARCHIVE CARD"
@@ -25,6 +31,8 @@ draft: false
 
 ## 二級標題
 
+### 三級標題
+
 - 列表項目
 - 另一個項目
 
@@ -37,3 +45,9 @@ draft: false
 簡體文章使用 `language: zh-Hans`，繁體文章使用 `language: zh-Hant`。
 
 暫時不想公開時，把 `draft: false` 改成 `draft: true`。
+
+`showToc: true` 會把二級、三級標題自動放進本文目錄。若不需要目錄，改成 `false`。
+
+普通文章需要密碼時，把 `passwordProtected` 改成 `true`，並填寫 `passwordHint` 和 `password`。
+
+翻譯內容放進地下室時，把 `section: journal` 改成 `section: basement`。留空單篇密碼時，會沿用 CMS「站點資料 → 地下室設定」中的密碼。
