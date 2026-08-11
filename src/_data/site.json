@@ -15,7 +15,7 @@
       "backgroundImage": "/assets/images/site/img1722.jpeg",
       "imagePosition": "center",
       "imageTint": true,
-      "showText": true,
+      "showText": false,
       "eyebrow": "ARCHIVE CARD",
       "number": "001 / 2026",
       "wordOne": "叶子",
