@@ -1,24 +1,27 @@
 ---
-title: "从13人名单回看源赖朝时期的御家人制（下）"
-date: 2026-07-31T15:45:14+09:00
+title: 从13人名单回看源赖朝时期的御家人制（下）
+date: 2026-07-31T06:45:00+00:00
+section: journal
 language: zh-Hans
-excerpt: "沿着十三人名单继续回看源赖朝时期的御家人制，以及赖朝对北条义时一次次不合常例的区别对待。"
+excerpt: 沿着十三人名单继续回看源赖朝时期的御家人制。以及赖朝对义时一次次不合常例的区别对待><
+showToc: true
+passwordProtected: false
 coverCard:
   template: afterglow
-  eyebrow: "KUSARIUM · HISTORY NOTE"
-  title: "从13人名单回看"
-  subtitle: "御家人制（下）"
-  note: "YORITOMO / YOSHITOKI"
-  number: "004 / 2026"
+  eyebrow: KUSARIUM · HISTORY NOTE
+  title: 从13人名单回看
+  subtitle: 御家人制（下）
+  note: YOSHITOKI / YORIMOTO
+  number: 004 / 2026
+coverFocusX: 50
+coverFocusY: 50
+coverZoom: 100
 topics:
   - 随筆
   - 源頼朝
   - 北条義時
 draft: false
 ---
-
-\*类似读书笔记的吃播总结。
-
 **区别对待！未完待续……**
 
 1191年，义时罕见地出现主动的行为，是恋上幕府女官姬之前。姬之前是比企尼（赖朝的乳母）的孙女，容貌出众，在女官中地位也很高。义时多次送信，或者说是情书吧，始终没有得到回应。
