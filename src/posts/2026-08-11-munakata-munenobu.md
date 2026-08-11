@@ -1,18 +1,22 @@
 ---
-title: "请至少睁开双眼，看清我毁灭的瞬间"
-date: 2026-08-11T12:00:00+09:00
-language: zh-Hans
-excerpt: "从六波罗共同署判的花押，到嘉元之乱中没有发生的最后一面：北条宗方与大仏宗宣在得宗与庶流之间相遇、并行，最终错身。"
+title: 请至少睁开双眼，看清我毁灭的瞬间
+date: 2026-08-11T03:00:00+00:00
 section: journal
+language: zh-Hans
+excerpt: 从六波罗共同署判的花押，到嘉元之乱中没有发生的最后一面：北条宗方与大仏宗宣在得宗与庶流之间相遇、并行，最终错身。
 showToc: true
-tocTitle: "本文目录"
+tocTitle: 本文目录
+passwordProtected: false
 coverCard:
   template: night
-  eyebrow: "KUSARIUM · HISTORY NOTE"
-  title: "请至少睁开双眼"
-  subtitle: "看清我毁灭的瞬间"
-  note: "MUNAKATA / MUNENOBU"
-  number: "001 / 2026"
+  eyebrow: KUSARIUM · HISTORY NOTE
+  title: 请至少睁开双眼
+  subtitle: 看清我毁灭的瞬间
+  note: MUNENOBU/MUNEKATA
+  number: 001 / 2026
+coverFocusX: 50
+coverFocusY: 50
+coverZoom: 100
 topics:
   - 随筆
   - 北条貞時
@@ -20,7 +24,6 @@ topics:
   - 大仏宗宣
 draft: false
 ---
-
 ## 你灰色头像不会再跳动
 
 正安二年（1300）十二月十二日，六波罗向美浓国茜部庄的地头代，发出这样一封御教书。
