@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+title: 人物誌
+description: KUSARIUM 創作中出現的人物介紹。
+permalink: /characters/index.html
+eleventyComputed:
+  title: "{{ characters.title }}"
+  description: "{{ characters.description }}"
+---
+<header class="page-intro shell page-intro--split">
+  <div>
+    <p class="eyebrow">{{ characters.eyebrow | default("PERSONA FILES") }}</p>
+    <h1>{{ characters.title | default("人物誌") }}</h1>
+  </div>
+  <p>{{ characters.description }}</p>
+</header>
+
+<section class="character-directory shell section" aria-label="人物分組">
+  {% for faction in characters.groups %}
+    {% set factionNumber = loop.index | pad2 %}
+    <details class="character-faction"{% if faction.open %} open{% endif %}>
+      <summary>
+        <span class="character-faction__index">{{ factionNumber }}</span>
+        <span class="character-faction__heading">
+          {% if faction.en %}<small>{{ faction.en }}</small>{% endif %}
+          <strong>{{ faction.name }}</strong>
+        </span>
+        <span class="character-faction__count">{{ faction.characters | length | pad2 }} PERSONS</span>
+        <span class="character-faction__toggle" aria-hidden="true"></span>
+      </summary>
+
+      <div class="character-faction__body">
+        {% if faction.description %}<p class="character-faction__description">{{ faction.description }}</p>{% endif %}
+
+        {% if faction.characters | length %}
+          <div class="character-grid">
+            {% for character in faction.characters %}
+              <article class="character-card">
+                <figure class="character-card__portrait{% if character.portrait %} character-card__portrait--image{% endif %}">
+                  {% if character.portrait %}
+                    <img
+                      src="{{ character.portrait }}"
+                      alt="{{ character.portraitAlt | default(character.name) }}"
+                      style="--image-focus-x: {{ character.portraitFocusX | default(50) }}%; --image-focus-y: {{ character.portraitFocusY | default(50) }}%; --image-scale: {{ character.portraitZoom | imageScale }};"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <span aria-hidden="true">{{ character.name | first }}</span>
+                  {% endif %}
+                </figure>
+
+                <div class="character-card__copy">
+                  {% if character.role %}<p class="character-card__role">{{ character.role }}</p>{% endif %}
+                  <h2>{{ character.name }}</h2>
+                  {% if character.reading %}<p class="character-card__reading" lang="ja">{{ character.reading }}</p>{% endif %}
+                  {% if character.description %}<p class="character-card__description">{{ character.description }}</p>{% endif %}
+                </div>
+
+                <span class="character-card__number" aria-hidden="true">{{ factionNumber }}—{{ loop.index | pad2 }}</span>
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="character-faction__empty">{{ characters.emptyMessage | default("這一組尚未收錄人物。") }}</p>
+        {% endif %}
+      </div>
+    </details>
+  {% else %}
+    <p class="character-directory__empty">{{ characters.emptyMessage | default("尚未建立人物分組。") }}</p>
+  {% endfor %}
+</section>
