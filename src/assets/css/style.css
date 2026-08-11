@@ -3233,10 +3233,14 @@ body {
 .archive-cover__subtitle {
   display: block;
   max-width: 100%;
-  font-weight: 300;
-  line-height: 1.05;
+  font-family: var(--serif);
+  font-synthesis: none;
+  font-weight: 350;
+  line-height: 1.1;
   overflow-wrap: anywhere;
+  text-orientation: mixed;
   text-wrap: balance;
+  writing-mode: horizontal-tb;
 }
 
 .archive-cover__title {
@@ -3245,7 +3249,6 @@ body {
 }
 
 .archive-cover__subtitle {
-  font-family: var(--serif);
   font-size: clamp(1rem, 5.6cqw, 3.6rem);
   letter-spacing: 0.12em;
 }
@@ -3367,11 +3370,15 @@ body {
 }
 
 .archive-cover--mist .archive-cover__note {
-  top: 24%;
+  top: 22%;
   right: 4.5%;
   bottom: auto;
-  max-height: 38%;
-  writing-mode: vertical-rl;
+  max-width: 56%;
+  max-height: none;
+  text-align: right;
+  text-orientation: mixed;
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
 }
 
 .archive-cover--mist .archive-cover__axis {
