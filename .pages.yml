@@ -248,6 +248,41 @@ content:
         type: string
         readonly: true
 
+  - name: branding
+    label: 站點圖標
+    type: file
+    path: src/_data/branding.json
+    format: json
+    fields:
+      - name: favicon
+        label: 瀏覽器小圖標
+        description: 顯示在瀏覽器分頁與書籤旁。建議使用正方形 PNG、WebP 或 SVG；需要裁剪時可先使用：https://kusarium.github.io/image-crop/
+        type: image
+        required: false
+        options:
+          media: site_images
+          extensions: [png, webp, svg, jpg, jpeg]
+          rename: safe
+      - name: headerMark
+        label: 頁首方塊圖標
+        description: 取代頁首左側目前的 K／26 方塊。建議使用正方形圖片；留空則使用下方兩行文字。
+        type: image
+        required: false
+        options:
+          media: site_images
+          extensions: [png, webp, svg, jpg, jpeg]
+          rename: safe
+      - name: fallbackLetter
+        label: 預設圖標主字
+        description: 沒有上傳頁首方塊圖標時顯示。
+        type: string
+        required: true
+      - name: fallbackNumber
+        label: 預設圖標小字
+        description: 沒有上傳頁首方塊圖標時顯示。
+        type: string
+        required: true
+
   - name: home
     label: 首頁內容
     type: file
