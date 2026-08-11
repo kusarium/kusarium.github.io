@@ -18,8 +18,10 @@
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS" href="{{ site.url }}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/css/style.css?v=20260811c">
-    <script defer src="/assets/js/site.js?v=20260811c"></script>
+    <link rel="stylesheet" href="/assets/fonts/noto-serif-tc/index.css?v=20260811d">
+    <link rel="stylesheet" href="/assets/fonts/noto-sans-tc/index.css?v=20260811d">
+    <link rel="stylesheet" href="/assets/css/style.css?v=20260811d">
+    <script defer src="/assets/js/site.js?v=20260811d"></script>
   </head>
   <body id="top" class="page page--{{ page.fileSlug | default('home') }}">
     <a class="skip-link" href="#main-content">跳至正文</a>
@@ -29,7 +31,7 @@
       {{ content | safe }}
     </main>
     {% include "partials/footer.njk" %}
-    <button class="garden-top" type="button" data-back-to-top aria-label="回到页面顶部">
+    <button class="garden-top" type="button" data-back-to-top aria-label="回到頁面頂部">
       <span aria-hidden="true">↑</span>
       <small>TOP</small>
     </button>
