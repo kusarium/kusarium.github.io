@@ -39,6 +39,8 @@ export default function (eleventyConfig) {
     "node_modules/@fontsource-variable/noto-sans-tc": "assets/fonts/noto-sans-tc",
     "node_modules/@fontsource-variable/noto-serif-sc": "assets/fonts/noto-serif-sc",
     "node_modules/@fontsource-variable/noto-sans-sc": "assets/fonts/noto-sans-sc",
+    "node_modules/@fontsource-variable/noto-serif-jp": "assets/fonts/noto-serif-jp",
+    "node_modules/@fontsource-variable/noto-sans-jp": "assets/fonts/noto-sans-jp",
   });
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
