@@ -1,22 +1,27 @@
 ---
-title: "平禅门之乱前后——得宗家内部秩序重组"
-date: 2026-07-28T16:28:54+09:00
+title: 平禅门之乱前后——得宗家内部秩序重组
+date: 2026-07-28T07:28:00+00:00
+section: journal
 language: zh-Hans
-excerpt: "把平禅门之乱放回得宗家的私人秩序中，考察北条贞时与平赖纲之间的监护、占有，以及赖纲死后仍无法消失的制度性缺席。"
+excerpt: 跳上妄想的列车吧
+showToc: true
+passwordProtected: false
 coverCard:
   template: night
-  eyebrow: "KUSARIUM · HISTORY NOTE"
-  title: "平禅门之乱前后"
-  subtitle: "得宗家内部秩序重组"
-  note: "SADATOKI / YORITSUNA"
-  number: "006 / 2026"
+  eyebrow: KUSARIUM · HISTORY NOTE
+  title: 平禅门之乱前后
+  subtitle: 得宗家内部秩序重组
+  note: SADATOKI / YORITSUNA
+  number: 006 / 2026
+coverFocusX: 50
+coverFocusY: 50
+coverZoom: 100
 topics:
   - 随筆
   - 北条貞時
   - 平頼綱
 draft: false
 ---
-
 **总前提**
 
 没有直接证据支撑的观点，终究只能算作推论，也就是妄想。就历史事实而言，阴谋论和BL幻觉没有区别。这一篇随笔算是解放这一自觉以后说出的一串梦话：试图借用事实拼接出一套缺乏直接证据的心理叙事，并伪装成一种颇具说服力的历史解释。当然，上一句也是我乱说的。不过本文大部分内容确实都是我精选的北条贞时X平赖纲（左右有意义）这对CP的嗑点。以下同人妄想，并不构成任何历史结论。
