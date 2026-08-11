@@ -5,6 +5,12 @@ media:
     output: /assets/images/posts
     extensions: [jpg, jpeg, png, webp, gif, svg]
     rename: safe
+  - name: site_images
+    label: 站點圖片
+    input: src/assets/images/site
+    output: /assets/images/site
+    extensions: [jpg, jpeg, png, webp, gif, svg]
+    rename: safe
 
 content:
   - name: posts
@@ -140,7 +146,8 @@ content:
         type: string
         required: true
       - name: subtitle
-        label: 網站副標
+        label: 導覽列副標
+        description: 顯示在全站頁首與頁尾；首頁的「電子植物園（檔案館）」另在首頁設定修改。
         type: string
         required: true
       - name: author
@@ -163,6 +170,250 @@ content:
         label: 版權說明
         type: text
         required: true
+      - name: home
+        label: 首頁設定
+        type: object
+        required: true
+        fields:
+          - name: heroEyebrow
+            label: 首頁眉標
+            type: string
+            required: true
+          - name: heroSubtitle
+            label: 首頁站名說明
+            description: 「電子植物園（檔案館）」只在這裡出現。
+            type: string
+            required: true
+          - name: heroJapanese
+            label: 首頁日文短句
+            type: text
+            required: true
+          - name: archiveCard
+            label: 首頁檔案卡
+            description: 邊框固定保留；可以選漸變底色或上傳圖片，並自由修改卡片文字。
+            type: object
+            required: true
+            fields:
+              - name: backgroundStyle
+                label: 底色樣式
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: soft
+                      label: 柔霧（目前樣式）
+                    - name: mint
+                      label: 薄荷
+                    - name: yellow
+                      label: 柔黃
+                    - name: night
+                      label: 夜幕
+              - name: backgroundImage
+                label: 自訂底圖
+                description: 上傳後會覆蓋所選漸變底色；刪除此欄即可恢復漸變。
+                type: image
+                required: false
+                options:
+                  media: site_images
+                  extensions: [jpg, jpeg, png, webp, gif, svg]
+                  rename: safe
+              - name: backgroundAlt
+                label: 底圖內容說明
+                type: string
+                required: false
+              - name: imagePosition
+                label: 底圖取景位置
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: center
+                      label: 居中
+                    - name: top
+                      label: 靠上
+                    - name: bottom
+                      label: 靠下
+                    - name: left
+                      label: 靠左
+                    - name: right
+                      label: 靠右
+              - name: imageTint
+                label: 在圖片上保留淡色襯底
+                description: 文字不清楚時開啟；使用已排好文字的完整圖片時可以關閉。
+                type: boolean
+                default: true
+              - name: showText
+                label: 顯示卡片文字
+                description: 若上傳的圖片本身已帶文字，可以關閉。
+                type: boolean
+                default: true
+              - name: eyebrow
+                label: 左上小字
+                type: string
+                required: true
+              - name: number
+                label: 右上編號
+                type: string
+                required: true
+              - name: wordOne
+                label: 主字一
+                type: string
+                required: true
+              - name: wordTwo
+                label: 主字二
+                type: string
+                required: true
+              - name: wordThree
+                label: 主字三
+                type: string
+                required: true
+              - name: wordFour
+                label: 主字四
+                type: string
+                required: true
+              - name: note
+                label: 右下註記
+                description: 可以換行。
+                type: text
+                required: true
+          - name: introduction
+            label: 首頁介紹
+            type: object
+            required: true
+            fields:
+              - name: eyebrow
+                label: 眉標
+                type: string
+                required: true
+              - name: title
+                label: 中文標題
+                type: string
+                required: true
+              - name: titleJapanese
+                label: 日文標題
+                type: string
+                required: true
+              - name: textChinese
+                label: 中文介紹
+                type: text
+                required: true
+              - name: textJapanese
+                label: 日文介紹
+                type: text
+                required: true
+          - name: keeper
+            label: 首頁園丁簡介
+            description: 圖片沿用下方「園丁室設定」中的個人圖片。
+            type: object
+            required: true
+            fields:
+              - name: eyebrow
+                label: 眉標
+                type: string
+                required: true
+              - name: title
+                label: 標題
+                type: string
+                required: true
+              - name: summary
+                label: 簡介
+                type: text
+                required: true
+              - name: buttonLabel
+                label: 按鈕文字
+                type: string
+                required: true
+      - name: about
+        label: 園丁室設定
+        type: object
+        required: true
+        fields:
+          - name: pageEyebrow
+            label: 頁面眉標
+            type: string
+            required: true
+          - name: pageTitle
+            label: 頁面標題
+            type: string
+            required: true
+          - name: pageIntro
+            label: 頁面短句
+            type: text
+            required: true
+          - name: portraitImage
+            label: 園丁圖片
+            description: 同時顯示在首頁園丁簡介與園丁室；留空時使用目前的文字卡片。
+            type: image
+            required: false
+            options:
+              media: site_images
+              extensions: [jpg, jpeg, png, webp, gif, svg]
+              rename: safe
+          - name: portraitAlt
+            label: 圖片內容說明
+            type: string
+            required: false
+          - name: portraitPosition
+            label: 圖片取景位置
+            type: select
+            required: true
+            options:
+              values:
+                - name: center
+                  label: 居中
+                - name: top
+                  label: 靠上
+                - name: bottom
+                  label: 靠下
+                - name: left
+                  label: 靠左
+                - name: right
+                  label: 靠右
+          - name: portraitTint
+            label: 在圖片上保留淡色襯底
+            type: boolean
+            default: true
+          - name: showPortraitText
+            label: 在圖片上顯示文字
+            description: 若圖片本身已帶字，可以關閉。
+            type: boolean
+            default: true
+          - name: portraitTitle
+            label: 圖片主標
+            type: string
+            required: true
+          - name: portraitNote
+            label: 圖片底部小字
+            type: string
+            required: true
+          - name: profileEyebrow
+            label: 個人介紹眉標
+            type: string
+            required: true
+          - name: profileTitle
+            label: 個人名稱
+            type: string
+            required: true
+          - name: profileChinese
+            label: 中文個人介紹
+            type: text
+            required: true
+          - name: profileJapanese
+            label: 日文個人介紹
+            type: text
+            required: true
+          - name: siteHeading
+            label: 站名說明標題
+            type: string
+            required: true
+          - name: siteChinese
+            label: 中文站名說明
+            type: text
+            required: true
+          - name: siteJapanese
+            label: 日文站名說明
+            type: text
+            required: true
       - name: url
         label: 網站地址
         type: string
