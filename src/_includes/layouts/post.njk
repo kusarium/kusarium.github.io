@@ -2,11 +2,29 @@
 layout: layouts/base.njk
 ---
 {% from "partials/archive-cover.njk" import archiveCover %}
+{% from "partials/article-toc.njk" import articleToc %}
+{% set articleHtml = content | addHeadingIds %}
+{% set headings = articleHtml | extractHeadings %}
+{% set tocEnabled = showToc | default(true) %}
+{% set tocLabel = tocTitle | default("本文目錄", true) %}
+{% set isBasement = section == "basement" %}
+{% set needsPassword = passwordProtected or isBasement %}
+{% set effectivePassword = password %}
+{% set effectiveHint = passwordHint %}
+{% set accessScope = "article-" ~ page.fileSlug %}
+{% if isBasement and not password %}
+  {% set effectivePassword = site.basement.password %}
+  {% set effectiveHint = site.basement.passwordHint %}
+  {% set accessScope = "basement" %}
+{% endif %}
 <article class="article shell shell--article" lang="{{ language | default(site.language) }}">
   <header class="article__header">
-    <p class="eyebrow">FIELD NOTE · {{ page.date | dateReadable }}</p>
+    <p class="eyebrow">{% if isBasement %}BASEMENT FILE{% else %}FIELD NOTE{% endif %} · {{ page.date | dateReadable }}</p>
     <h1>{{ title }}</h1>
     {% if excerpt %}<p class="article__lead">{{ excerpt }}</p>{% endif %}
+    {% if needsPassword %}
+      <p class="entry-lock entry-lock--header"><span aria-hidden="true">⌑</span> 需要密碼 · 提示：{{ effectiveHint | default("未設定提示", true) }}</p>
+    {% endif %}
     {% if topics %}
       <ul class="topic-list topic-list--large" aria-label="文章標籤">
         {% for topic in topics %}
@@ -29,15 +47,50 @@ layout: layouts/base.njk
     </figure>
   {% endif %}
 
-  <div class="article__content prose">
-    {{ content | safe }}
-  </div>
+  {% if needsPassword %}
+    <section
+      class="password-gate"
+      data-password-gate
+      data-content-kind="article"
+      data-access-scope="{{ accessScope }}"
+      data-toc-title="{{ tocLabel | xmlEscape | safe }}"
+      {% if tocEnabled %}data-show-toc="true"{% else %}data-show-toc="false"{% endif %}
+      data-wrong-message="{{ site.basement.wrongMessage | default('密碼不對，再想想。') }}"
+    >
+      <div class="password-gate__panel" data-gate-panel>
+        <p class="eyebrow">LOCKED ENTRY</p>
+        <h2>這篇記錄已上鎖</h2>
+        <p>提示：{{ effectiveHint | default("未設定提示", true) }}</p>
+        {% if effectivePassword %}
+          <form class="password-gate__form" data-password-form>
+            <label for="password-{{ page.fileSlug }}">輸入密碼</label>
+            <div>
+              <input id="password-{{ page.fileSlug }}" name="password" type="password" autocomplete="current-password" required data-password-input>
+              <button class="button button--primary" type="submit">解鎖閱讀</button>
+            </div>
+            <p class="password-gate__error" role="status" aria-live="polite" data-password-error></p>
+          </form>
+          <script type="application/json" data-encrypted-payload>{{ articleHtml | encryptContent(effectivePassword) | json | safe }}</script>
+        {% else %}
+          <p class="password-gate__error">這篇文章尚未在 CMS 設定密碼，正文暫不顯示。</p>
+        {% endif %}
+      </div>
+      <div class="password-gate__output" data-protected-output hidden></div>
+    </section>
+  {% else %}
+    <div class="article__reading-layout{% if not tocEnabled or not headings.length %} article__reading-layout--solo{% endif %}">
+      {% if tocEnabled %}{{ articleToc(headings, tocLabel) }}{% endif %}
+      <div class="article__content prose">
+        {{ articleHtml | safe }}
+      </div>
+    </div>
+  {% endif %}
 
   <footer class="article__footer">
     <div class="article__seal" aria-hidden="true">K26</div>
     <div>
       <p>記錄於 {{ page.date | dateReadable }}</p>
-      <a href="/journal/">← 返回生長記</a>
+      {% if isBasement %}<a href="/basement/">← 返回地下室</a>{% else %}<a href="/journal/">← 返回生長記</a>{% endif %}
     </div>
   </footer>
 </article>

@@ -23,6 +23,7 @@ permalink: /gallery/index.html
             <div>
               <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
               <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+              {% if post.data.passwordProtected %}<p class="entry-lock"><span aria-hidden="true">⌑</span> 提示：{{ post.data.passwordHint | default("未設定提示", true) }}</p>{% endif %}
             </div>
             <span>{{ loop.index | pad2 }}</span>
           </div>

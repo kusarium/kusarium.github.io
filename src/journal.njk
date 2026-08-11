@@ -23,6 +23,9 @@ permalink: /journal/index.html
         <div>
           <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
           {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
+          {% if post.data.passwordProtected %}
+            <p class="entry-lock"><span aria-hidden="true">⌑</span> 需要密碼 · 提示：{{ post.data.passwordHint | default("未設定提示", true) }}</p>
+          {% endif %}
         </div>
         <ul class="topic-list" aria-label="文章標籤">
           {% for topic in post.data.topics %}

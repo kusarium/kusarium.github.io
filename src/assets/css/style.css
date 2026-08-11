@@ -201,7 +201,7 @@ a {
 }
 
 .shell--article {
-  width: min(calc(100% - 3rem), var(--article));
+  width: min(calc(100% - 3rem), calc(var(--article) + 17rem));
 }
 
 .eyebrow {
@@ -1755,7 +1755,8 @@ a {
 }
 
 .article__header {
-  margin-bottom: 3rem;
+  width: min(100%, var(--article));
+  margin: 0 auto 3rem;
 }
 
 .article__header h1 {
@@ -1779,9 +1780,8 @@ a {
 }
 
 .article__cover {
-  width: min(100vw - 3rem, 1000px);
-  margin: 0 50% 4rem;
-  transform: translateX(-50%);
+  width: min(100%, 1000px);
+  margin: 0 auto 4rem;
 }
 
 .article__cover button {
@@ -1822,6 +1822,7 @@ a {
   margin-top: 2.4em;
   font-weight: 500;
   line-height: 1.35;
+  scroll-margin-top: 7rem;
 }
 
 .prose h2 { font-size: 2rem; }
@@ -1851,9 +1852,205 @@ a {
   font-size: 0.85em;
 }
 
+.article__reading-layout {
+  display: grid;
+  align-items: start;
+  grid-template-columns: minmax(10rem, 13rem) minmax(0, var(--article));
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.article__reading-layout--solo {
+  display: block;
+  width: min(100%, var(--article));
+  margin-inline: auto;
+}
+
+.article-toc {
+  position: sticky;
+  top: 7rem;
+  max-height: calc(100vh - 9rem);
+  padding: 0.9rem 0;
+  overflow: auto;
+  border-block: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.article-toc summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.article-toc summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-toc summary::after {
+  content: "−";
+  color: var(--stone);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.article-toc:not([open]) summary::after {
+  content: "+";
+}
+
+.article-toc ol {
+  margin: 0.8rem 0 0;
+  padding: 0 0 0 1.15rem;
+}
+
+.article-toc li + li {
+  margin-top: 0.55rem;
+}
+
+.article-toc__subsection {
+  margin-left: 0.8rem;
+  color: var(--stone);
+}
+
+.article-toc a {
+  display: inline;
+  color: var(--ash);
+  text-decoration: none;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.article-toc a:hover,
+.article-toc a[aria-current="location"] {
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, rgba(171, 217, 207, 0.72) 62%);
+}
+
+.entry-lock {
+  color: var(--ash);
+  font-family: var(--sans);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.02em;
+}
+
+.entry-lock--header {
+  width: fit-content;
+  margin: 1rem 0 0;
+  padding: 0.34rem 0.6rem;
+  border: 1px solid var(--line);
+  background: rgba(254, 235, 190, 0.38);
+}
+
+.password-gate {
+  width: 100%;
+}
+
+.password-gate__panel {
+  width: min(100%, var(--article));
+  margin-inline: auto;
+  padding: clamp(1.6rem, 5vw, 3rem);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(171, 217, 207, 0.18), transparent 44%),
+    rgba(251, 251, 248, 0.84);
+  box-shadow: 0.65rem 0.65rem 0 rgba(171, 217, 207, 0.32);
+}
+
+.password-gate__panel[hidden] {
+  display: none;
+}
+
+.password-gate__panel h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 480;
+}
+
+.password-gate__panel > p:not(.eyebrow, .password-gate__error) {
+  margin: 0.75rem 0 0;
+  color: var(--ash);
+}
+
+.password-gate__form {
+  margin-top: 1.5rem;
+}
+
+.password-gate__form > label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.password-gate__form > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.65rem;
+}
+
+.password-gate__form input {
+  min-width: 0;
+  padding: 0.72rem 0.85rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: var(--white);
+}
+
+.password-gate__form button[disabled] {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.password-gate__error {
+  min-height: 1.5em;
+  margin: 0.55rem 0 0;
+  color: #8d3c32;
+  font-size: 0.76rem;
+}
+
+.password-gate__output:focus {
+  outline: none;
+}
+
+.password-gate--page {
+  padding-top: 4rem;
+}
+
+.password-gate--page .password-gate__output {
+  width: 100%;
+}
+
+.basement-list .section-heading {
+  margin-bottom: 2rem;
+}
+
+.basement-list__empty {
+  padding: 3rem 1rem;
+  border-block: 1px solid var(--line);
+  color: var(--ash);
+  text-align: center;
+}
+
+.topic-list span {
+  display: inline-block;
+  padding: 0.14rem 0.5rem;
+  border: 1px solid var(--line);
+  background: rgba(171, 217, 207, 0.18);
+  font-size: 0.66rem;
+}
+
 .article__footer {
   display: flex;
+  width: min(100%, var(--article));
   margin-top: 5rem;
+  margin-inline: auto;
   padding-top: 2rem;
   align-items: center;
   gap: 1.2rem;
@@ -2444,7 +2641,7 @@ a {
   }
 
   .article__cover {
-    width: 100vw;
+    width: 100%;
   }
 
   .not-found {
@@ -3548,7 +3745,7 @@ body {
   }
 
   .article__cover--archive-card {
-    width: 100vw;
+    width: 100%;
   }
 }
 
@@ -3767,5 +3964,30 @@ body {
   .keeper__image {
     width: 4.5rem;
     height: 4.5rem;
+  }
+
+  .article__reading-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .article-toc {
+    position: static;
+    max-height: none;
+    padding-inline: 0.15rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .password-gate__form > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .password-gate__form button {
+    width: 100%;
+  }
+
+  .prose h2 {
+    font-size: 1.55rem;
   }
 }

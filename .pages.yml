@@ -21,7 +21,7 @@ content:
     filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
     view:
       primary: title
-      fields: [title, date, language, draft]
+      fields: [title, date, section, language, passwordProtected, draft]
       sort: date
       order: desc
       search: [title, excerpt, topics]
@@ -37,6 +37,18 @@ content:
         options:
           time: true
           format: "yyyy-MM-dd'T'HH:mm:ssxxx"
+      - name: section
+        label: 發布位置
+        description: 一般內容放在「生長記」；翻譯存檔選「地下室」，不會出現在公開導覽、標籤或搜尋引擎站點地圖中。
+        type: select
+        required: true
+        default: journal
+        options:
+          values:
+            - name: journal
+              label: 生長記（公開）
+            - name: basement
+              label: 地下室（需要密碼）
       - name: language
         label: 正文字形
         description: 簡體文章選「簡體中文」，可避免個別字回退成另一套字形。
@@ -53,6 +65,31 @@ content:
         label: 列表摘要
         type: text
         required: true
+      - name: showToc
+        label: 顯示本文目錄
+        description: 自動收集正文中的「標題 2」和「標題 3」，點擊即可跳轉。沒有小標題時不會顯示。
+        type: boolean
+        default: true
+      - name: tocTitle
+        label: 目錄標題
+        description: 留空時顯示「本文目錄」。
+        type: string
+        required: false
+      - name: passwordProtected
+        label: 這篇文章需要密碼
+        description: 普通文章開啟後，列表仍顯示標題、摘要和提示，正文需解鎖。地下室文章無論此項是否開啟都會上鎖。
+        type: boolean
+        default: false
+      - name: passwordHint
+        label: 單篇密碼提示
+        description: 普通上鎖文章請填；地下室文章留空時沿用地下室提示。
+        type: string
+        required: false
+      - name: password
+        label: 單篇密碼
+        description: 普通上鎖文章請填；地下室文章留空時沿用地下室密碼。注意：GitHub 倉庫是公開的，這只能阻擋一般訪客，不能當成真正的私密保管。
+        type: string
+        required: false
       - name: coverCard
         label: 文字封面（可選）
         description: 選擇一款可編輯的檔案卡；如同時上傳封面插畫，插畫優先。樣式預覽：https://kusarium.github.io/cover-studio/
@@ -413,6 +450,49 @@ content:
           - name: siteJapanese
             label: 日文站名說明
             type: text
+            required: true
+      - name: basement
+        label: 地下室設定
+        description: 地下室不會出現在網站導覽或站點地圖中，網址固定為 /basement/。
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 頁面眉標
+            type: string
+            required: true
+          - name: title
+            label: 頁面標題
+            type: string
+            required: true
+          - name: description
+            label: 頁面說明
+            type: text
+            required: true
+          - name: gateTitle
+            label: 密碼框標題
+            type: string
+            required: true
+          - name: listTitle
+            label: 解鎖後的列表標題
+            type: string
+            required: true
+          - name: passwordHint
+            label: 密碼提示
+            type: string
+            required: true
+          - name: password
+            label: 地下室密碼
+            description: 會套用至未設定單篇密碼的所有地下室文章。注意：GitHub 倉庫是公開的，這只能阻擋一般訪客。
+            type: string
+            required: true
+          - name: buttonLabel
+            label: 解鎖按鈕文字
+            type: string
+            required: true
+          - name: wrongMessage
+            label: 密碼錯誤提示
+            type: string
             required: true
       - name: url
         label: 網站地址
