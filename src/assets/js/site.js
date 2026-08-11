@@ -207,4 +207,172 @@
       pointerStartX = null;
     });
   }
+
+  const prepareArticleToc = (toc, headings = null) => {
+    if (!toc) return;
+    const links = [...toc.querySelectorAll("a[href^='#']")];
+    const headingNodes = headings || links
+      .map((link) => document.getElementById(link.getAttribute("href").slice(1)))
+      .filter(Boolean);
+    const linksById = new Map(links.map((link) => [link.getAttribute("href").slice(1), link]));
+
+    const setCurrent = (id) => {
+      links.forEach((link) => link.removeAttribute("aria-current"));
+      linksById.get(id)?.setAttribute("aria-current", "location");
+    };
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => setCurrent(link.getAttribute("href").slice(1)));
+    });
+
+    if (window.location.hash) setCurrent(decodeURIComponent(window.location.hash.slice(1)));
+    if (!("IntersectionObserver" in window) || !headingNodes.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.find((entry) => entry.isIntersecting);
+      if (visible) setCurrent(visible.target.id);
+    }, { rootMargin: "-18% 0px -70% 0px", threshold: 0 });
+
+    headingNodes.forEach((heading) => observer.observe(heading));
+  };
+
+  const buildArticleToc = (headings, title) => {
+    if (!headings.length) return null;
+    const toc = document.createElement("details");
+    toc.className = "article-toc";
+    toc.dataset.articleToc = "";
+    toc.open = true;
+
+    const summary = document.createElement("summary");
+    summary.textContent = title || "本文目錄";
+    toc.append(summary);
+
+    const list = document.createElement("ol");
+    headings.forEach((heading) => {
+      const item = document.createElement("li");
+      if (heading.tagName === "H3") item.className = "article-toc__subsection";
+      const link = document.createElement("a");
+      link.href = `#${heading.id}`;
+      link.textContent = heading.textContent.trim();
+      item.append(link);
+      list.append(item);
+    });
+    toc.append(list);
+    return toc;
+  };
+
+  const base64ToBytes = (value) => Uint8Array.from(atob(value), (character) => character.charCodeAt(0));
+
+  const decryptPayload = async (payload, password) => {
+    const keyMaterial = await window.crypto.subtle.importKey(
+      "raw",
+      new TextEncoder().encode(password),
+      "PBKDF2",
+      false,
+      ["deriveKey"],
+    );
+    const key = await window.crypto.subtle.deriveKey(
+      {
+        name: "PBKDF2",
+        hash: "SHA-256",
+        salt: base64ToBytes(payload.salt),
+        iterations: payload.iterations,
+      },
+      keyMaterial,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["decrypt"],
+    );
+    const decrypted = await window.crypto.subtle.decrypt(
+      { name: "AES-GCM", iv: base64ToBytes(payload.iv) },
+      key,
+      base64ToBytes(payload.data),
+    );
+    return new TextDecoder().decode(decrypted);
+  };
+
+  const renderUnlockedContent = (gate, output, html) => {
+    if (gate.dataset.contentKind !== "article") {
+      output.innerHTML = html;
+      return;
+    }
+
+    const prose = document.createElement("div");
+    prose.className = "article__content prose";
+    prose.innerHTML = html;
+    const layout = document.createElement("div");
+    layout.className = "article__reading-layout";
+    const headings = [...prose.querySelectorAll("h2[id], h3[id]")];
+    const showToc = gate.dataset.showToc === "true";
+    const toc = showToc ? buildArticleToc(headings, gate.dataset.tocTitle) : null;
+
+    if (toc) {
+      layout.append(toc, prose);
+    } else {
+      layout.classList.add("article__reading-layout--solo");
+      layout.append(prose);
+    }
+    output.replaceChildren(layout);
+    prepareArticleToc(toc, headings);
+  };
+
+  document.querySelectorAll("[data-article-toc]").forEach((toc) => prepareArticleToc(toc));
+
+  document.querySelectorAll("[data-password-gate]").forEach((gate) => {
+    const payloadNode = gate.querySelector("[data-encrypted-payload]");
+    const form = gate.querySelector("[data-password-form]");
+    const input = gate.querySelector("[data-password-input]");
+    const error = gate.querySelector("[data-password-error]");
+    const panel = gate.querySelector("[data-gate-panel]");
+    const output = gate.querySelector("[data-protected-output]");
+    if (!payloadNode || !form || !input || !panel || !output) return;
+
+    let payload;
+    try {
+      payload = JSON.parse(payloadNode.textContent);
+    } catch {
+      if (error) error.textContent = "加密內容讀取失敗，請稍後再試。";
+      return;
+    }
+
+    const storageKey = `kusarium:access:${gate.dataset.accessScope || window.location.pathname}`;
+    const unlock = async (password, isAutomatic = false) => {
+      if (!window.crypto?.subtle) {
+        if (error) error.textContent = "目前的瀏覽器不支援解鎖，請改用較新的瀏覽器。";
+        return;
+      }
+
+      const submit = form.querySelector("button[type='submit']");
+      submit?.setAttribute("disabled", "");
+      gate.toggleAttribute("data-checking", true);
+      if (error) error.textContent = "";
+
+      try {
+        const html = await decryptPayload(payload, password);
+        renderUnlockedContent(gate, output, html);
+        panel.hidden = true;
+        output.hidden = false;
+        gate.dataset.unlocked = "true";
+        try { window.sessionStorage.setItem(storageKey, password); } catch { /* storage may be unavailable */ }
+        if (!isAutomatic) output.focus({ preventScroll: true });
+      } catch {
+        try { window.sessionStorage.removeItem(storageKey); } catch { /* storage may be unavailable */ }
+        if (error) error.textContent = gate.dataset.wrongMessage || "密碼不對，再想想。";
+        if (!isAutomatic) input.select();
+      } finally {
+        submit?.removeAttribute("disabled");
+        gate.removeAttribute("data-checking");
+      }
+    };
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      unlock(input.value);
+    });
+
+    try {
+      const savedPassword = window.sessionStorage.getItem(storageKey);
+      if (savedPassword) unlock(savedPassword, true);
+    } catch { /* storage may be unavailable */ }
+  });
 })();
