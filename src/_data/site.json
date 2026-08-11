@@ -1,12 +1,12 @@
 {
   "name": "KUSARIUM",
-  "jpName": "クサの植物標本園",
+  "subtitle": "一座私人的紙上植物園",
   "author": "クサ",
-  "tagline": "图像与文字，在这里缓慢生长。",
-  "description": "クサ的个人图文植物标本园，收藏插画、文字与四季的生长记录。",
+  "tagline": "圖像與文字，在這裡緩慢生長。",
+  "description": "クサ的私人紙上植物園，收存插畫、文字與緩慢生長的片段。",
   "url": "https://kusarium.github.io",
-  "language": "zh-CN",
-  "locale": "zh_CN",
+  "language": "zh-Hant",
+  "locale": "zh_TW",
   "established": "2026",
-  "copyrightNotice": "本站图文版权归作者所有。请勿转载、加工或用于 AI 训练。"
+  "copyrightNotice": "本站圖文版權歸作者所有。請勿轉載、加工或用於 AI 訓練。"
 }

@@ -7,7 +7,7 @@ layout: layouts/base.njk
     <h1>{{ title }}</h1>
     {% if excerpt %}<p class="article__lead">{{ excerpt }}</p>{% endif %}
     {% if topics %}
-      <ul class="topic-list topic-list--large" aria-label="文章标签">
+      <ul class="topic-list topic-list--large" aria-label="文章標籤">
         {% for topic in topics %}
           <li><a href="/tags/#{{ topic | topicSlug }}">#{{ topic }}</a></li>
         {% endfor %}
@@ -17,7 +17,7 @@ layout: layouts/base.njk
 
   {% if cover %}
     <figure class="article__cover">
-      <button type="button" data-lightbox-trigger data-src="{{ cover }}" data-alt="{{ coverAlt | default(title) }}" aria-label="放大查看图片">
+      <button type="button" data-lightbox-trigger data-src="{{ cover }}" data-alt="{{ coverAlt | default(title) }}" aria-label="放大查看圖片">
         <img src="{{ cover }}" alt="{{ coverAlt | default(title) }}" decoding="async">
       </button>
       {% if coverCaption %}<figcaption>{{ coverCaption }}</figcaption>{% endif %}
@@ -29,15 +29,15 @@ layout: layouts/base.njk
   </div>
 
   <footer class="article__footer">
-    <div class="article__seal" aria-hidden="true">草</div>
+    <div class="article__seal" aria-hidden="true">K26</div>
     <div>
-      <p>记录于 {{ page.date | dateReadable }}</p>
-      <a href="/journal/">← 返回生长日志</a>
+      <p>記錄於 {{ page.date | dateReadable }}</p>
+      <a href="/journal/">← 返回生長記</a>
     </div>
   </footer>
 </article>
 
 <dialog class="lightbox" data-lightbox>
-  <button class="lightbox__close" type="button" data-lightbox-close aria-label="关闭大图">×</button>
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="關閉大圖">×</button>
   <img src="" alt="" data-lightbox-image>
 </dialog>

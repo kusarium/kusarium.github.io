@@ -1,13 +1,13 @@
 ---
 layout: layouts/base.njk
-title: 年月归档
-description: 按年份浏览 KUSARIUM 的全部记录。
+title: 年月歸檔
+description: 依年份瀏覽 KUSARIUM 的全部記錄。
 permalink: /archive/index.html
 ---
 <header class="page-intro shell">
   <p class="eyebrow">CHRONOLOGICAL CABINET</p>
-  <h1>年月归档</h1>
-  <p>每一次记录都是生长轮上的一条细线。</p>
+  <h1>年月歸檔</h1>
+  <p>每一次記錄，都是生長輪上的一條細線。</p>
 </header>
 
 <section class="archive shell section">
@@ -22,7 +22,7 @@ permalink: /archive/index.html
           <li>
             <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
             <a href="{{ post.url }}">{{ post.data.title }}</a>
-            {% if post.data.cover %}<span class="archive-year__image" aria-label="含图片">▧</span>{% endif %}
+            {% if post.data.cover %}<span class="archive-year__image" aria-label="含圖片">▧</span>{% endif %}
           </li>
         {% endfor %}
       </ol>

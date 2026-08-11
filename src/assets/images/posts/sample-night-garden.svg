@@ -1,48 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
-  <title id="title">夜间温室示例插画</title>
-  <desc id="desc">雨云灰背景上的薄荷色枝叶、柔黄色花朵与浅灰植物剪影。</desc>
+  <title id="title">夜間溫室示例封面</title>
+  <desc id="desc">雨雲灰底上的繁體標題、檔案編號與薄荷、柔黃、霧灰三色色條。</desc>
+  <defs>
+    <radialGradient id="mintGlow" cx="0" cy="1" r="1.1">
+      <stop offset="0" stop-color="#abd9cf" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#abd9cf" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="yellowGlow" cx="1" cy="0" r=".9">
+      <stop offset="0" stop-color="#feebbe" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#feebbe" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
   <rect width="1200" height="820" fill="#4c4948"/>
-  <path d="M-50 730C180 650 260 498 352 284c62-144 149-194 248-212" fill="none" stroke="#727171" stroke-width="5"/>
-  <path d="M120 850c44-206 144-337 312-454 158-110 324-155 525-207" fill="none" stroke="#abd9cf" stroke-width="7" stroke-linecap="round"/>
-  <path d="M590 900c33-223 106-365 216-493 103-120 191-180 341-251" fill="none" stroke="#949495" stroke-width="5"/>
+  <rect width="1200" height="820" fill="url(#mintGlow)"/>
+  <rect width="1200" height="820" fill="url(#yellowGlow)"/>
 
-  <g fill="#abd9cf">
-    <ellipse cx="222" cy="621" rx="78" ry="25" transform="rotate(-35 222 621)"/>
-    <ellipse cx="328" cy="507" rx="86" ry="28" transform="rotate(24 328 507)"/>
-    <ellipse cx="430" cy="400" rx="92" ry="29" transform="rotate(-34 430 400)"/>
-    <ellipse cx="564" cy="323" rx="88" ry="27" transform="rotate(29 564 323)"/>
-    <ellipse cx="688" cy="280" rx="74" ry="24" transform="rotate(-25 688 280)"/>
-    <ellipse cx="760" cy="498" rx="86" ry="27" transform="rotate(-42 760 498)"/>
-    <ellipse cx="846" cy="391" rx="94" ry="30" transform="rotate(28 846 391)"/>
-    <ellipse cx="969" cy="292" rx="84" ry="27" transform="rotate(-37 969 292)"/>
-  </g>
+  <path d="M72 88H1128M72 676H1128" stroke="#efefef" stroke-opacity=".34"/>
+  <path d="M72 714H566" stroke="#abd9cf" stroke-width="12"/>
+  <path d="M566 714H786" stroke="#feebbe" stroke-width="12"/>
+  <path d="M786 714H1128" stroke="#d3d3d4" stroke-width="12"/>
 
-  <g fill="#727171" opacity=".78">
-    <ellipse cx="125" cy="615" rx="70" ry="23" transform="rotate(15 125 615)"/>
-    <ellipse cx="248" cy="474" rx="86" ry="27" transform="rotate(-55 248 474)"/>
-    <ellipse cx="421" cy="265" rx="78" ry="25" transform="rotate(24 421 265)"/>
-    <ellipse cx="687" cy="673" rx="88" ry="28" transform="rotate(35 687 673)"/>
-    <ellipse cx="846" cy="505" rx="82" ry="26" transform="rotate(-28 846 505)"/>
-    <ellipse cx="1035" cy="320" rx="95" ry="29" transform="rotate(32 1035 320)"/>
-  </g>
+  <text x="72" y="58" fill="#efefef" font-family="sans-serif" font-size="17" font-weight="700" letter-spacing="7">KUSARIUM · ARCHIVE CARD</text>
+  <text x="1128" y="58" fill="#b5b5b6" font-family="sans-serif" font-size="17" text-anchor="end" letter-spacing="4">001 / 2026</text>
 
-  <g fill="#feebbe">
-    <circle cx="159" cy="686" r="17"/>
-    <circle cx="159" cy="686" r="6" fill="#4c4948"/>
-    <circle cx="518" cy="350" r="19"/>
-    <circle cx="518" cy="350" r="7" fill="#4c4948"/>
-    <circle cx="899" cy="350" r="20"/>
-    <circle cx="899" cy="350" r="7" fill="#4c4948"/>
-    <circle cx="1002" cy="166" r="12"/>
-  </g>
+  <text x="106" y="350" fill="#efefef" font-family="serif" font-size="190" font-weight="300" letter-spacing="18">夜間</text>
+  <text x="108" y="500" fill="#efefef" font-family="serif" font-size="92" font-weight="300" letter-spacing="24">溫室記錄</text>
+  <text x="1118" y="582" fill="#feebbe" font-family="sans-serif" font-size="25" font-weight="700" text-anchor="end" letter-spacing="10">NIGHT NOTE</text>
 
-  <g fill="#efefef" opacity=".88">
-    <circle cx="299" cy="224" r="5"/><circle cx="610" cy="156" r="4"/><circle cx="713" cy="197" r="6"/>
-    <circle cx="783" cy="87" r="3"/><circle cx="1082" cy="118" r="5"/><circle cx="1121" cy="452" r="4"/>
-    <circle cx="540" cy="595" r="4"/><circle cx="384" cy="655" r="6"/><circle cx="78" cy="304" r="4"/>
-  </g>
-
-  <path d="M0 778c195-54 382-58 558-12 188 49 399 44 642-27v81H0Z" fill="#3f3d3c"/>
-  <text x="72" y="102" fill="#efefef" font-family="Georgia, serif" font-size="28" letter-spacing="8">KUSARIUM</text>
-  <text x="74" y="142" fill="#b5b5b6" font-family="sans-serif" font-size="15" letter-spacing="4">NIGHT SPECIMEN · 001</text>
+  <circle cx="1088" cy="126" r="17" fill="#feebbe"/>
+  <path d="M1088 150V316" stroke="#efefef" stroke-opacity=".34"/>
+  <text x="1118" y="751" fill="#efefef" font-family="sans-serif" font-size="15" text-anchor="end" letter-spacing="5">COLLECTED SLOWLY</text>
 </svg>

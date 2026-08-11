@@ -1,16 +1,16 @@
 ---
 layout: layouts/base.njk
-title: 图鉴
-description: KUSARIUM 的插画与视觉标本。
+title: 葉影帖
+description: KUSARIUM 的插畫與視覺標本。
 permalink: /gallery/index.html
 ---
 <header class="page-intro shell">
   <p class="eyebrow">ILLUSTRATED SPECIMENS</p>
-  <h1>图鉴</h1>
-  <p>将画面按照采集日期轻轻放好。点击任意标本，可以阅读它旁边留下的文字。</p>
+  <h1>葉影帖</h1>
+  <p>將畫面依採集日期輕輕放好。點開任意一頁，也可以讀到它旁邊留下的文字。</p>
 </header>
 
-<section class="gallery shell section" aria-label="插画图鉴">
+<section class="gallery shell section" aria-label="插畫與視覺標本">
   {% if collections.gallery.length %}
     <div class="gallery-grid">
       {% for post in collections.gallery %}
@@ -31,21 +31,21 @@ permalink: /gallery/index.html
     </div>
   {% else %}
     <div class="empty-state">
-      <span class="specimen-sprig"><i></i><i></i><i></i><i></i><b></b></span>
-      <h2>图鉴还在等待第一枚标本</h2>
-      <p>为文章添加 <code>cover</code> 图片后，它会自动出现在这里。</p>
+      <span class="empty-state__mark" aria-hidden="true">01</span>
+      <h2>葉影帖仍在等待第一頁</h2>
+      <p>為文章加入 <code>cover</code> 圖片後，它便會自動出現在這裡。</p>
     </div>
   {% endif %}
 </section>
 
 <dialog class="lightbox" data-lightbox>
-  <button class="lightbox__close" type="button" data-lightbox-close aria-label="关闭大图">×</button>
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="關閉大圖">×</button>
   <div class="lightbox__stage">
-    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="查看上一枚标本">←</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="查看上一頁">←</button>
     <figure>
       <img src="" alt="" data-lightbox-image>
       <figcaption data-lightbox-status aria-live="polite"></figcaption>
     </figure>
-    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="查看下一枚标本">→</button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="查看下一頁">→</button>
   </div>
 </dialog>
