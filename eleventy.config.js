@@ -145,6 +145,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("take", (items, count) => (items || []).slice(0, count));
   eleventyConfig.addFilter("pad2", (value) => String(value).padStart(2, "0"));
+  eleventyConfig.addFilter("imageScale", (value) => {
+    const percentage = Number(value);
+    if (!Number.isFinite(percentage)) return 1;
+    return Math.min(Math.max(percentage, 100), 300) / 100;
+  });
   eleventyConfig.addFilter("filterByTopic", (items, topic) =>
     (items || []).filter((item) => (item.data.topics || []).includes(topic)),
   );
