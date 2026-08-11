@@ -8,6 +8,10 @@
     <div class="site-footer__notes">
       <p>{{ site.copyrightNotice }}</p>
       <p>© {{ site.established }}–<span data-current-year>{{ site.established }}</span> {{ site.author }}</p>
+      <a class="site-footer__basement-link" href="/basement/">
+        <span aria-hidden="true">B1</span>
+        {{ basement.entryLabel | default("地下室") }}
+      </a>
     </div>
     <a class="to-top" href="#top">回到入口 ↑</a>
   </div>
