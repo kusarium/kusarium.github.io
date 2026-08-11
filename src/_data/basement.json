@@ -1,0 +1,11 @@
+{
+  "eyebrow": "RESTRICTED ARCHIVE",
+  "title": "地下室",
+  "description": "翻譯內容的非公開存檔。",
+  "gateTitle": "進入地下室",
+  "listTitle": "存檔內容",
+  "passwordHint": "叶子数量？（1数字）",
+  "password": "5",
+  "buttonLabel": "進入地下室",
+  "wrongMessage": "密碼不對，再想想。"
+}
