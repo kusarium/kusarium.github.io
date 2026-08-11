@@ -37,6 +37,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "node_modules/@fontsource-variable/noto-serif-tc": "assets/fonts/noto-serif-tc",
     "node_modules/@fontsource-variable/noto-sans-tc": "assets/fonts/noto-sans-tc",
+    "node_modules/@fontsource-variable/noto-serif-sc": "assets/fonts/noto-serif-sc",
+    "node_modules/@fontsource-variable/noto-sans-sc": "assets/fonts/noto-sans-sc",
   });
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
