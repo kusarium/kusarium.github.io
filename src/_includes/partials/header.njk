@@ -11,13 +11,13 @@
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>
-      <span class="nav-toggle__label">園內導覽</span>
+      <span class="nav-toggle__label">{{ navigation.menuLabel | default("園內導覽") }}</span>
       <span class="nav-toggle__icon" aria-hidden="true"><i></i><i></i></span>
     </button>
 
-    <nav class="site-nav" id="site-navigation" aria-label="主要導覽" data-menu>
+    <nav class="site-nav" id="site-navigation" aria-label="{{ navigation.ariaLabel | default('主要導覽') }}" data-menu>
       <ul class="site-nav__list">
-        {% for item in navigation %}
+        {% for item in navigation.items %}
           {% set active = page.url | isActive(item.url) %}
           <li>
             <a class="site-nav__link{% if active %} is-active{% endif %}" href="{{ item.url }}"{% if active %} aria-current="page"{% endif %}>
