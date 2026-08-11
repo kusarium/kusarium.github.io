@@ -4,47 +4,44 @@ title: 園丁室
 description: 關於小草（クサ）、KUSARIUM，以及本站的閱讀說明。
 permalink: /about/index.html
 ---
-{% set showPortraitText = site.about.showPortraitText | default(true) %}
+{% set about = keeper.about %}
+{% set showPortraitText = about.showPortraitText | default(true) %}
 <header class="page-intro shell">
-  <p class="eyebrow">{{ site.about.pageEyebrow }}</p>
-  <h1>{{ site.about.pageTitle }}</h1>
-  <p>{{ site.about.pageIntro }}</p>
+  <p class="eyebrow">{{ about.pageEyebrow }}</p>
+  <h1>{{ about.pageTitle }}</h1>
+  <p>{{ about.pageIntro }}</p>
 </header>
 
 <section class="about shell section">
-  <div class="about__portrait about__portrait--focus-{{ site.about.portraitPosition | default('center') }}{% if site.about.portraitImage %} about__portrait--has-image{% endif %}">
-    {% if site.about.portraitImage %}
-      <img class="about__portrait-image" src="{{ site.about.portraitImage }}" alt="{{ site.about.portraitAlt | default('') }}">
-      {% if site.about.portraitTint | default(true) %}<div class="about__portrait-tint" aria-hidden="true"></div>{% endif %}
+  <div class="about__portrait{% if about.portraitImage %} about__portrait--has-image{% endif %}" style="--image-focus-x: {{ about.portraitFocusX | default(50) }}%; --image-focus-y: {{ about.portraitFocusY | default(50) }}%; --image-scale: {{ about.portraitZoom | imageScale }};">
+    {% if about.portraitImage %}
+      <img class="about__portrait-image" src="{{ about.portraitImage }}" alt="{{ about.portraitAlt | default('') }}">
+      {% if about.portraitTint | default(true) %}<div class="about__portrait-tint" aria-hidden="true"></div>{% endif %}
     {% endif %}
     {% if showPortraitText %}
-      <div class="about__monogram">{{ site.about.portraitTitle }}</div>
-      <p class="about__portrait-note">{{ site.about.portraitNote }}</p>
+      <div class="about__monogram">{{ about.portraitTitle }}</div>
+      <p class="about__portrait-note">{{ about.portraitNote }}</p>
     {% endif %}
   </div>
   <div class="about__content prose">
-    <p class="eyebrow">{{ site.about.profileEyebrow }}</p>
-    <h2>{{ site.about.profileTitle | default(site.author) }}</h2>
-    <p>{{ site.about.profileChinese }}</p>
-    <p lang="ja">{{ site.about.profileJapanese }}</p>
+    <p class="eyebrow">{{ about.profileEyebrow }}</p>
+    <h2>{{ about.profileTitle | default(site.author) }}</h2>
+    <p>{{ about.profileChinese }}</p>
+    <p lang="ja">{{ about.profileJapanese }}</p>
 
-    <h3>{{ site.about.siteHeading }}</h3>
-    <p>{{ site.about.siteChinese }}</p>
-    <p lang="ja">{{ site.about.siteJapanese }}</p>
+    <h3>{{ about.siteHeading }}</h3>
+    <p>{{ about.siteChinese }}</p>
+    <p lang="ja">{{ about.siteJapanese }}</p>
 
-    <h3>閱讀前說明 / ご案内</h3>
+    <h3>{{ about.noticeHeading }}</h3>
     <div class="notice-group">
       <section class="notice" aria-labelledby="notice-zh">
-        <h4 id="notice-zh">中文</h4>
-        <p>本站為個人營運的非營利歷史創作網站，與任何現存團體、寺社、史蹟管理方、歷史人物後裔及其他相關人士無關。</p>
-        <p>站內內容混合史實、個人解讀與同人想像，並不代表學術結論。部分作品可能包含戰爭、死亡、政治暴力，以及對歷史人物關係的虛構性描寫。如需查證，請參考文章列出的書籍與文獻。</p>
-        <p>本站圖文版權歸作者所有。未經許可，請勿轉載、加工、再發布，或用於 AI 訓練。</p>
+        <h4 id="notice-zh">{{ about.noticeChineseTitle }}</h4>
+        {% for paragraph in about.noticeChinese %}<p>{{ paragraph }}</p>{% endfor %}
       </section>
       <section class="notice" lang="ja" aria-labelledby="notice-ja">
-        <h4 id="notice-ja">日本語</h4>
-        <p>当サイトは個人が運営する非営利の歴史創作サイトです。現存する団体・寺社・史跡の管理者、歴史上の人物の子孫、およびその他の関係者とは一切関係ありません。</p>
-        <p>掲載内容には、史実に関する記述、個人的な解釈、歴史創作・ファンワークとしての想像が混在しており、学術的見解を示すものではありません。作品によっては、戦争・死・政治的暴力、および歴史上の人物関係に関するフィクショナルな描写を含みます。事実関係を確認する際は、各記事に挙げた書籍・文献をご参照ください。</p>
-        <p>掲載されている文章・画像の著作権は作者に帰属します。無断転載・加工・再配布、および AI 学習への利用を禁じます。</p>
+        <h4 id="notice-ja">{{ about.noticeJapaneseTitle }}</h4>
+        {% for paragraph in about.noticeJapanese %}<p>{{ paragraph }}</p>{% endfor %}
       </section>
     </div>
   </div>

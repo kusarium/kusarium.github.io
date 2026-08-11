@@ -13,8 +13,8 @@ layout: layouts/base.njk
 {% set effectiveHint = passwordHint %}
 {% set accessScope = "article-" ~ page.fileSlug %}
 {% if isBasement and not password %}
-  {% set effectivePassword = site.basement.password %}
-  {% set effectiveHint = site.basement.passwordHint %}
+  {% set effectivePassword = basement.password %}
+  {% set effectiveHint = basement.passwordHint %}
   {% set accessScope = "basement" %}
 {% endif %}
 <article class="article shell shell--article" lang="{{ language | default(site.language) }}">
@@ -55,7 +55,7 @@ layout: layouts/base.njk
       data-access-scope="{{ accessScope }}"
       data-toc-title="{{ tocLabel | xmlEscape | safe }}"
       {% if tocEnabled %}data-show-toc="true"{% else %}data-show-toc="false"{% endif %}
-      data-wrong-message="{{ site.basement.wrongMessage | default('密碼不對，再想想。') }}"
+      data-wrong-message="{{ basement.wrongMessage | default('密碼不對，再想想。') }}"
     >
       <div class="password-gate__panel" data-gate-panel>
         <p class="eyebrow">LOCKED ENTRY</p>

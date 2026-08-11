@@ -1,7 +1,48 @@
-[
-  { "label": "溫室", "en": "Home", "url": "/" },
-  { "label": "葉影帖", "en": "Gallery", "url": "/gallery/" },
-  { "label": "生長記", "en": "Journal", "url": "/journal/" },
-  { "label": "採集簿", "en": "Index", "url": "/tags/" },
-  { "label": "園丁室", "en": "About", "url": "/about/" }
-]
+{
+  "menuLabel": "園內導覽",
+  "ariaLabel": "主要導覽",
+  "items": [
+    { "label": "溫室", "en": "Home", "url": "/" },
+    { "label": "葉影帖", "en": "Gallery", "url": "/gallery/" },
+    { "label": "生長記", "en": "Journal", "url": "/journal/" },
+    { "label": "採集簿", "en": "Index", "url": "/tags/" },
+    { "label": "園丁室", "en": "About", "url": "/about/" }
+  ],
+  "heroActions": {
+    "galleryLabel": "翻閱葉影帖",
+    "journalLabel": "閱讀生長記",
+    "archiveEntryLabel": "ENTER THE ARCHIVE",
+    "aboutLabel": "閱讀完整說明 / ご案内 →"
+  },
+  "directory": {
+    "eyebrow": "GARDEN DIRECTORY",
+    "title": "園內目錄",
+    "description": "從一張畫、一段話，或某個日期開始翻閱。",
+    "gallery": {
+      "index": "A—01",
+      "en": "GALLERY",
+      "title": "葉影帖",
+      "description": "插畫與視覺標本",
+      "countLabel": "PIECES"
+    },
+    "journal": {
+      "index": "B—02",
+      "en": "JOURNAL",
+      "title": "生長記",
+      "description": "同人小說、隨筆與看書記錄",
+      "countLabel": "ENTRIES"
+    },
+    "index": {
+      "index": "C—03",
+      "en": "INDEX",
+      "title": "採集簿",
+      "description": "依年份與標籤翻找",
+      "countLabel": "LABELS"
+    }
+  },
+  "recent": {
+    "eyebrow": "RECENT FIELD NOTES",
+    "title": "最近入園",
+    "linkLabel": "查看全部記錄 →"
+  }
+}

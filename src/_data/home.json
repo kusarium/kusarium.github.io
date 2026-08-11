@@ -1,0 +1,29 @@
+{
+  "heroEyebrow": "DIGITAL GARDEN ARCHIVE",
+  "heroSubtitle": "電子植物園（檔案館）",
+  "heroJapanese": "北条氏を中心に、鎌倉時代の歴史創作と随筆を収めています。",
+  "archiveCard": {
+    "backgroundStyle": "soft",
+    "backgroundImage": "/assets/images/site/img1722.jpeg",
+    "backgroundAlt": "",
+    "imageFocusX": 50,
+    "imageFocusY": 50,
+    "imageZoom": 100,
+    "imageTint": true,
+    "showText": false,
+    "eyebrow": "ARCHIVE CARD",
+    "number": "001 / 2026",
+    "wordOne": "叶子",
+    "wordTwo": "鳞片",
+    "wordThree": "种子",
+    "wordFour": "花",
+    "note": "COLLECTED\nSLOWLY"
+  },
+  "introduction": {
+    "eyebrow": "ABOUT THIS SITE",
+    "title": "關於 KUSARIUM",
+    "titleJapanese": "KUSARIUMについて",
+    "textChinese": "KUSARIUM 收存以北條氏為中心的鎌倉時代歷史創作與隨筆。插畫、同人小說，以及看書時留下的個人記錄，都整理在這裡。",
+    "textJapanese": "KUSARIUMでは、北条氏を中心に、鎌倉時代を題材とした歴史創作と随筆をまとめています。イラスト、歴史創作小説、本を読んで書いた個人的な記録を掲載しています。"
+  }
+}

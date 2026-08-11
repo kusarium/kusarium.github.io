@@ -2,7 +2,7 @@
 <article class="post-card{% if post.data.cover or (post.data.coverCard and post.data.coverCard.template) %} post-card--with-cover{% endif %}" lang="{{ post.data.language | default(site.language) }}">
   {% if post.data.cover %}
     <a class="post-card__media" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
-      <img src="{{ post.data.cover }}" alt="" loading="lazy" decoding="async">
+      <img src="{{ post.data.cover }}" alt="" loading="lazy" decoding="async" style="--image-focus-x: {{ post.data.coverFocusX | default(50) }}%; --image-focus-y: {{ post.data.coverFocusY | default(50) }}%; --image-scale: {{ post.data.coverZoom | imageScale }};">
       <span class="post-card__number">NO. {{ loop.index | default("•") }}</span>
     </a>
   {% elif post.data.coverCard and post.data.coverCard.template %}
