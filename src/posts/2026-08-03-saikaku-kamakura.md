@@ -1,15 +1,21 @@
 ---
-title: "井原西鹤眼里的镰仓幕府"
-date: 2026-08-03T17:11:55+09:00
+title: 井原西鹤眼里的镰仓幕府
+date: 2026-08-03T08:11:00+00:00
+section: journal
 language: zh-Hans
-excerpt: "从井原西鹤《新可笑记》的“天下德政”故事出发，追索无名之子的里层原型，以及北条贞时、安达泰盛与平赖纲之间被改写成家庭关系的政治寓言。"
+excerpt: 从井原西鹤《新可笑记》的“天下德政”故事出发。
+showToc: true
+passwordProtected: false
 coverCard:
   template: mist
-  eyebrow: "KUSARIUM · READING NOTE"
-  title: "井原西鹤眼里的"
-  subtitle: "镰仓幕府"
-  note: "SAIKAKU / KAMAKURA"
-  number: "002 / 2026"
+  eyebrow: KUSARIUM · READING NOTE
+  title: 井原西鹤眼里的
+  subtitle: 镰仓幕府
+  note: SADATOKI
+  number: 002 / 2026
+coverFocusX: 50
+coverFocusY: 50
+coverZoom: 100
 topics:
   - 随筆
   - 井原西鶴
@@ -18,7 +24,6 @@ topics:
   - 平頼綱
 draft: false
 ---
-
 **你是个没用的孩子**
 
 《新可笑记》卷三之五——取りやりなしに天下徳政。如标题所说，故事发生在一次“天下德政”之后。
