@@ -1,6 +1,6 @@
 media:
   - name: post_images
-    label: 文章插画
+    label: 文章插畫
     input: src/assets/images/posts
     output: /assets/images/posts
     extensions: [jpg, jpeg, png, webp, gif, svg]
@@ -8,7 +8,7 @@ media:
 
 content:
   - name: posts
-    label: 文章与插画
+    label: 文章與插畫
     type: collection
     path: src/posts
     format: yaml-frontmatter
@@ -21,11 +21,11 @@ content:
       search: [title, excerpt, topics]
     fields:
       - name: title
-        label: 标题
+        label: 標題
         type: string
         required: true
       - name: date
-        label: 发布时间
+        label: 發布時間
         type: date
         required: true
         options:
@@ -36,7 +36,7 @@ content:
         type: text
         required: true
       - name: cover
-        label: 封面插画
+        label: 封面插畫
         type: image
         required: false
         options:
@@ -44,22 +44,22 @@ content:
           extensions: [jpg, jpeg, png, webp, gif, svg]
           rename: safe
       - name: coverAlt
-        label: 封面内容说明
-        description: 为无法看到图片的访客简短描述画面。
+        label: 封面內容說明
+        description: 為無法看到圖片的訪客簡短描述畫面。
         type: string
         required: false
       - name: coverCaption
-        label: 封面下方说明
+        label: 封面下方說明
         type: string
         required: false
       - name: topics
-        label: 标签
+        label: 標籤
         type: string
         list: true
         required: false
       - name: draft
-        label: 暂存为草稿
-        description: 开启后文章不会出现在公开网站。
+        label: 暫存為草稿
+        description: 開啟後文章不會出現在公開網站。
         type: boolean
         default: false
       - name: body
@@ -72,7 +72,7 @@ content:
           extensions: [jpg, jpeg, png, webp, gif, svg]
 
   - name: site
-    label: 站点资料
+    label: 站點資料
     type: file
     path: src/_data/site.json
     format: json
@@ -81,8 +81,8 @@ content:
         label: 英文站名
         type: string
         required: true
-      - name: jpName
-        label: 日文站名
+      - name: subtitle
+        label: 網站副標
         type: string
         required: true
       - name: author
@@ -90,30 +90,30 @@ content:
         type: string
         required: true
       - name: tagline
-        label: 首页短句
+        label: 首頁短句
         type: string
         required: true
       - name: description
-        label: 网站介绍
+        label: 網站介紹
         type: text
         required: true
       - name: established
-        label: 建园年份
+        label: 建園年份
         type: string
         required: true
       - name: copyrightNotice
-        label: 版权说明
+        label: 版權說明
         type: text
         required: true
       - name: url
-        label: 网站地址
+        label: 網站地址
         type: string
         readonly: true
       - name: language
-        label: 页面语言
+        label: 頁面語言
         type: string
         readonly: true
       - name: locale
-        label: 地区代码
+        label: 地區代碼
         type: string
         readonly: true
