@@ -1,7 +1,7 @@
 [
-  { "label": "温室", "en": "Home", "url": "/" },
-  { "label": "图鉴", "en": "Gallery", "url": "/gallery/" },
-  { "label": "生长日志", "en": "Journal", "url": "/journal/" },
-  { "label": "标本索引", "en": "Index", "url": "/tags/" },
-  { "label": "园丁室", "en": "About", "url": "/about/" }
+  { "label": "溫室", "en": "Home", "url": "/" },
+  { "label": "葉影帖", "en": "Gallery", "url": "/gallery/" },
+  { "label": "生長記", "en": "Journal", "url": "/journal/" },
+  { "label": "採集簿", "en": "Index", "url": "/tags/" },
+  { "label": "園丁室", "en": "About", "url": "/about/" }
 ]
