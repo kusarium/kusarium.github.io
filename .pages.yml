@@ -283,6 +283,81 @@ content:
         type: string
         required: true
 
+  - name: pageHeaders
+    label: 頁面文案
+    type: file
+    path: src/_data/pageHeaders.json
+    format: json
+    fields:
+      - name: gallery
+        label: 葉影帖（圖）
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 英文小標
+            type: string
+            required: true
+          - name: title
+            label: 主標題
+            type: string
+            required: true
+          - name: description
+            label: 說明文字
+            type: text
+            required: true
+      - name: journal
+        label: 生長記（文）
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 英文小標
+            type: string
+            required: true
+          - name: title
+            label: 主標題
+            type: string
+            required: true
+          - name: description
+            label: 說明文字
+            type: text
+            required: true
+      - name: archive
+        label: 年月歸檔（日期索引）
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 英文小標
+            type: string
+            required: true
+          - name: title
+            label: 主標題
+            type: string
+            required: true
+          - name: description
+            label: 說明文字
+            type: text
+            required: true
+      - name: tags
+        label: 採集簿（標籤索引）
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 英文小標
+            type: string
+            required: true
+          - name: title
+            label: 主標題
+            type: string
+            required: true
+          - name: description
+            label: 說明文字
+            type: text
+            required: true
+
   - name: home
     label: 首頁內容
     type: file
