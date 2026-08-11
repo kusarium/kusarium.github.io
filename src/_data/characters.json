@@ -1,0 +1,42 @@
+{
+  "eyebrow": "PERSONA FILES",
+  "title": "人物誌",
+  "description": "按所屬與立場整理創作中出現的人物。以下內容以本站採用的設定為主，包含史實與個人解讀。",
+  "emptyMessage": "這一組尚未收錄人物。",
+  "groups": [
+    {
+      "name": "得宗家",
+      "en": "TOKUSO HOUSE",
+      "description": "以北條氏嫡流及其近支為中心。",
+      "open": true,
+      "characters": [
+        {
+          "name": "北條貞時",
+          "reading": "ほうじょう さだとき",
+          "role": "第九代執權",
+          "description": "北條時宗之子。平禪門之亂後親掌政務，推動永仁德政令；也是本站歷史創作的中心人物之一。"
+        },
+        {
+          "name": "北條宗方",
+          "reading": "ほうじょう むねかた",
+          "role": "六波羅探題北方・得宗家執事",
+          "description": "北條時賴之孫、宗賴之子。曾與大佛宗宣共同任職六波羅，嘉元之亂中身亡。"
+        }
+      ]
+    },
+    {
+      "name": "北條庶流",
+      "en": "HOJO BRANCHES",
+      "description": "大佛、赤橋、金澤等北條氏庶流。",
+      "open": false,
+      "characters": [
+        {
+          "name": "大佛宗宣",
+          "reading": "おさらぎ むねのぶ",
+          "role": "六波羅探題南方・第十一代執權",
+          "description": "北條氏大佛流。長期參與幕府的審判與行政，曾與宗方共同主持六波羅政務，後任連署與執權。"
+        }
+      ]
+    }
+  ]
+}
