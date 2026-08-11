@@ -31,7 +31,7 @@ permalink: /tags/index.html
         {% for post in topicPosts %}
           <li>
             <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
+            <a href="{{ post.url }}" lang="{{ post.data.language | default(site.language) }}">{{ post.data.title }}</a>
           </li>
         {% endfor %}
       </ol>
