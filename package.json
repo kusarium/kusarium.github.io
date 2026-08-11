@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "KUSARIUM — クサの植物標本園",
+  "description": "KUSARIUM — 一座私人的紙上植物園",
   "scripts": {
     "dev": "npm run build && node scripts/dev-server.mjs",
     "build": "eleventy",
@@ -13,6 +13,8 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.6"
+    "@11ty/eleventy": "3.1.6",
+    "@fontsource-variable/noto-sans-tc": "^5.3.0",
+    "@fontsource-variable/noto-serif-tc": "^5.3.0"
   }
 }
