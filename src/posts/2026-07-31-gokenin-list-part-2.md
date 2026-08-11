@@ -3,7 +3,7 @@ title: 从13人名单回看源赖朝时期的御家人制（下）
 date: 2026-07-31T06:45:00+00:00
 section: journal
 language: zh-Hans
-excerpt: 沿着十三人名单继续回看源赖朝时期的御家人制。以及赖朝对义时一次次不合常例的区别对待><
+excerpt: BL氛围太浓了。决定让其他人来调节一下。
 showToc: true
 passwordProtected: false
 coverCard:
@@ -20,6 +20,7 @@ topics:
   - 随筆
   - 源頼朝
   - 北条義時
+  - 北条時宗
 draft: false
 ---
 **区别对待！未完待续……**
