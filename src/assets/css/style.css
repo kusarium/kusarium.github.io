@@ -720,52 +720,99 @@ a {
 
 .collection-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--ink);
-  border: 1px solid var(--ink);
+  padding: 0.75rem 0.25rem 2rem;
+  align-items: start;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.4vw, 2rem);
 }
 
 .collection-card {
+  --card-tilt: 0deg;
+  --card-wash: rgba(171, 217, 207, 0.35);
+  --card-shadow: rgba(171, 217, 207, 0.48);
+  --seal: var(--mint);
+  --plant-fill: rgba(171, 217, 207, 0.78);
+  --plant-stroke: rgba(76, 73, 72, 0.68);
+  --flora-rotate: 0deg;
   position: relative;
   display: grid;
   min-height: 18rem;
-  padding: 1.5rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
   overflow: hidden;
-  align-content: space-between;
+  border: 1px solid rgba(76, 73, 72, 0.55);
+  align-content: stretch;
+  background:
+    radial-gradient(ellipse at 84% 14%, var(--card-wash), transparent 43%),
+    linear-gradient(145deg, rgba(251, 251, 248, 0.98), rgba(239, 239, 239, 0.88));
+  box-shadow: 0.7rem 0.7rem 0 var(--card-shadow);
+  grid-template-rows: auto 1fr;
   isolation: isolate;
   text-decoration: none;
-  transition: transform 280ms var(--ease), filter 280ms ease;
+  transform: rotate(var(--card-tilt));
+  transition: transform 360ms var(--ease), box-shadow 360ms var(--ease), filter 280ms ease;
 }
 
 .collection-card::before {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   inset: 0;
-  background: radial-gradient(circle 9rem at var(--pointer-x, 80%) var(--pointer-y, 80%), rgba(255, 255, 255, 0.42), transparent 72%);
+  background: radial-gradient(circle 10rem at var(--pointer-x, 80%) var(--pointer-y, 80%), rgba(255, 255, 255, 0.68), transparent 70%);
   content: "";
   opacity: 0;
+  pointer-events: none;
   transition: opacity 320ms ease;
 }
 
-.collection-card > * {
+.collection-card > :not(.collection-card__flora) {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .collection-card:hover {
-  z-index: 2;
-  transform: translateY(-0.5rem);
-  filter: saturate(1.08);
+  z-index: 3;
+  box-shadow: 0.95rem 0.95rem 0 var(--card-shadow), 0 1.4rem 3rem rgba(76, 73, 72, 0.1);
+  transform: rotate(var(--card-tilt)) translateY(-0.45rem);
+  filter: saturate(1.04);
 }
 
 .collection-card:hover::before {
   opacity: 1;
 }
 
-.collection-card--mint { background: var(--mint); }
-.collection-card--yellow { background: var(--yellow); }
-.collection-card--ink { color: var(--paper); background: var(--ink); }
+.collection-card--mint {
+  --card-tilt: -0.45deg;
+  --card-wash: rgba(171, 217, 207, 0.5);
+  --card-shadow: rgba(171, 217, 207, 0.58);
+  --seal: var(--mint);
+  --plant-fill: rgba(171, 217, 207, 0.82);
+  --flora-rotate: -2deg;
+  min-height: 22rem;
+  grid-column: 1 / span 7;
+}
+
+.collection-card--yellow {
+  --card-tilt: 0.55deg;
+  --card-wash: rgba(254, 235, 190, 0.58);
+  --card-shadow: rgba(254, 235, 190, 0.75);
+  --seal: var(--yellow);
+  --plant-fill: rgba(254, 235, 190, 0.88);
+  --flora-rotate: 2deg;
+  min-height: 18rem;
+  margin-top: 3.6rem;
+  grid-column: 8 / -1;
+}
+
+.collection-card--ink {
+  --card-tilt: -0.2deg;
+  --card-wash: rgba(181, 181, 182, 0.42);
+  --card-shadow: rgba(114, 113, 113, 0.28);
+  --seal: var(--mist);
+  --plant-fill: rgba(114, 113, 113, 0.24);
+  --flora-rotate: -1deg;
+  min-height: 16rem;
+  margin-top: -0.7rem;
+  grid-column: 3 / span 8;
+}
 
 .collection-card__index {
   font-size: 0.62rem;
@@ -773,29 +820,111 @@ a {
   letter-spacing: 0.18em;
 }
 
+.collection-card__copy {
+  z-index: 3 !important;
+  max-width: 62%;
+  align-self: end;
+}
+
 .collection-card h3 {
   margin: 0;
   font-family: var(--serif);
-  font-size: 2rem;
+  font-size: clamp(1.9rem, 4vw, 3.15rem);
   font-weight: 500;
+  line-height: 1.12;
 }
 
 .collection-card p {
-  margin: 0.2rem 0 0;
-  font-size: 0.8rem;
+  margin: 0.45rem 0 0;
+  color: var(--ash);
+  font-size: 0.78rem;
 }
 
 .collection-card strong {
-  justify-self: end;
+  position: absolute !important;
+  top: 1.15rem;
+  right: 1.2rem;
+  display: grid;
+  width: 3.3rem;
+  height: 3.3rem;
+  border: 1px solid rgba(76, 73, 72, 0.45);
+  border-radius: 48% 52% 46% 54% / 54% 45% 55% 46%;
+  place-items: center;
+  background: var(--seal);
   font-family: var(--serif);
-  font-size: 4rem;
+  font-size: 1.55rem;
   font-weight: 400;
   line-height: 1;
   transition: transform 420ms var(--ease);
 }
 
 .collection-card:hover strong {
-  transform: translate(-0.18rem, -0.18rem) scale(1.05);
+  transform: rotate(7deg) scale(1.06);
+}
+
+.collection-card__flora {
+  position: absolute;
+  z-index: 0;
+  right: -0.9rem;
+  bottom: -1.1rem;
+  width: min(58%, 17rem);
+  height: auto;
+  color: var(--plant-stroke);
+  opacity: 0.92;
+  pointer-events: none;
+  transform: rotate(var(--flora-rotate));
+  transform-origin: 65% 100%;
+  transition: opacity 320ms ease, transform 650ms var(--ease);
+}
+
+.collection-card:hover .collection-card__flora {
+  opacity: 1;
+  transform: rotate(calc(var(--flora-rotate) + 1.5deg)) translateY(-0.3rem) scale(1.025);
+}
+
+.collection-card__flora--vine {
+  right: -1.4rem;
+  width: min(65%, 16rem);
+}
+
+.collection-card__flora--tendril {
+  right: -0.25rem;
+  bottom: -1.7rem;
+  width: min(53%, 15rem);
+}
+
+.collection-card__stem,
+.collection-card__vein {
+  fill: none;
+  stroke: var(--plant-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.collection-card__stem {
+  stroke-width: 1.7;
+}
+
+.collection-card__stem--fine,
+.collection-card__vein {
+  opacity: 0.72;
+  stroke-width: 0.85;
+}
+
+.collection-card__leaf {
+  fill: var(--plant-fill);
+  stroke: rgba(76, 73, 72, 0.22);
+  stroke-width: 0.45;
+}
+
+.collection-card__seed {
+  fill: var(--yellow);
+  stroke: var(--plant-stroke);
+  stroke-width: 0.8;
+}
+
+.collection-card__seed--small {
+  fill: var(--mint);
 }
 
 .latest {
@@ -1003,7 +1132,7 @@ a {
   position: relative;
   overflow: hidden;
   margin-top: 4rem;
-  padding: 7rem 0 2.5rem;
+  padding: 10rem 0 2.5rem;
   border-top: 1px solid var(--line);
 }
 
@@ -1012,9 +1141,9 @@ a {
   top: 0;
   right: 0;
   left: 0;
-  height: 5rem;
+  height: 8.5rem;
   overflow: hidden;
-  opacity: 0.7;
+  opacity: 0.86;
 }
 
 .site-footer__garden::after {
@@ -1027,32 +1156,64 @@ a {
   content: "";
 }
 
-.site-footer__garden span {
-  position: absolute;
-  bottom: -1.4rem;
-  width: 1px;
-  height: 5rem;
-  background: var(--ash);
-  transform: rotate(var(--r, 0deg));
+.footer-vine {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.site-footer__garden span::before,
-.site-footer__garden span::after {
-  position: absolute;
-  width: 2rem;
-  height: 0.65rem;
-  border-radius: 100% 0 100% 0;
-  background: var(--mint);
-  content: "";
+.footer-vine__ghost,
+.footer-vine__stem {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.site-footer__garden span::before { top: 1.3rem; right: 0; }
-.site-footer__garden span::after { top: 2.6rem; left: 0; transform: rotate(180deg); }
-.site-footer__garden span:nth-child(1) { left: 8%; --r: -18deg; }
-.site-footer__garden span:nth-child(2) { left: 26%; height: 4rem; --r: 14deg; }
-.site-footer__garden span:nth-child(3) { left: 51%; height: 5.4rem; --r: -8deg; }
-.site-footer__garden span:nth-child(4) { left: 73%; height: 4.4rem; --r: 21deg; }
-.site-footer__garden span:nth-child(5) { left: 91%; height: 5.2rem; --r: -15deg; }
+.footer-vine__ghost {
+  opacity: 0.18;
+  stroke: var(--mint);
+  stroke-width: 19;
+}
+
+.footer-vine__stem {
+  stroke: var(--ash);
+  stroke-width: 1.35;
+}
+
+.footer-vine__stem--fine {
+  opacity: 0.68;
+  stroke-width: 0.85;
+}
+
+.footer-vine__leaf {
+  fill: var(--mint);
+  opacity: 0.88;
+  stroke: rgba(76, 73, 72, 0.16);
+  stroke-width: 0.45;
+}
+
+.footer-vine__leaf--pale {
+  opacity: 0.5;
+}
+
+.footer-vine__leaf--small {
+  opacity: 0.68;
+}
+
+.footer-vine__seed {
+  fill: var(--yellow);
+  stroke: var(--ash);
+  stroke-width: 0.65;
+}
+
+.footer-vine__seed--small {
+  fill: var(--mint);
+}
+
+.footer-vine__branch {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
 
 .site-footer__inner {
   display: grid;
@@ -1778,13 +1939,18 @@ a {
   animation: moon-breathe 5.5s ease-in-out infinite;
 }
 
-.motion-active .site-footer__garden span {
-  animation: footer-sway 4.5s ease-in-out infinite alternate;
+.motion-active .footer-vine__branch {
+  animation: vine-sway 5.8s ease-in-out infinite alternate;
 }
 
-.motion-active .site-footer__garden span:nth-child(even) {
-  animation-delay: 600ms;
-  animation-duration: 5.3s;
+.motion-active .footer-vine__branch--middle {
+  animation-delay: 650ms;
+  animation-duration: 6.6s;
+}
+
+.motion-active .footer-vine__branch--right {
+  animation-delay: 1.1s;
+  animation-duration: 5.2s;
 }
 
 @keyframes brand-leaf-one {
@@ -1828,9 +1994,9 @@ a {
   50% { box-shadow: 0 0 0 1.55rem rgba(254, 235, 190, 0.035); }
 }
 
-@keyframes footer-sway {
-  from { translate: -0.08rem 0; }
-  to { translate: 0.08rem 0; }
+@keyframes vine-sway {
+  from { transform: rotate(-0.75deg) translateX(-1px); }
+  to { transform: rotate(0.75deg) translateX(1px); }
 }
 
 @keyframes lightbox-in {
@@ -1854,14 +2020,30 @@ a {
     font-size: clamp(4rem, 11vw, 6.5rem);
   }
 
-  .collection-grid,
   .post-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .collection-card:last-child {
-    grid-column: 1 / -1;
-    min-height: 12rem;
+  .collection-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .collection-card--mint {
+    min-height: 19rem;
+    grid-column: 1 / span 4;
+  }
+
+  .collection-card--yellow {
+    min-height: 17rem;
+    margin-top: -1.2rem;
+    grid-column: 3 / span 4;
+  }
+
+  .collection-card--ink {
+    min-height: 15rem;
+    margin-top: -1.2rem;
+    grid-column: 1 / span 5;
   }
 
   .post-card:last-child {
@@ -2089,18 +2271,69 @@ a {
     display: grid;
   }
 
-  .collection-grid,
   .post-grid {
     grid-template-columns: 1fr;
   }
 
-  .collection-card:last-child,
   .post-card:last-child {
     grid-column: auto;
   }
 
+  .collection-grid {
+    padding: 0.25rem 0.2rem 1rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.15rem 0;
+  }
+
   .collection-card {
-    min-height: 14rem;
+    min-height: 12.5rem;
+    padding: 1.2rem;
+    box-shadow: 0.42rem 0.42rem 0 var(--card-shadow);
+  }
+
+  .collection-card:hover {
+    box-shadow: 0.55rem 0.55rem 0 var(--card-shadow), 0 1rem 2rem rgba(76, 73, 72, 0.08);
+  }
+
+  .collection-card--mint {
+    min-height: 13.5rem;
+    margin-top: 0;
+    grid-column: 1 / span 11;
+  }
+
+  .collection-card--yellow {
+    min-height: 12.5rem;
+    margin-top: 0;
+    grid-column: 2 / span 11;
+  }
+
+  .collection-card--ink {
+    min-height: 12.5rem;
+    margin-top: 0;
+    grid-column: 1 / span 11;
+  }
+
+  .collection-card__copy {
+    max-width: 67%;
+  }
+
+  .collection-card strong {
+    top: 0.9rem;
+    right: 0.95rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.3rem;
+  }
+
+  .collection-card__flora {
+    right: -0.8rem;
+    bottom: -1.25rem;
+    width: min(56%, 13rem);
+  }
+
+  .collection-card__flora--tendril {
+    right: -0.2rem;
+    width: min(51%, 12rem);
   }
 
   .keeper__card {
@@ -2114,6 +2347,14 @@ a {
 
   .site-footer__inner {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    padding-top: 8.5rem;
+  }
+
+  .site-footer__garden {
+    height: 7rem;
   }
 
   .to-top {
