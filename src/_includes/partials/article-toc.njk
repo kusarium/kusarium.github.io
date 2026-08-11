@@ -1,0 +1,14 @@
+{% macro articleToc(headings, title = "本文目錄") %}
+  {% if headings and headings.length %}
+    <details class="article-toc" data-article-toc open>
+      <summary>{{ title | xmlEscape | safe }}</summary>
+      <ol>
+        {% for heading in headings %}
+          <li{% if heading.level == 3 %} class="article-toc__subsection"{% endif %}>
+            <a href="#{{ heading.id }}">{{ heading.label | xmlEscape | safe }}</a>
+          </li>
+        {% endfor %}
+      </ol>
+    </details>
+  {% endif %}
+{% endmacro %}
