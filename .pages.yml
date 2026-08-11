@@ -1,3 +1,53 @@
+components:
+  button_surface_color:
+    type: select
+    required: true
+    options:
+      values:
+        - name: "transparent"
+          label: 透明
+        - name: "#fbfbf8"
+          label: 紙白 · #fbfbf8
+        - name: "#abd9cf"
+          label: 薄荷水色 · #abd9cf
+        - name: "#feebbe"
+          label: 柔黃 · #feebbe
+        - name: "#efefef"
+          label: 霧白 · #efefef
+        - name: "#d3d3d4"
+          label: 淡灰 · #d3d3d4
+        - name: "#b5b5b6"
+          label: 銀灰 · #b5b5b6
+        - name: "#949495"
+          label: 中灰 · #949495
+        - name: "#727171"
+          label: 深灰 · #727171
+        - name: "#4c4948"
+          label: 墨灰 · #4c4948
+  button_text_color:
+    type: select
+    required: true
+    options:
+      values:
+        - name: "#fbfbf8"
+          label: 紙白 · #fbfbf8
+        - name: "#abd9cf"
+          label: 薄荷水色 · #abd9cf
+        - name: "#feebbe"
+          label: 柔黃 · #feebbe
+        - name: "#efefef"
+          label: 霧白 · #efefef
+        - name: "#d3d3d4"
+          label: 淡灰 · #d3d3d4
+        - name: "#b5b5b6"
+          label: 銀灰 · #b5b5b6
+        - name: "#949495"
+          label: 中灰 · #949495
+        - name: "#727171"
+          label: 深灰 · #727171
+        - name: "#4c4948"
+          label: 墨灰 · #4c4948
+
 media:
   - name: post_images
     label: 文章插畫
@@ -572,6 +622,81 @@ content:
             label: 完整介紹連結
             type: string
             required: true
+      - name: heroButtonColors
+        label: 首頁按鈕色制
+        description: 分別設定三個快捷按鈕的常態、懸停與按下配色。深色底建議配紙白文字。
+        type: object
+        required: true
+        fields:
+          - name: gallery
+            label: 葉影帖按鈕
+            type: object
+            required: true
+            fields:
+              - name: surface
+                label: 常態底色
+                component: button_surface_color
+              - name: text
+                label: 常態文字
+                component: button_text_color
+              - name: hoverSurface
+                label: 懸停底色
+                component: button_surface_color
+              - name: hoverText
+                label: 懸停文字
+                component: button_text_color
+              - name: activeSurface
+                label: 按下底色
+                component: button_surface_color
+              - name: activeText
+                label: 按下文字
+                component: button_text_color
+          - name: journal
+            label: 生長記按鈕
+            type: object
+            required: true
+            fields:
+              - name: surface
+                label: 常態底色
+                component: button_surface_color
+              - name: text
+                label: 常態文字
+                component: button_text_color
+              - name: hoverSurface
+                label: 懸停底色
+                component: button_surface_color
+              - name: hoverText
+                label: 懸停文字
+                component: button_text_color
+              - name: activeSurface
+                label: 按下底色
+                component: button_surface_color
+              - name: activeText
+                label: 按下文字
+                component: button_text_color
+          - name: characters
+            label: 上級職員表按鈕
+            type: object
+            required: true
+            fields:
+              - name: surface
+                label: 常態底色
+                component: button_surface_color
+              - name: text
+                label: 常態文字
+                component: button_text_color
+              - name: hoverSurface
+                label: 懸停底色
+                component: button_surface_color
+              - name: hoverText
+                label: 懸停文字
+                component: button_text_color
+              - name: activeSurface
+                label: 按下底色
+                component: button_surface_color
+              - name: activeText
+                label: 按下文字
+                component: button_text_color
       - name: directory
         label: 首頁「園內目錄」
         type: object

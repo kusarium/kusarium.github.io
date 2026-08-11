@@ -40,6 +40,32 @@
     "archiveEntryLabel": "ENTER THE ARCHIVE",
     "aboutLabel": "閱讀完整說明 / ご案内 →"
   },
+  "heroButtonColors": {
+    "gallery": {
+      "surface": "#4c4948",
+      "text": "#fbfbf8",
+      "hoverSurface": "#abd9cf",
+      "hoverText": "#4c4948",
+      "activeSurface": "#feebbe",
+      "activeText": "#4c4948"
+    },
+    "journal": {
+      "surface": "transparent",
+      "text": "#4c4948",
+      "hoverSurface": "#feebbe",
+      "hoverText": "#4c4948",
+      "activeSurface": "#abd9cf",
+      "activeText": "#4c4948"
+    },
+    "characters": {
+      "surface": "#abd9cf",
+      "text": "#4c4948",
+      "hoverSurface": "#4c4948",
+      "hoverText": "#fbfbf8",
+      "activeSurface": "#feebbe",
+      "activeText": "#4c4948"
+    }
+  },
   "directory": {
     "eyebrow": "GARDEN DIRECTORY",
     "title": "園內地圖",

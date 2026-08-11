@@ -250,6 +250,25 @@ a {
   background: var(--yellow);
 }
 
+.hero-action {
+  border-color: var(--ink);
+  color: var(--hero-action-text, var(--ink));
+  background: var(--hero-action-surface, transparent);
+}
+
+.hero-action:hover,
+.hero-action:focus-visible {
+  color: var(--hero-action-hover-text, var(--ink));
+  background: var(--hero-action-hover-surface, var(--yellow));
+}
+
+.hero-action:active {
+  color: var(--hero-action-active-text, var(--ink));
+  background: var(--hero-action-active-surface, var(--mint));
+  transform: translateY(0) scale(0.98);
+  transition-duration: 80ms;
+}
+
 .text-link {
   font-size: 0.82rem;
   font-weight: 700;

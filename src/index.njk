@@ -5,6 +5,9 @@ description: 小草（クサ）的個人歷史創作網站，收存以北條氏�
 ---
 {% set heroCard = home.archiveCard %}
 {% set showHeroCardText = heroCard.showText | default(true) %}
+{% set galleryButtonColors = navigation.heroButtonColors.gallery %}
+{% set journalButtonColors = navigation.heroButtonColors.journal %}
+{% set characterButtonColors = navigation.heroButtonColors.characters %}
 <section class="hero shell" aria-labelledby="hero-title">
   <div class="hero__copy">
     <p class="eyebrow">{{ home.heroEyebrow }} · EST. {{ site.established }}</p>
@@ -15,9 +18,9 @@ description: 小草（クサ）的個人歷史創作網站，收存以北條氏�
     <p class="hero__tagline">{{ site.tagline }}</p>
     <p class="hero__intro" lang="ja">{{ home.heroJapanese }}</p>
     <div class="hero__actions">
-      <a class="button button--primary" href="/gallery/">{{ navigation.heroActions.galleryLabel }}</a>
-      <a class="button button--quiet" href="/journal/">{{ navigation.heroActions.journalLabel }} <span aria-hidden="true">↗</span></a>
-      <a class="button button--quiet" href="/characters/">{{ navigation.heroActions.charactersLabel }} <span aria-hidden="true">↗</span></a>
+      <a class="button hero-action" style="--hero-action-surface: {{ galleryButtonColors.surface | default('#4c4948') }}; --hero-action-text: {{ galleryButtonColors.text | default('#fbfbf8') }}; --hero-action-hover-surface: {{ galleryButtonColors.hoverSurface | default('#abd9cf') }}; --hero-action-hover-text: {{ galleryButtonColors.hoverText | default('#4c4948') }}; --hero-action-active-surface: {{ galleryButtonColors.activeSurface | default('#feebbe') }}; --hero-action-active-text: {{ galleryButtonColors.activeText | default('#4c4948') }};" href="/gallery/">{{ navigation.heroActions.galleryLabel }}</a>
+      <a class="button hero-action" style="--hero-action-surface: {{ journalButtonColors.surface | default('transparent') }}; --hero-action-text: {{ journalButtonColors.text | default('#4c4948') }}; --hero-action-hover-surface: {{ journalButtonColors.hoverSurface | default('#feebbe') }}; --hero-action-hover-text: {{ journalButtonColors.hoverText | default('#4c4948') }}; --hero-action-active-surface: {{ journalButtonColors.activeSurface | default('#abd9cf') }}; --hero-action-active-text: {{ journalButtonColors.activeText | default('#4c4948') }};" href="/journal/">{{ navigation.heroActions.journalLabel }} <span aria-hidden="true">↗</span></a>
+      <a class="button hero-action" style="--hero-action-surface: {{ characterButtonColors.surface | default('#abd9cf') }}; --hero-action-text: {{ characterButtonColors.text | default('#4c4948') }}; --hero-action-hover-surface: {{ characterButtonColors.hoverSurface | default('#4c4948') }}; --hero-action-hover-text: {{ characterButtonColors.hoverText | default('#fbfbf8') }}; --hero-action-active-surface: {{ characterButtonColors.activeSurface | default('#feebbe') }}; --hero-action-active-text: {{ characterButtonColors.activeText | default('#4c4948') }};" href="/characters/">{{ navigation.heroActions.charactersLabel }} <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 
