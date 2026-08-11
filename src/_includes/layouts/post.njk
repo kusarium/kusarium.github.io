@@ -1,7 +1,8 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="article shell shell--article">
+{% from "partials/archive-cover.njk" import archiveCover %}
+<article class="article shell shell--article" lang="{{ language | default(site.language) }}">
   <header class="article__header">
     <p class="eyebrow">FIELD NOTE · {{ page.date | dateReadable }}</p>
     <h1>{{ title }}</h1>
@@ -21,6 +22,10 @@ layout: layouts/base.njk
         <img src="{{ cover }}" alt="{{ coverAlt | default(title) }}" decoding="async">
       </button>
       {% if coverCaption %}<figcaption>{{ coverCaption }}</figcaption>{% endif %}
+    </figure>
+  {% elif coverCard and coverCard.template %}
+    <figure class="article__cover article__cover--archive-card">
+      {{ archiveCover(title, topics, coverCard, page.date, "full") }}
     </figure>
   {% endif %}
 
