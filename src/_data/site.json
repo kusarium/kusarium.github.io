@@ -1,9 +1,9 @@
 {
   "name": "KUSARIUM",
-  "subtitle": "一座私人的紙上植物園",
+  "subtitle": "電子植物園（檔案館）",
   "author": "クサ",
-  "tagline": "圖像與文字，在這裡緩慢生長。",
-  "description": "クサ的私人紙上植物園，收存插畫、文字與緩慢生長的片段。",
+  "tagline": "以北條氏為中心，收存鎌倉時代的歷史創作與隨筆。",
+  "description": "クサ的個人電子植物園（檔案館），收存以北條氏為中心的鎌倉時代歷史創作、插畫與隨筆。",
   "url": "https://kusarium.github.io",
   "language": "zh-Hant",
   "locale": "zh_TW",
