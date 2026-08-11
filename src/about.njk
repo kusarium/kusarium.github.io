@@ -1,13 +1,13 @@
 ---
 layout: layouts/base.njk
 title: 園丁室
-description: 關於クサ與 KUSARIUM。
+description: 關於クサ、KUSARIUM，以及本站的閱讀說明。
 permalink: /about/index.html
 ---
 <header class="page-intro shell">
   <p class="eyebrow">THE GARDEN KEEPER</p>
   <h1>園丁室</h1>
-  <p>關於這座紙上植物園，以及照料它的人。</p>
+  <p>關於這座電子植物園（檔案館），以及整理它的人。</p>
 </header>
 
 <section class="about shell section">
@@ -18,13 +18,27 @@ permalink: /about/index.html
   <div class="about__content prose">
     <p class="eyebrow">PROFILE</p>
     <h2>{{ site.author }}</h2>
-    <p>在這裡寫下你的個人介紹。例如：我畫畫，也記錄那些在日常邊緣悄悄生長的東西。喜歡植物、舊書和不太響亮的顏色。</p>
+    <p>以北條氏與鎌倉時代為中心，畫歷史圖、寫同人小說，也整理看書時留下的想法。</p>
+    <p lang="ja">北条氏と鎌倉時代を中心に、歴史イラストや創作小説を制作し、本を読んで考えたことを随筆としてまとめています。</p>
 
     <h3>關於 KUSARIUM</h3>
-    <p><strong>KUSARIUM</strong> 是由 <em>kusa</em> 與 <em>herbarium / terrarium</em> 拼成的名字。這裡不是完成品的陳列櫃，而是一座允許草稿、碎片和季節共同生活的私人園圃。</p>
+    <p><strong>KUSARIUM</strong> 是由 <em>kusa</em> 與 <em>herbarium / terrarium</em> 拼成的名字。這裡是一座個人電子植物園（檔案館），按照插畫、小說、隨筆、人物與年份，整理以北條氏為中心的鎌倉時代創作。</p>
+    <p lang="ja"><strong>KUSARIUM</strong> は、<em>kusa</em> と <em>herbarium / terrarium</em> を組み合わせた名前です。北条氏を中心とする鎌倉時代の創作を、イラスト・小説・随筆・人物・年代ごとに整理する個人の電子植物園（アーカイブ）です。</p>
 
-    <h3>聯絡與使用說明</h3>
-    <p>可以在這裡加入信箱或社交帳號。若不希望公開聯絡方式，也可以刪掉這一節。</p>
-    <p class="notice">{{ site.copyrightNotice }}</p>
+    <h3>閱讀前說明 / ご案内</h3>
+    <div class="notice-group">
+      <section class="notice" aria-labelledby="notice-zh">
+        <h4 id="notice-zh">中文</h4>
+        <p>本站為個人營運的非營利歷史創作網站，與任何現存團體、寺社、史蹟管理方、歷史人物後裔及其他相關人士無關。</p>
+        <p>站內內容混合史實、個人解讀與同人想像，並不代表學術結論。部分作品可能包含戰爭、死亡、政治暴力，以及對歷史人物關係的虛構性描寫。如需查證，請參考文章列出的書籍與文獻。</p>
+        <p>本站圖文版權歸作者所有。未經許可，請勿轉載、加工、再發布，或用於 AI 訓練。</p>
+      </section>
+      <section class="notice" lang="ja" aria-labelledby="notice-ja">
+        <h4 id="notice-ja">日本語</h4>
+        <p>当サイトは個人が運営する非営利の歴史創作サイトです。現存する団体・寺社・史跡の管理者、歴史上の人物の子孫、およびその他の関係者とは一切関係ありません。</p>
+        <p>掲載内容には、史実に関する記述、個人的な解釈、歴史創作・ファンワークとしての想像が混在しており、学術的見解を示すものではありません。作品によっては、戦争・死・政治的暴力、および歴史上の人物関係に関するフィクショナルな描写を含みます。事実関係を確認する際は、各記事に挙げた書籍・文献をご参照ください。</p>
+        <p>掲載されている文章・画像の著作権は作者に帰属します。無断転載・加工・再配布、および AI 学習への利用を禁じます。</p>
+      </section>
+    </div>
   </div>
 </section>
