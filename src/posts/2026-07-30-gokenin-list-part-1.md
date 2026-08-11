@@ -1,23 +1,28 @@
 ---
-title: "从13人名单回看源赖朝时期的御家人制（上）"
-date: 2026-07-30T18:55:37+09:00
+title: 从13人名单回看源赖朝时期的御家人制（上）
+date: 2026-07-30T09:55:00+00:00
+section: journal
 language: zh-Hans
-excerpt: "从赖朝去世后的十三人名单出发，追索御家人制的形成，以及北条义时为何能在父亲之外拥有一个只属于自己的位置。"
+excerpt: 从赖朝去世后的十三人名单出发，追索御家人制的形成，以及北条义时的特殊定位。
+showToc: true
+passwordProtected: false
 coverCard:
   template: afterglow
-  eyebrow: "KUSARIUM · HISTORY NOTE"
-  title: "从13人名单回看"
-  subtitle: "御家人制（上）"
-  note: "YORITOMO / YOSHITOKI"
-  number: "005 / 2026"
+  eyebrow: KUSARIUM · HISTORY NOTE
+  title: 从13人名单回看
+  subtitle: 御家人制（上）
+  note: YOSHITOKI / YORIMOTO
+  number: 005 / 2026
+coverFocusX: 50
+coverFocusY: 50
+coverZoom: 100
 topics:
   - 随筆
   - 源頼朝
   - 北条義時
 draft: false
 ---
-
-\*起了很装模作样的标题实际上全是看书扣的北条义时X源赖朝的糖。。
+起了很装模作样的标题实际上全是看书扣的北条义时X源赖朝的糖。。
 
 **买一送一的促销装北条**
 
