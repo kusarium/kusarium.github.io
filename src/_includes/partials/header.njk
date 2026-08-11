@@ -1,8 +1,12 @@
 <header class="site-header" data-site-header>
   <div class="site-header__inner shell">
     <a class="brand" href="/" aria-label="{{ site.name }} 首頁">
-      <span class="brand__mark" aria-hidden="true">
-        <span>K</span><i>26</i>
+      <span class="brand__mark{% if branding.headerMark %} brand__mark--custom{% endif %}" aria-hidden="true">
+        {% if branding.headerMark %}
+          <img src="{{ branding.headerMark }}" alt="">
+        {% else %}
+          <span>{{ branding.fallbackLetter | default("K") }}</span><i>{{ branding.fallbackNumber | default("26") }}</i>
+        {% endif %}
       </span>
       <span class="brand__text">
         <span class="brand__name">{{ site.name }}</span>
