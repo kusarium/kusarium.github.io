@@ -3,7 +3,7 @@ title: 请至少睁开双眼，看清我毁灭的瞬间
 date: 2026-08-11T03:00:00+00:00
 section: journal
 language: zh-Hans
-excerpt: 从六波罗共同署判的花押，到嘉元之乱中没有发生的最后一面：北条宗方与大仏宗宣在得宗与庶流之间相遇、并行，最终错身。
+excerpt: 从六波罗共同署判的花押，到嘉元之乱错过的最后一面
 showToc: true
 tocTitle: 本文目录
 passwordProtected: false
