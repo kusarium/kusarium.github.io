@@ -138,12 +138,40 @@ content:
             required: false
       - name: cover
         label: 封面插畫
+        description: 如需直接裁掉多餘範圍，可先使用圖片取景台：https://kusarium.github.io/image-crop/
         type: image
         required: false
         options:
           media: post_images
           extensions: [jpg, jpeg, png, webp, gif, svg]
           rename: safe
+      - name: coverFocusX
+        label: 封面水平焦點（%）
+        description: 列表與葉影帖取景使用；0 靠左、50 居中、100 靠右。
+        type: number
+        required: false
+        default: 50
+        options:
+          min: 0
+          max: 100
+      - name: coverFocusY
+        label: 封面垂直焦點（%）
+        description: 0 靠上、50 居中、100 靠下。
+        type: number
+        required: false
+        default: 50
+        options:
+          min: 0
+          max: 100
+      - name: coverZoom
+        label: 封面放大（%）
+        description: 100 為原始取景；數字越大，裁掉的周圍越多。建議不超過 180。
+        type: number
+        required: false
+        default: 100
+        options:
+          min: 100
+          max: 300
       - name: coverAlt
         label: 封面內容說明
         description: 為無法看到圖片的訪客簡短描述畫面。
@@ -183,8 +211,8 @@ content:
         type: string
         required: true
       - name: subtitle
-        label: 導覽列副標
-        description: 顯示在全站頁首與頁尾；首頁的「電子植物園（檔案館）」另在首頁設定修改。
+        label: 頁首副標
+        description: 顯示在全站頁首與頁尾。
         type: string
         required: true
       - name: author
@@ -207,161 +235,361 @@ content:
         label: 版權說明
         type: text
         required: true
-      - name: home
-        label: 首頁設定
+      - name: url
+        label: 網站地址
+        type: string
+        readonly: true
+      - name: language
+        label: 頁面語言
+        type: string
+        readonly: true
+      - name: locale
+        label: 地區代碼
+        type: string
+        readonly: true
+
+  - name: home
+    label: 首頁內容
+    type: file
+    path: src/_data/home.json
+    format: json
+    fields:
+      - name: heroEyebrow
+        label: 首頁眉標
+        type: string
+        required: true
+      - name: heroSubtitle
+        label: 首頁站名說明
+        description: 「電子植物園（檔案館）」只在這裡出現。
+        type: string
+        required: true
+      - name: heroJapanese
+        label: 首頁日文短句
+        type: text
+        required: true
+      - name: archiveCard
+        label: 首頁檔案卡
+        description: 邊框固定保留；可以選漸變底色或上傳圖片，並自由修改卡片文字。
         type: object
         required: true
         fields:
-          - name: heroEyebrow
-            label: 首頁眉標
+          - name: backgroundStyle
+            label: 底色樣式
+            type: select
+            required: true
+            options:
+              values:
+                - name: soft
+                  label: 柔霧（目前樣式）
+                - name: mint
+                  label: 薄荷
+                - name: yellow
+                  label: 柔黃
+                - name: night
+                  label: 夜幕
+          - name: backgroundImage
+            label: 自訂底圖
+            description: 上傳後會覆蓋漸變底色。需要裁出固定範圍時，可先使用：https://kusarium.github.io/image-crop/
+            type: image
+            required: false
+            options:
+              media: site_images
+              extensions: [jpg, jpeg, png, webp, gif, svg]
+              rename: safe
+          - name: backgroundAlt
+            label: 底圖內容說明
+            type: string
+            required: false
+          - name: imageFocusX
+            label: 水平焦點（%）
+            description: 0 靠左、50 居中、100 靠右。
+            type: number
+            required: true
+            default: 50
+            options:
+              min: 0
+              max: 100
+          - name: imageFocusY
+            label: 垂直焦點（%）
+            description: 0 靠上、50 居中、100 靠下。
+            type: number
+            required: true
+            default: 50
+            options:
+              min: 0
+              max: 100
+          - name: imageZoom
+            label: 圖片放大（%）
+            description: 100 為原始取景；數字越大，裁掉的周圍越多。
+            type: number
+            required: true
+            default: 100
+            options:
+              min: 100
+              max: 300
+          - name: imageTint
+            label: 在圖片上保留淡色襯底
+            description: 文字不清楚時開啟；使用已排好文字的完整圖片時可以關閉。
+            type: boolean
+            default: true
+          - name: showText
+            label: 顯示卡片文字
+            description: 若上傳的圖片本身已帶文字，可以關閉。
+            type: boolean
+            default: true
+          - name: eyebrow
+            label: 左上小字
             type: string
             required: true
-          - name: heroSubtitle
-            label: 首頁站名說明
-            description: 「電子植物園（檔案館）」只在這裡出現。
+          - name: number
+            label: 右上編號
             type: string
             required: true
-          - name: heroJapanese
-            label: 首頁日文短句
+          - name: wordOne
+            label: 主字一
+            type: string
+            required: true
+          - name: wordTwo
+            label: 主字二
+            type: string
+            required: true
+          - name: wordThree
+            label: 主字三
+            type: string
+            required: true
+          - name: wordFour
+            label: 主字四
+            type: string
+            required: true
+          - name: note
+            label: 右下註記
+            description: 可以換行。
             type: text
             required: true
-          - name: archiveCard
-            label: 首頁檔案卡
-            description: 邊框固定保留；可以選漸變底色或上傳圖片，並自由修改卡片文字。
+      - name: introduction
+        label: 首頁網站介紹
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 眉標
+            type: string
+            required: true
+          - name: title
+            label: 中文標題
+            type: string
+            required: true
+          - name: titleJapanese
+            label: 日文標題
+            type: string
+            required: true
+          - name: textChinese
+            label: 中文介紹
+            type: text
+            required: true
+          - name: textJapanese
+            label: 日文介紹
+            type: text
+            required: true
+
+  - name: navigation
+    label: 導覽文案
+    type: file
+    path: src/_data/navigation.json
+    format: json
+    fields:
+      - name: menuLabel
+        label: 選單按鈕文字
+        type: string
+        required: true
+      - name: ariaLabel
+        label: 導覽輔助說明
+        description: 提供給螢幕閱讀器，不會直接顯示在畫面上。
+        type: string
+        required: true
+      - name: items
+        label: 頁首導覽項目
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{label} / {en}"
+        required: true
+        fields:
+          - name: label
+            label: 中文名稱
+            type: string
+            required: true
+          - name: en
+            label: 英文名稱
+            type: string
+            required: true
+          - name: url
+            label: 連結
+            description: 一般不需修改。
+            type: string
+            required: true
+      - name: heroActions
+        label: 首頁入口文字
+        type: object
+        required: true
+        fields:
+          - name: galleryLabel
+            label: 葉影帖按鈕
+            type: string
+            required: true
+          - name: journalLabel
+            label: 生長記按鈕
+            type: string
+            required: true
+          - name: archiveEntryLabel
+            label: 向下導覽文字
+            type: string
+            required: true
+          - name: aboutLabel
+            label: 完整介紹連結
+            type: string
+            required: true
+      - name: directory
+        label: 首頁「園內目錄」
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 眉標
+            type: string
+            required: true
+          - name: title
+            label: 標題
+            type: string
+            required: true
+          - name: description
+            label: 說明
+            type: text
+            required: true
+          - name: gallery
+            label: 葉影帖卡片
             type: object
             required: true
             fields:
-              - name: backgroundStyle
-                label: 底色樣式
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: soft
-                      label: 柔霧（目前樣式）
-                    - name: mint
-                      label: 薄荷
-                    - name: yellow
-                      label: 柔黃
-                    - name: night
-                      label: 夜幕
-              - name: backgroundImage
-                label: 自訂底圖
-                description: 上傳後會覆蓋所選漸變底色；刪除此欄即可恢復漸變。
-                type: image
-                required: false
-                options:
-                  media: site_images
-                  extensions: [jpg, jpeg, png, webp, gif, svg]
-                  rename: safe
-              - name: backgroundAlt
-                label: 底圖內容說明
-                type: string
-                required: false
-              - name: imagePosition
-                label: 底圖取景位置
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: center
-                      label: 居中
-                    - name: top
-                      label: 靠上
-                    - name: bottom
-                      label: 靠下
-                    - name: left
-                      label: 靠左
-                    - name: right
-                      label: 靠右
-              - name: imageTint
-                label: 在圖片上保留淡色襯底
-                description: 文字不清楚時開啟；使用已排好文字的完整圖片時可以關閉。
-                type: boolean
-                default: true
-              - name: showText
-                label: 顯示卡片文字
-                description: 若上傳的圖片本身已帶文字，可以關閉。
-                type: boolean
-                default: true
-              - name: eyebrow
-                label: 左上小字
+              - name: index
+                label: 編號
                 type: string
                 required: true
-              - name: number
-                label: 右上編號
-                type: string
-                required: true
-              - name: wordOne
-                label: 主字一
-                type: string
-                required: true
-              - name: wordTwo
-                label: 主字二
-                type: string
-                required: true
-              - name: wordThree
-                label: 主字三
-                type: string
-                required: true
-              - name: wordFour
-                label: 主字四
-                type: string
-                required: true
-              - name: note
-                label: 右下註記
-                description: 可以換行。
-                type: text
-                required: true
-          - name: introduction
-            label: 首頁介紹
-            type: object
-            required: true
-            fields:
-              - name: eyebrow
-                label: 眉標
+              - name: en
+                label: 英文小標
                 type: string
                 required: true
               - name: title
                 label: 中文標題
                 type: string
                 required: true
-              - name: titleJapanese
-                label: 日文標題
+              - name: description
+                label: 說明
                 type: string
                 required: true
-              - name: textChinese
-                label: 中文介紹
-                type: text
+              - name: countLabel
+                label: 數量單位
+                type: string
                 required: true
-              - name: textJapanese
-                label: 日文介紹
-                type: text
-                required: true
-          - name: keeper
-            label: 首頁園丁簡介
-            description: 圖片沿用下方「園丁室設定」中的個人圖片。
+          - name: journal
+            label: 生長記卡片
             type: object
             required: true
             fields:
-              - name: eyebrow
-                label: 眉標
+              - name: index
+                label: 編號
+                type: string
+                required: true
+              - name: en
+                label: 英文小標
                 type: string
                 required: true
               - name: title
-                label: 標題
+                label: 中文標題
                 type: string
                 required: true
-              - name: summary
-                label: 簡介
-                type: text
-                required: true
-              - name: buttonLabel
-                label: 按鈕文字
+              - name: description
+                label: 說明
                 type: string
                 required: true
+              - name: countLabel
+                label: 數量單位
+                type: string
+                required: true
+          - name: index
+            label: 採集簿卡片
+            type: object
+            required: true
+            fields:
+              - name: index
+                label: 編號
+                type: string
+                required: true
+              - name: en
+                label: 英文小標
+                type: string
+                required: true
+              - name: title
+                label: 中文標題
+                type: string
+                required: true
+              - name: description
+                label: 說明
+                type: string
+                required: true
+              - name: countLabel
+                label: 數量單位
+                type: string
+                required: true
+      - name: recent
+        label: 首頁「最近入園」
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 眉標
+            type: string
+            required: true
+          - name: title
+            label: 標題
+            type: string
+            required: true
+          - name: linkLabel
+            label: 查看全部連結
+            type: string
+            required: true
+
+  - name: keeper
+    label: 園丁室
+    type: file
+    path: src/_data/keeper.json
+    format: json
+    fields:
+      - name: home
+        label: 首頁園丁簡介
+        type: object
+        required: true
+        fields:
+          - name: eyebrow
+            label: 眉標
+            type: string
+            required: true
+          - name: title
+            label: 標題
+            type: string
+            required: true
+          - name: summary
+            label: 簡介
+            type: text
+            required: true
+          - name: buttonLabel
+            label: 按鈕文字
+            type: string
+            required: true
       - name: about
-        label: 園丁室設定
+        label: 園丁室頁面
         type: object
         required: true
         fields:
@@ -379,7 +607,7 @@ content:
             required: true
           - name: portraitImage
             label: 園丁圖片
-            description: 同時顯示在首頁園丁簡介與園丁室；留空時使用目前的文字卡片。
+            description: 同時顯示在首頁園丁簡介與園丁室。需要裁出固定範圍時，可先使用：https://kusarium.github.io/image-crop/
             type: image
             required: false
             options:
@@ -390,22 +618,33 @@ content:
             label: 圖片內容說明
             type: string
             required: false
-          - name: portraitPosition
-            label: 圖片取景位置
-            type: select
+          - name: portraitFocusX
+            label: 圖片水平焦點（%）
+            description: 0 靠左、50 居中、100 靠右。
+            type: number
             required: true
+            default: 50
             options:
-              values:
-                - name: center
-                  label: 居中
-                - name: top
-                  label: 靠上
-                - name: bottom
-                  label: 靠下
-                - name: left
-                  label: 靠左
-                - name: right
-                  label: 靠右
+              min: 0
+              max: 100
+          - name: portraitFocusY
+            label: 圖片垂直焦點（%）
+            description: 0 靠上、50 居中、100 靠下。
+            type: number
+            required: true
+            default: 50
+            options:
+              min: 0
+              max: 100
+          - name: portraitZoom
+            label: 圖片放大（%）
+            description: 100 為原始取景；數字越大，裁掉的周圍越多。
+            type: number
+            required: true
+            default: 100
+            options:
+              min: 100
+              max: 300
           - name: portraitTint
             label: 在圖片上保留淡色襯底
             type: boolean
@@ -451,58 +690,69 @@ content:
             label: 日文站名說明
             type: text
             required: true
-      - name: basement
-        label: 地下室設定
-        description: 地下室不會出現在網站導覽或站點地圖中，網址固定為 /basement/。
-        type: object
-        required: true
-        fields:
-          - name: eyebrow
-            label: 頁面眉標
+          - name: noticeHeading
+            label: 說明標題
             type: string
             required: true
-          - name: title
-            label: 頁面標題
+          - name: noticeChineseTitle
+            label: 中文區標題
             type: string
             required: true
-          - name: description
-            label: 頁面說明
+          - name: noticeChinese
+            label: 中文說明段落
             type: text
+            list: true
             required: true
-          - name: gateTitle
-            label: 密碼框標題
+          - name: noticeJapaneseTitle
+            label: 日文區標題
             type: string
             required: true
-          - name: listTitle
-            label: 解鎖後的列表標題
-            type: string
+          - name: noticeJapanese
+            label: 日文說明段落
+            type: text
+            list: true
             required: true
-          - name: passwordHint
-            label: 密碼提示
-            type: string
-            required: true
-          - name: password
-            label: 地下室密碼
-            description: 會套用至未設定單篇密碼的所有地下室文章。注意：GitHub 倉庫是公開的，這只能阻擋一般訪客。
-            type: string
-            required: true
-          - name: buttonLabel
-            label: 解鎖按鈕文字
-            type: string
-            required: true
-          - name: wrongMessage
-            label: 密碼錯誤提示
-            type: string
-            required: true
-      - name: url
-        label: 網站地址
+
+  - name: basement
+    label: 地下室
+    type: file
+    path: src/_data/basement.json
+    format: json
+    fields:
+      - name: eyebrow
+        label: 頁面眉標
         type: string
-        readonly: true
-      - name: language
-        label: 頁面語言
+        required: true
+      - name: title
+        label: 頁面標題
         type: string
-        readonly: true
-      - name: locale
-        label: 地區代碼
+        required: true
+      - name: description
+        label: 頁面說明
+        type: text
+        required: true
+      - name: gateTitle
+        label: 密碼框標題
         type: string
-        readonly: true
+        required: true
+      - name: listTitle
+        label: 解鎖後的列表標題
+        type: string
+        required: true
+      - name: passwordHint
+        label: 密碼提示
+        type: string
+        required: true
+      - name: password
+        label: 地下室密碼
+        description: 會套用至未設定單篇密碼的所有地下室文章。注意：GitHub 倉庫是公開的，這只能阻擋一般訪客。
+        type: string
+        required: true
+      - name: buttonLabel
+        label: 解鎖按鈕文字
+        type: string
+        required: true
+      - name: wrongMessage
+        label: 密碼錯誤提示
+        type: string
+        required: true
