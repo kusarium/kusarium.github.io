@@ -79,6 +79,7 @@ export default function (eleventyConfig) {
     (items || []).filter((item) => (item.data.topics || []).includes(topic)),
   );
   eleventyConfig.addFilter("isActive", (currentUrl = "", targetUrl = "") => {
+    if (typeof currentUrl !== "string" || typeof targetUrl !== "string") return false;
     if (targetUrl === "/") return currentUrl === "/";
     return currentUrl.startsWith(targetUrl);
   });
