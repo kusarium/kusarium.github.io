@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+title: 圖片取景台
+description: 在瀏覽器中選擇圖片範圍、裁剪尺寸並下載，再上傳至 KUSARIUM CMS。
+permalink: /image-crop/index.html
+noindex: true
+excludeFromSitemap: true
+imageCropTool: true
+---
+<header class="page-intro shell page-intro--split">
+  <div>
+    <p class="eyebrow">IMAGE CROP DESK</p>
+    <h1>圖片取景台</h1>
+  </div>
+  <p>圖片只在目前的瀏覽器中處理，不會上傳。拖曳取景、調整大小，確認後下載，再放進 CMS。</p>
+</header>
+
+<section class="crop-desk shell section" data-image-cropper>
+  <form class="crop-desk__controls" data-crop-controls>
+    <label class="crop-desk__file">
+      <span>01 · 選擇原圖</span>
+      <input type="file" accept="image/*" data-crop-file>
+    </label>
+
+    <label>
+      <span>02 · 使用位置</span>
+      <select data-crop-preset>
+        <option value="gallery">文章／葉影帖 · 4:3</option>
+        <option value="home">首頁檔案卡 · 39:50</option>
+        <option value="keeper">園丁室 · 4:5</option>
+        <option value="square">方形頭像 · 1:1</option>
+        <option value="wide">寬幅插圖 · 16:9</option>
+      </select>
+    </label>
+
+    <label>
+      <span>03 · 放大 <output data-crop-zoom-output>100%</output></span>
+      <input type="range" min="100" max="300" value="100" step="1" data-crop-zoom>
+    </label>
+
+    <div class="crop-desk__row">
+      <label>
+        <span>檔案格式</span>
+        <select data-crop-format>
+          <option value="image/webp">WebP（推薦）</option>
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/png">PNG</option>
+        </select>
+      </label>
+      <label>
+        <span>畫質 <output data-crop-quality-output>92%</output></span>
+        <input type="range" min="70" max="100" value="92" step="1" data-crop-quality>
+      </label>
+    </div>
+
+    <div class="crop-desk__actions">
+      <button class="button button--quiet" type="button" data-crop-reset disabled>重新置中</button>
+      <button class="button button--primary" type="button" data-crop-download disabled>確認裁剪並下載</button>
+    </div>
+    <p class="crop-desk__status" role="status" aria-live="polite" data-crop-status>請先選擇一張圖片。</p>
+  </form>
+
+  <div class="crop-desk__workspace">
+    <div class="crop-desk__canvas-wrap" data-crop-canvas-wrap>
+      <canvas width="1600" height="1200" tabindex="0" aria-label="圖片裁剪預覽；可拖曳圖片調整取景" data-crop-canvas></canvas>
+      <p data-crop-placeholder>選擇圖片後，在這裡拖曳取景。</p>
+      <span class="crop-desk__reticle" aria-hidden="true"></span>
+    </div>
+    <p>拖曳圖片改變範圍；也可以使用滑鼠滾輪或上方滑桿放大。下載的成品會使用目前框內看到的內容。</p>
+  </div>
+</section>
