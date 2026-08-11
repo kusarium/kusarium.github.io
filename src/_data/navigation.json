@@ -23,6 +23,11 @@
       "url": "/tags/"
     },
     {
+      "label": "人物誌",
+      "en": "Cast",
+      "url": "/characters/"
+    },
+    {
       "label": "園丁室",
       "en": "About",
       "url": "/about/"
