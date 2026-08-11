@@ -14,7 +14,7 @@ permalink: /gallery/index.html
   {% if collections.gallery.length %}
     <div class="gallery-grid">
       {% for post in collections.gallery %}
-        <article class="gallery-item">
+        <article class="gallery-item" lang="{{ post.data.language | default(site.language) }}">
           <button class="gallery-item__image" type="button" data-lightbox-trigger data-src="{{ post.data.cover }}" data-alt="{{ post.data.coverAlt | default(post.data.title) }}" data-caption="{{ post.data.title }}" aria-label="放大查看：{{ post.data.title }}">
             <img src="{{ post.data.cover }}" alt="{{ post.data.coverAlt | default(post.data.title) }}" loading="lazy" decoding="async">
             <span class="gallery-item__view">VIEW</span>

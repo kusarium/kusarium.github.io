@@ -8,6 +8,7 @@
     <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
     <meta name="description" content="{{ description | default(site.description) }}">
     <meta name="author" content="{{ site.author }}">
+    {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
     <meta property="og:type" content="{% if layout == 'layouts/post.njk' %}article{% else %}website{% endif %}">
     <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
     <meta property="og:description" content="{{ description | default(site.description) }}">
@@ -18,10 +19,12 @@
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS" href="{{ site.url }}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/fonts/noto-serif-tc/index.css?v=20260811d">
-    <link rel="stylesheet" href="/assets/fonts/noto-sans-tc/index.css?v=20260811d">
-    <link rel="stylesheet" href="/assets/css/style.css?v=20260811d">
-    <script defer src="/assets/js/site.js?v=20260811d"></script>
+    <link rel="stylesheet" href="/assets/fonts/noto-serif-tc/index.css?v=20260811e">
+    <link rel="stylesheet" href="/assets/fonts/noto-sans-tc/index.css?v=20260811e">
+    <link rel="stylesheet" href="/assets/fonts/noto-serif-sc/index.css?v=20260811e">
+    <link rel="stylesheet" href="/assets/fonts/noto-sans-sc/index.css?v=20260811e">
+    <link rel="stylesheet" href="/assets/css/style.css?v=20260811e">
+    <script defer src="/assets/js/site.js?v=20260811e"></script>
   </head>
   <body id="top" class="page page--{{ page.fileSlug | default('home') }}">
     <a class="skip-link" href="#main-content">跳至正文</a>

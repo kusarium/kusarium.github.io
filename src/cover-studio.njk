@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+title: 封面樣式
+description: KUSARIUM 的四款可編輯檔案卡封面預覽。
+permalink: /cover-studio/index.html
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{% from "partials/archive-cover.njk" import archiveCover %}
+{% set sampleTopics = ["随筆"] %}
+
+<header class="page-intro shell page-intro--split">
+  <div>
+    <p class="eyebrow">ARCHIVE COVER STUDIO</p>
+    <h1>封面樣式</h1>
+  </div>
+  <p>四款封面使用同一組薄荷、柔黃、霧灰與墨色。CMS 中可分別修改眉標、主標、副標、註記與編號。</p>
+</header>
+
+<section class="cover-studio shell section" lang="zh-Hans" aria-label="文字封面樣式預覽">
+  {% set nightCard = {
+    template: "night",
+    eyebrow: "KUSARIUM · ARCHIVE CARD",
+    title: "夜间",
+    subtitle: "温室记录",
+    note: "NIGHT NOTE",
+    number: "001 / 2026"
+  } %}
+  <article class="cover-studio__item">
+    {{ archiveCover("夜间温室记录", sampleTopics, nightCard, page.date, "preview") }}
+    <h2>01 夜幕</h2>
+    <p>深灰底色与薄荷微光，最接近原本的档案卡。</p>
+  </article>
+
+  {% set mistCard = {
+    template: "mist",
+    eyebrow: "KUSARIUM · FIELD NOTE",
+    title: "微光",
+    subtitle: "史料随筆",
+    note: "MORNING FILE",
+    number: "002 / 2026"
+  } %}
+  <article class="cover-studio__item">
+    {{ archiveCover("微光史料随筆", sampleTopics, mistCard, page.date, "preview") }}
+    <h2>02 晨霧</h2>
+    <p>霧白與薄荷的淺色版本，適合較安靜的文字。</p>
+  </article>
+
+  {% set afterglowCard = {
+    template: "afterglow",
+    eyebrow: "KUSARIUM · COLLECTED NOTE",
+    title: "余晖",
+    subtitle: "途中手记",
+    note: "AFTERGLOW",
+    number: "003 / 2026"
+  } %}
+  <article class="cover-studio__item">
+    {{ archiveCover("余晖途中手记", sampleTopics, afterglowCard, page.date, "preview") }}
+    <h2>03 餘暉</h2>
+    <p>柔黃與灰色的暖調版本，文字偏右，留白較多。</p>
+  </article>
+
+  {% set cabinetCard = {
+    template: "cabinet",
+    eyebrow: "KUSARIUM · HISTORY FILE",
+    title: "嘉元",
+    subtitle: "历史同人档案",
+    note: "HISTORY FILE",
+    number: "004 / 2026"
+  } %}
+  <article class="cover-studio__item">
+    {{ archiveCover("嘉元历史同人档案", sampleTopics, cabinetCard, page.date, "preview") }}
+    <h2>04 索引櫃</h2>
+    <p>紙白與墨灰分欄，最像史料卡片與舊檔案盒。</p>
+  </article>
+</section>

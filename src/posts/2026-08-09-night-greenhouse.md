@@ -1,6 +1,7 @@
 ---
 title: "夜間溫室記錄（示例）"
 date: 2026-08-09T21:30:00+09:00
+language: zh-Hant
 excerpt: "薄荷與柔黃停在雨雲一樣的灰裡，替夜間留下一張安靜的紙簽。"
 cover: "/assets/images/posts/sample-night-garden.svg"
 coverAlt: "深灰色背景上的夜間溫室繁體標題與薄荷、柔黃、霧灰三色色條"

@@ -1,8 +1,13 @@
-<article class="post-card{% if post.data.cover %} post-card--with-cover{% endif %}">
+{% from "partials/archive-cover.njk" import archiveCover %}
+<article class="post-card{% if post.data.cover or (post.data.coverCard and post.data.coverCard.template) %} post-card--with-cover{% endif %}" lang="{{ post.data.language | default(site.language) }}">
   {% if post.data.cover %}
     <a class="post-card__media" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
       <img src="{{ post.data.cover }}" alt="" loading="lazy" decoding="async">
       <span class="post-card__number">NO. {{ loop.index | default("•") }}</span>
+    </a>
+  {% elif post.data.coverCard and post.data.coverCard.template %}
+    <a class="post-card__media post-card__media--archive-card" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+      {{ archiveCover(post.data.title, post.data.topics, post.data.coverCard, post.date, "card") }}
     </a>
   {% else %}
     <a class="post-card__media post-card__media--specimen" href="{{ post.url }}" tabindex="-1" aria-hidden="true">

@@ -21,8 +21,8 @@ permalink: /archive/index.html
         {% for post in group.posts %}
           <li>
             <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
-            {% if post.data.cover %}<span class="archive-year__image" aria-label="含圖片">▧</span>{% endif %}
+            <a href="{{ post.url }}" lang="{{ post.data.language | default(site.language) }}">{{ post.data.title }}</a>
+            {% if post.data.cover or (post.data.coverCard and post.data.coverCard.template) %}<span class="archive-year__image" aria-label="含封面">▧</span>{% endif %}
           </li>
         {% endfor %}
       </ol>
