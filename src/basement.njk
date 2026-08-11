@@ -11,7 +11,7 @@ excludeFromSitemap: true
     <div class="section-heading">
       <div>
         <p class="eyebrow">RESTRICTED FILES</p>
-        <h2>{{ site.basement.listTitle | default("存檔內容") }}</h2>
+        <h2>{{ basement.listTitle | default("存檔內容") }}</h2>
       </div>
       <p>{{ collections.basement.length }} FILES</p>
     </div>
@@ -19,7 +19,7 @@ excludeFromSitemap: true
       <ol class="journal-list journal-list--basement">
         {% for post in collections.basement %}
           {% set itemHint = post.data.passwordHint %}
-          {% if not post.data.password %}{% set itemHint = site.basement.passwordHint %}{% endif %}
+          {% if not post.data.password %}{% set itemHint = basement.passwordHint %}{% endif %}
           <li lang="{{ post.data.language | default(site.language) }}">
             <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
             <div>
@@ -41,10 +41,10 @@ excludeFromSitemap: true
 
 <header class="page-intro shell page-intro--split">
   <div>
-    <p class="eyebrow">{{ site.basement.eyebrow | default("RESTRICTED ARCHIVE") }}</p>
-    <h1>{{ site.basement.title | default("地下室") }}</h1>
+    <p class="eyebrow">{{ basement.eyebrow | default("RESTRICTED ARCHIVE") }}</p>
+    <h1>{{ basement.title | default("地下室") }}</h1>
   </div>
-  <p>{{ site.basement.description | default("翻譯內容的非公開存檔。") }}</p>
+  <p>{{ basement.description | default("翻譯內容的非公開存檔。") }}</p>
 </header>
 
 <section
@@ -52,22 +52,22 @@ excludeFromSitemap: true
   data-password-gate
   data-content-kind="basement"
   data-access-scope="basement"
-  data-wrong-message="{{ site.basement.wrongMessage | default('密碼不對，再想想。') }}"
+  data-wrong-message="{{ basement.wrongMessage | default('密碼不對，再想想。') }}"
 >
   <div class="password-gate__panel" data-gate-panel>
     <p class="eyebrow">ACCESS REQUIRED</p>
-    <h2>{{ site.basement.gateTitle | default("進入地下室") }}</h2>
-    <p>提示：{{ site.basement.passwordHint | default("未設定提示", true) }}</p>
-    {% if site.basement.password %}
+    <h2>{{ basement.gateTitle | default("進入地下室") }}</h2>
+    <p>提示：{{ basement.passwordHint | default("未設定提示", true) }}</p>
+    {% if basement.password %}
       <form class="password-gate__form" data-password-form>
         <label for="basement-password">輸入密碼</label>
         <div>
           <input id="basement-password" name="password" type="password" autocomplete="current-password" required data-password-input>
-          <button class="button button--primary" type="submit">{{ site.basement.buttonLabel | default("進入地下室") }}</button>
+          <button class="button button--primary" type="submit">{{ basement.buttonLabel | default("進入地下室") }}</button>
         </div>
         <p class="password-gate__error" role="status" aria-live="polite" data-password-error></p>
       </form>
-      <script type="application/json" data-encrypted-payload>{{ basementHtml | encryptContent(site.basement.password) | json | safe }}</script>
+      <script type="application/json" data-encrypted-payload>{{ basementHtml | encryptContent(basement.password) | json | safe }}</script>
     {% else %}
       <p class="password-gate__error">尚未在 CMS 設定地下室密碼。</p>
     {% endif %}
