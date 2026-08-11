@@ -3,13 +3,16 @@ layout: layouts/base.njk
 title: 採集簿
 description: 依標籤瀏覽 KUSARIUM 的圖文記錄。
 permalink: /tags/index.html
+eleventyComputed:
+  title: "{{ pageHeaders.tags.title }}"
+  description: "{{ pageHeaders.tags.description }}"
 ---
 <header class="page-intro shell page-intro--split">
   <div>
-    <p class="eyebrow">SPECIMEN INDEX</p>
-    <h1>採集簿</h1>
+    <p class="eyebrow">{{ pageHeaders.tags.eyebrow }}</p>
+    <h1>{{ pageHeaders.tags.title }}</h1>
   </div>
-  <p>紙簽上的名字不是界限，只是幫助我們再次找到它們。</p>
+  <p>{{ pageHeaders.tags.description }}</p>
 </header>
 
 <nav class="tag-cloud shell" aria-label="標籤快速導覽">

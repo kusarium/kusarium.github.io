@@ -3,13 +3,16 @@ layout: layouts/base.njk
 title: 生長記
 description: KUSARIUM 的圖文、隨筆與日常記錄。
 permalink: /journal/index.html
+eleventyComputed:
+  title: "{{ pageHeaders.journal.title }}"
+  description: "{{ pageHeaders.journal.description }}"
 ---
 <header class="page-intro shell page-intro--split">
   <div>
-    <p class="eyebrow">GROWTH JOURNAL</p>
-    <h1>生長記</h1>
+    <p class="eyebrow">{{ pageHeaders.journal.eyebrow }}</p>
+    <h1>{{ pageHeaders.journal.title }}</h1>
   </div>
-  <p>長出來的念頭、畫面和日常，都可以留在這裡。最近的記錄排在最前面。</p>
+  <p>{{ pageHeaders.journal.description }}</p>
 </header>
 
 <section class="journal shell section" aria-label="全部生長記錄">

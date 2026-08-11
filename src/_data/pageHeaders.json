@@ -1,0 +1,22 @@
+{
+  "gallery": {
+    "eyebrow": "ILLUSTRATED SPECIMENS",
+    "title": "葉影帖",
+    "description": "將畫面依採集日期輕輕放好。點開任意一頁，也可以讀到它旁邊留下的文字。"
+  },
+  "journal": {
+    "eyebrow": "GROWTH JOURNAL",
+    "title": "生長記",
+    "description": "長出來的念頭、畫面和日常，都可以留在這裡。最近的記錄排在最前面。"
+  },
+  "archive": {
+    "eyebrow": "CHRONOLOGICAL CABINET",
+    "title": "年月歸檔",
+    "description": "每一次記錄，都是生長輪上的一條細線。"
+  },
+  "tags": {
+    "eyebrow": "SPECIMEN INDEX",
+    "title": "採集簿",
+    "description": "紙簽上的名字不是界限，只是幫助我們再次找到它們。"
+  }
+}

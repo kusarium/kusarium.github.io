@@ -3,11 +3,14 @@ layout: layouts/base.njk
 title: 葉影帖
 description: KUSARIUM 的插畫與視覺標本。
 permalink: /gallery/index.html
+eleventyComputed:
+  title: "{{ pageHeaders.gallery.title }}"
+  description: "{{ pageHeaders.gallery.description }}"
 ---
 <header class="page-intro shell">
-  <p class="eyebrow">ILLUSTRATED SPECIMENS</p>
-  <h1>葉影帖</h1>
-  <p>將畫面依採集日期輕輕放好。點開任意一頁，也可以讀到它旁邊留下的文字。</p>
+  <p class="eyebrow">{{ pageHeaders.gallery.eyebrow }}</p>
+  <h1>{{ pageHeaders.gallery.title }}</h1>
+  <p>{{ pageHeaders.gallery.description }}</p>
 </header>
 
 <section class="gallery shell section" aria-label="插畫與視覺標本">
