@@ -50,15 +50,15 @@
       "activeText": "#4c4948"
     },
     "journal": {
-      "surface": "transparent",
+      "surface": "#abd9cf",
       "text": "#4c4948",
       "hoverSurface": "#feebbe",
       "hoverText": "#4c4948",
-      "activeSurface": "#abd9cf",
+      "activeSurface": "transparent",
       "activeText": "#4c4948"
     },
     "characters": {
-      "surface": "#abd9cf",
+      "surface": "transparent",
       "text": "#4c4948",
       "hoverSurface": "#4c4948",
       "hoverText": "#fbfbf8",
