@@ -1838,8 +1838,28 @@ a {
   line-height: 2;
 }
 
+.prose > p {
+  margin-block: 0;
+  text-indent: 2em;
+}
+
 .prose > * + * {
   margin-top: 1.4em;
+}
+
+.prose > p + p {
+  margin-top: 0.65em;
+}
+
+.article[lang^="ja"] .prose > p {
+  text-indent: 1em;
+}
+
+.prose > p:has(img),
+.prose > p:has(video),
+.prose > p:has(audio),
+.prose > p:has(iframe) {
+  text-indent: 0;
 }
 
 .prose h2,
