@@ -10,10 +10,10 @@ coverCard:
   template: night
   eyebrow: "KUSARIUM · FICTION"
   title: "蛇性之婬"
-  subtitle: "同人小説"
+  subtitle: "小説"
   note: "FICTION ARCHIVE"
 topics:
-  - 同人小説
+  - 小説
   - 藤原忠通
   - 源義朝
 draft: false
