@@ -14,10 +14,23 @@
     "portraitFocusX": 50,
     "portraitFocusY": 50,
     "portraitZoom": 100,
-    "portraitTint": true,
+    "portraitTint": false,
     "showPortraitText": false,
     "portraitTitle": "クサ",
     "portraitNote": "GARDEN KEEPER · EST. 2026",
+    "contactHeading": "聯絡與社群",
+    "contacts": [
+      {
+        "kind": "email",
+        "label": "寫信給我",
+        "url": "mailto:zealotsalter@gmail.com"
+      },
+      {
+        "kind": "x",
+        "label": "X（原 Twitter）",
+        "url": "https://x.com/ComeCuddleBudew"
+      }
+    ],
     "profileEyebrow": "PROFILE",
     "profileTitle": "小草（クサ）",
     "profileChinese": "超級喜歡鐮倉時代北條氏。每天都在產生幻覺。",
