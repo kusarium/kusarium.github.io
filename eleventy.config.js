@@ -38,6 +38,13 @@ function isBasementPost(item) {
   return item?.data?.section === "basement";
 }
 
+function adjacentPost(items = [], currentUrl = "", offset = 0) {
+  const posts = Array.isArray(items) ? items : [];
+  const currentIndex = posts.findIndex((item) => item?.url === currentUrl);
+  if (currentIndex === -1) return null;
+  return posts[currentIndex + offset] || null;
+}
+
 function addHeadingIds(value = "") {
   let index = 0;
 
@@ -150,6 +157,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("encryptContent", encryptContent);
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("take", (items, count) => (items || []).slice(0, count));
+  eleventyConfig.addFilter("previousPost", (items, currentUrl) => adjacentPost(items, currentUrl, -1));
+  eleventyConfig.addFilter("nextPost", (items, currentUrl) => adjacentPost(items, currentUrl, 1));
+  eleventyConfig.addFilter("postUrls", (items) =>
+    (items || []).map((item) => item.url).filter(Boolean),
+  );
   eleventyConfig.addFilter("pad2", (value) => String(value).padStart(2, "0"));
   eleventyConfig.addFilter("imageScale", (value) => {
     const percentage = Number(value);
