@@ -908,6 +908,42 @@ content:
             label: 圖片底部小字
             type: string
             required: true
+          - name: contactHeading
+            label: 聯絡區標題
+            type: string
+            required: true
+          - name: contacts
+            label: 聯絡方式與社群
+            description: 可新增、刪除及拖曳排序；頁面只顯示文案，不會顯示網址、郵箱地址或帳號名。
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            required: false
+            fields:
+              - name: kind
+                label: 圖標
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: email
+                      label: 電子郵件
+                    - name: x
+                      label: X（原 Twitter）
+                    - name: link
+                      label: 一般連結
+              - name: label
+                label: 顯示文案
+                description: 只填要公開顯示的文字，不要在這裡填帳號或郵箱地址。
+                type: string
+                required: true
+              - name: url
+                label: 連結
+                description: "郵件使用 mailto: 開頭，例如 mailto:name@example.com；其他項目填完整 https:// 網址。"
+                type: string
+                required: true
           - name: profileEyebrow
             label: 個人介紹眉標
             type: string
@@ -1123,4 +1159,3 @@ content:
                 label: 人物介紹
                 type: text
                 required: true
-
