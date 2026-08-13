@@ -375,4 +375,30 @@
       if (savedPassword) unlock(savedPassword, true);
     } catch { /* storage may be unavailable */ }
   });
+
+  const articlePoolNode = document.querySelector("[data-article-pool]");
+  let articlePool = [];
+  if (articlePoolNode) {
+    try {
+      articlePool = JSON.parse(articlePoolNode.textContent);
+    } catch { /* keep the journal fallback when the pool cannot be read */ }
+  }
+
+  document.querySelectorAll("[data-random-article]").forEach((link) => {
+    const currentPath = window.location.pathname.replace(/\/?$/, "/");
+    const choices = articlePool.filter((url) => {
+      try {
+        return new URL(url, window.location.origin).pathname.replace(/\/?$/, "/") !== currentPath;
+      } catch {
+        return false;
+      }
+    });
+    if (!choices.length) return;
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const destination = choices[Math.floor(Math.random() * choices.length)];
+      window.location.assign(destination);
+    });
+  });
 })();
