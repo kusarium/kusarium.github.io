@@ -78,12 +78,12 @@
   content: "";
 }
 
-.character-faction > summary:hover {
-  background: linear-gradient(90deg, rgba(83, 168, 162, 0.2), rgba(238, 134, 154, 0.07) 58%, transparent 86%);
+.character-faction:nth-of-type(odd) > summary:hover {
+  background: linear-gradient(90deg, rgba(83, 168, 162, 0.24), transparent 82%);
 }
 
-.character-faction[open] > summary {
-  background: linear-gradient(90deg, rgba(83, 168, 162, 0.12), rgba(255, 253, 241, 0.46) 56%, rgba(238, 134, 154, 0.06));
+.character-faction:nth-of-type(even) > summary:hover {
+  background: linear-gradient(90deg, rgba(238, 134, 154, 0.2), transparent 82%);
 }
 
 .character-faction__index,
@@ -94,15 +94,9 @@
 }
 
 .character-faction__index {
-  display: grid;
-  width: 2.35rem;
-  height: 2.35rem;
-  align-self: center;
-  padding: 0;
-  border: 1px solid rgba(0, 77, 92, 0.18);
-  place-items: center;
+  align-self: start;
+  padding-top: 0.35rem;
   color: var(--persona-deep);
-  background: linear-gradient(135deg, rgba(238, 134, 154, 0.78), rgba(255, 253, 241, 0.92));
 }
 
 .character-faction__heading {
