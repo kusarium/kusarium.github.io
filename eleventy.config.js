@@ -126,12 +126,18 @@ export default function (eleventyConfig) {
   );
 
   eleventyConfig.addCollection("topicList", (collectionApi) => {
-    const topics = new Set();
+    const topicCounts = new Map();
     collectionApi.getFilteredByGlob("src/posts/*.md").forEach((item) => {
       if (item.data.draft || isBasementPost(item)) return;
-      (item.data.topics || []).forEach((topic) => topics.add(topic));
+      new Set(item.data.topics || []).forEach((topic) => {
+        topicCounts.set(topic, (topicCounts.get(topic) || 0) + 1);
+      });
     });
-    return [...topics].sort((a, b) => a.localeCompare(b, "zh-TW"));
+    return [...topicCounts]
+      .sort(([topicA, countA], [topicB, countB]) =>
+        countB - countA || topicA.localeCompare(topicB, "zh-TW"),
+      )
+      .map(([topic]) => topic);
   });
 
   eleventyConfig.addFilter("dateReadable", (date) => dateFormatter.format(date));
