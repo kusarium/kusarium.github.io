@@ -13,7 +13,7 @@ coverCard:
   subtitle: "現代AU"
   note: "FICTION ARCHIVE"
 topics:
-  - 同人小説
+  - 小説
   - 北条政子
   - 北条義時
   - 現代AU
