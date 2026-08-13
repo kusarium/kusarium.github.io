@@ -12,12 +12,26 @@ layout: layouts/base.njk
 {% set effectivePassword = password %}
 {% set effectiveHint = passwordHint %}
 {% set accessScope = "article-" ~ page.fileSlug %}
+{% set previousArticle = collections.posts | previousPost(page.url) %}
+{% set nextArticle = collections.posts | nextPost(page.url) %}
 {% if isBasement and not password %}
   {% set effectivePassword = basement.password %}
   {% set effectiveHint = basement.passwordHint %}
   {% set accessScope = "basement" %}
 {% endif %}
 <article class="article shell shell--article" lang="{{ language | default(site.language) }}">
+  {% if not isBasement and previousArticle %}
+    <nav class="article-sequence article-sequence--top" aria-label="上一篇文章">
+      <a class="article-sequence__link article-sequence__link--previous" href="{{ previousArticle.url }}" rel="prev">
+        <span class="article-sequence__mark" aria-hidden="true">↑</span>
+        <span class="article-sequence__copy">
+          <span class="article-sequence__label">上一篇</span>
+          <span class="article-sequence__title" lang="{{ previousArticle.data.language | default(site.language) }}">{{ previousArticle.data.title }}</span>
+        </span>
+      </a>
+    </nav>
+  {% endif %}
+
   <header class="article__header">
     <p class="eyebrow">{% if isBasement %}BASEMENT FILE{% else %}FIELD NOTE{% endif %} · {{ page.date | dateReadable }}</p>
     <h1>{{ title }}</h1>
@@ -93,6 +107,40 @@ layout: layouts/base.njk
       {% if isBasement %}<a href="/basement/">← 返回地下室</a>{% else %}<a href="/journal/">← 返回生長記</a>{% endif %}
     </div>
   </footer>
+
+  {% if not isBasement and nextArticle %}
+    <nav class="article-sequence article-sequence--bottom" aria-label="下一篇文章">
+      <a class="article-sequence__link article-sequence__link--next" href="{{ nextArticle.url }}" rel="next">
+        <span class="article-sequence__copy">
+          <span class="article-sequence__label">下一篇</span>
+          <span class="article-sequence__title" lang="{{ nextArticle.data.language | default(site.language) }}">{{ nextArticle.data.title }}</span>
+        </span>
+        <span class="article-sequence__mark" aria-hidden="true">↓</span>
+      </a>
+    </nav>
+  {% endif %}
+
+  {% if not isBasement %}
+    <nav class="article-mobile-nav" aria-label="文章瀏覽">
+      {% if previousArticle %}
+        <a class="article-mobile-nav__article article-mobile-nav__article--previous" href="{{ previousArticle.url }}" rel="prev">
+          <span class="article-mobile-nav__label">← 上一篇</span>
+          <span class="article-mobile-nav__title" lang="{{ previousArticle.data.language | default(site.language) }}">{{ previousArticle.data.title }}</span>
+        </a>
+      {% endif %}
+      <a class="article-mobile-nav__random" href="/journal/" data-random-article aria-label="隨機抽選一篇文章">
+        <span aria-hidden="true">✣</span>
+        <small>隨機</small>
+      </a>
+      {% if nextArticle %}
+        <a class="article-mobile-nav__article article-mobile-nav__article--next" href="{{ nextArticle.url }}" rel="next">
+          <span class="article-mobile-nav__label">下一篇 →</span>
+          <span class="article-mobile-nav__title" lang="{{ nextArticle.data.language | default(site.language) }}">{{ nextArticle.data.title }}</span>
+        </a>
+      {% endif %}
+    </nav>
+    <script type="application/json" data-article-pool>{{ collections.posts | postUrls | json | safe }}</script>
+  {% endif %}
 </article>
 
 <dialog class="lightbox" data-lightbox>
