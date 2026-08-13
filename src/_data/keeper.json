@@ -2,14 +2,14 @@
   "home": {
     "eyebrow": "ABOUT THE KEEPER",
     "title": "園丁：小草（クサ）",
-    "summary": "收集鱗片的植物/\n鱗を集める植物",
+    "summary": "植物",
     "buttonLabel": "前往園丁室"
   },
   "about": {
     "pageEyebrow": "THE GARDEN KEEPER",
     "pageTitle": "園丁室",
     "pageIntro": "關於小草（クサ）與本站。",
-    "portraitImage": "/assets/images/site/img1924.jpeg",
+    "portraitImage": "/assets/images/site/square.webp",
     "portraitAlt": "小草（クサ）的個人形象圖",
     "portraitFocusX": 50,
     "portraitFocusY": 50,
