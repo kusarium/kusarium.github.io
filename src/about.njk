@@ -13,14 +13,39 @@ permalink: /about/index.html
 </header>
 
 <section class="about shell section">
-  <div class="about__portrait{% if about.portraitImage %} about__portrait--has-image{% endif %}" style="--image-focus-x: {{ about.portraitFocusX | default(50) }}%; --image-focus-y: {{ about.portraitFocusY | default(50) }}%; --image-scale: {{ about.portraitZoom | imageScale }};">
-    {% if about.portraitImage %}
-      <img class="about__portrait-image" src="{{ about.portraitImage }}" alt="{{ about.portraitAlt | default('') }}">
-      {% if about.portraitTint | default(true) %}<div class="about__portrait-tint" aria-hidden="true"></div>{% endif %}
-    {% endif %}
-    {% if showPortraitText %}
-      <div class="about__monogram">{{ about.portraitTitle }}</div>
-      <p class="about__portrait-note">{{ about.portraitNote }}</p>
+  <div class="about__identity">
+    <div class="about__portrait{% if about.portraitImage %} about__portrait--has-image{% endif %}" style="--image-focus-x: {{ about.portraitFocusX | default(50) }}%; --image-focus-y: {{ about.portraitFocusY | default(50) }}%; --image-scale: {{ about.portraitZoom | imageScale }};">
+      {% if about.portraitImage %}
+        <img class="about__portrait-image" src="{{ about.portraitImage }}" alt="{{ about.portraitAlt | default('') }}">
+        {% if about.portraitTint | default(true) %}<div class="about__portrait-tint" aria-hidden="true"></div>{% endif %}
+      {% endif %}
+      {% if showPortraitText %}
+        <div class="about__monogram">{{ about.portraitTitle }}</div>
+        <p class="about__portrait-note">{{ about.portraitNote }}</p>
+      {% endif %}
+    </div>
+    {% if about.contacts and about.contacts.length %}
+      <aside class="about__contacts" aria-labelledby="about-contact-heading">
+        <p class="eyebrow" id="about-contact-heading">{{ about.contactHeading | default('聯絡與社群') }}</p>
+        <ul class="about__contact-list">
+          {% for contact in about.contacts %}
+            <li>
+              <a class="about__contact-link" href="{{ contact.url }}"{% if contact.kind != 'email' %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                <span class="about__contact-icon" aria-hidden="true">
+                  {% if contact.kind == 'email' %}
+                    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"></rect><path d="m4 7 8 6 8-6"></path></svg>
+                  {% elif contact.kind == 'x' %}
+                    <svg viewBox="0 0 24 24"><path d="M5 4 19 20M19 4 5 20"></path></svg>
+                  {% else %}
+                    <svg viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7.1 0l2.1-2.1a5 5 0 0 0-7.1-7.1L11 5.9"></path><path d="M14 10a5 5 0 0 0-7.1 0l-2.1 2.1a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg>
+                  {% endif %}
+                </span>
+                <span class="about__contact-label">{{ contact.label }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </aside>
     {% endif %}
   </div>
   <div class="about__content prose">
