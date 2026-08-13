@@ -10,10 +10,10 @@ coverCard:
   template: mist
   eyebrow: "KUSARIUM · FICTION"
   title: "微月浮江"
-  subtitle: "同人小説"
+  subtitle: "小説"
   note: "FICTION ARCHIVE"
 topics:
-  - 同人小説
+  - 小説
   - 藤原忠通
   - 鳥羽天皇
   - 藤原璋子
@@ -21,7 +21,7 @@ topics:
 draft: false
 ---
 
-## Chapter 1
+## （1）
 
 （1）
 
@@ -330,7 +330,7 @@ draft: false
 那处是天子所在之地。
 
 也只是他下一个该去的地方。
-## Chapter 2
+## （2）
 
 （2）
 
@@ -631,7 +631,7 @@ draft: false
 前路高远，清寒，正配凝视着满月长大的自己。
 
 而白昼的盲点，日月暧昧之处，阴影无声扩大。
-## Chapter 3
+## （3）
 
 （3）
 
