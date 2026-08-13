@@ -13,7 +13,7 @@ coverCard:
   subtitle: "現代AU"
   note: "FICTION ARCHIVE"
 topics:
-  - 同人小説
+  - 小説
   - 藤原頼長
   - 藤原忠通
   - 現代AU
