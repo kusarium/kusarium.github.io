@@ -4393,3 +4393,124 @@ body {
     display: none !important;
   }
 }
+
+/* About profile card and contacts */
+.about {
+  grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2.5rem, 7vw, 6rem);
+}
+
+.about__identity {
+  min-width: 0;
+}
+
+.about__portrait {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.about__portrait::before,
+.about__portrait::after {
+  display: none;
+}
+
+.about__portrait-image {
+  display: block;
+  object-fit: cover;
+}
+
+.about__contacts {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.about__contacts .eyebrow {
+  margin: 0 0 0.7rem;
+}
+
+.about__contact-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 0.45rem;
+  list-style: none;
+}
+
+.about__contact-link {
+  display: grid;
+  min-height: 2.7rem;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: rgba(251, 251, 248, 0.68);
+  text-decoration: none;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.about__contact-icon {
+  display: grid;
+  width: 2.25rem;
+  height: 100%;
+  place-items: center;
+  border-right: 1px solid var(--line);
+  color: var(--ash);
+  transition: color 180ms ease;
+}
+
+.about__contact-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about__contact-label {
+  padding: 0.55rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.about__contact-link:hover,
+.about__contact-link:focus-visible {
+  border-color: var(--ink);
+  background: var(--mint);
+}
+
+.about__contact-link:hover .about__contact-icon,
+.about__contact-link:focus-visible .about__contact-icon {
+  color: var(--ink);
+}
+
+@media (max-width: 820px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about__identity {
+    width: min(100%, 16rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .about__identity {
+    width: min(72vw, 15rem);
+  }
+}
+
+@media print {
+  .about__contacts {
+    display: none;
+  }
+}
